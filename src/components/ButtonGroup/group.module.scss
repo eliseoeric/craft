@@ -1,0 +1,38 @@
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/keyframes';
+
+.btn_grp {
+  display: flex;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 18px;
+  padding-top: 10px;
+}
+
+.btn_grp__container {
+  width: 50%;
+}
+
+.btn_grp__btn {
+  display: none;
+  visibility: hidden;
+
+  &:checked + .btn_grp__label {
+    border-color: $brand-color;
+    background-color: $brand-color;
+    color: $white;
+  }
+}
+
+.btn_grp__label {
+  width: 100%;
+  border: 1px solid #ececec;
+  color: $secondary;
+  @include fsz(14px);
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+  transition: $transition;
+}

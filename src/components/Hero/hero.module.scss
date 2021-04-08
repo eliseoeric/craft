@@ -1,0 +1,102 @@
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/fonts';
+@import '../../styles/modifiers/animations';
+
+.root {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.component {
+  position: relative; // keeps menu
+  height: 100%;
+  min-height: 350px;
+  max-width: $site-width;
+  margin: 0 auto;
+  z-index: 2;
+
+  @media #{$tablet} {
+    height: 100%;
+  }
+}
+
+.row {
+  align-items: flex-end;
+}
+
+.active {
+  opacity: 1;
+  z-index: 2;
+  height: 100%;
+  display: block;
+}
+
+.content {
+  color: $white;
+  &__wrapper {
+    width: 36%;
+    padding: 122px 0 100px;
+    @media #{$desktop} {
+      width: 43%;
+    }
+    @media #{$tablet} {
+      width: 100%;
+      padding: 50px 0;
+      text-align: center;
+    }
+  }
+}
+
+.title {
+  margin-bottom: 17px;
+  @media #{$phone} {
+    @include fsz(52px);
+  }
+}
+
+.description {
+  @include fsz(18px);
+  margin-bottom: 50px;
+  max-width: 415px;
+  @media #{$tablet} {
+    max-width: 100%;
+  }
+}
+
+.image {
+  width: 55%;
+  max-width: 720px;
+  @media #{$tablet} {
+    width: 100%;
+    left: 20px;
+    position: relative;
+  }
+
+  &__source {
+  }
+}
+
+.button {
+  margin-right: 22px;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-right: 0;
+
+    @media #{$phone} {
+      margin-right: 11px;
+    }
+  }
+
+  @media #{$phone} {
+    margin-left: 11px;
+    margin-right: 11px;
+  }
+}

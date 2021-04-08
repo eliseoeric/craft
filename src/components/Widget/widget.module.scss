@@ -1,0 +1,29 @@
+@import "../../styles/definitions/breakpoints";
+@import "../../styles/definitions/mixins";
+
+.root {
+  max-width: 33%;
+  @include fsz(14px);
+
+  @media #{$tablet} {
+    width: 200px;
+    margin-right: 50px;
+  }
+  
+  @media #{$phone} {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    margin-right: 0;
+  }
+
+  &.wide {
+    width: 46.5%;
+    max-width: 46.5%;
+  }
+}
+
+.column__title {
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}

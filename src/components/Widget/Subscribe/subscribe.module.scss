@@ -1,0 +1,77 @@
+@import '../../../styles/definitions/breakpoints';
+@import '../../../styles/definitions/mixins';
+@import '../../../styles/definitions/colors';
+@import '../../../styles/definitions/keyframes';
+
+.block__description {
+  line-height: 1.3;
+  margin-bottom: 23px;
+}
+
+.form {
+  position: relative;
+
+  input[type='email'] {
+    width: 100%;
+    background: $gray-light;
+    height: 57px;
+    font-weight: 400;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.38) inset;
+    border: none;
+    padding-right: 60px;
+    @include fsz(14px);
+    padding-left: 20px;
+    &:hover,
+    &:focus,
+    &:active {
+      background: $white;
+    }
+    &:focus + .submit {
+      svg {
+        color: $brand-color;
+      }
+    }
+    &::-moz-placeholder {
+      color: $gray-darker;
+      opacity: 1;
+    }
+
+    &:-ms-input-placeholder {
+      color: $gray-darker;
+      opacity: 1;
+    }
+
+    &::-webkit-input-placeholder {
+      color: $gray-darker;
+      opacity: 1;
+    }
+  }
+}
+
+.submit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: none;
+  color: $secondary;
+  height: 57px;
+  padding: 15px 16px;
+  box-shadow: none;
+  transition: $transition;
+  &:hover,
+  &:focus,
+  &:active {
+    background: none;
+    color: $brand-color;
+    svg {
+      color: $brand-color;
+    }
+  }
+  &:after {
+    display: none;
+  }
+  svg {
+    width: 21px;
+    height: 21px;
+  }
+}

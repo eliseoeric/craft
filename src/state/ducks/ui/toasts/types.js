@@ -1,0 +1,4 @@
+export default {
+  TOAST_ADD_NEW: 'TOAST_ADD_NEW',
+  TOAST_DISMISS: 'TOAST_DISMISS',
+}

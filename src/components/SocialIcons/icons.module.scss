@@ -1,0 +1,29 @@
+
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/colors';
+
+.root {
+  display: flex;
+  width: 100%;
+
+  @media #{$tablet} {
+    justify-content: center;
+    margin: 30px 0;
+  }
+
+  a {
+    color: $gray-light;
+    width: 1.5rem;
+    height: 2rem;
+  }
+}
+
+
+.icon {
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+}

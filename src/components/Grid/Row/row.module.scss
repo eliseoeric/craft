@@ -1,0 +1,63 @@
+@import "../../../styles/definitions/breakpoints";
+
+.root {
+  margin-right: -#{$gutter};
+  margin-left: -#{$gutter};
+
+  &.margin_none {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.display_flex {
+  display: flex;
+}
+
+.flex_wrap {
+  flex-wrap: wrap;
+}
+
+.align_items {
+  &__stretch {
+    align-items: stretch!important;
+  }
+
+  &__start {
+    align-items: start!important;
+  }
+
+  &__center {
+    align-items: center!important;
+  }
+
+  &__end {
+    align-items: end!important;
+  }
+
+  &__baseline {
+    align-items: baseline!important;
+  }
+}
+
+.justify_content {
+  &__between {
+    justify-content: space-between!important;
+  }
+
+  &__start {
+    justify-content: start!important;
+  }
+
+  &__center {
+    justify-content: center!important;
+  }
+
+  &__end {
+    justify-content: end!important;
+  }
+
+  &__around {
+    justify-content: space-around!important;
+  }
+}

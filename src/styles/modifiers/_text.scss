@@ -1,0 +1,67 @@
+@import "../definitions/colors";
+@import "../definitions/mixins";
+@import "../definitions/fonts";
+@import "../definitions/breakpoints";
+
+@each $color-name, $color-variable in $colors {
+  // Text Color
+  .text_#{"" + $color-name} {
+    color: $color-variable;
+  }
+}
+
+.text_shadow {
+  text-shadow: 0 0 30px $gray-dark;
+}
+
+.link_undecorated {
+  text-decoration: none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+h1, .h1, h2, .h2,
+h3, .h3, h4, .h4 {
+  transition: all 0.25s ease-in-out;
+}
+
+h1, .h1 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(72px);
+  @media #{$tablet} {
+    @include fsz(28px);
+  }
+}
+
+h2, .h2 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(38px);
+  @media #{$tablet} {
+    @include fsz(28px);
+  }
+}
+
+h3, .h3 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(28px);
+}
+
+h4, .h4 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(21px);
+}
+
+h5, .h5 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(16px);
+}
+
+h6, .h6 {
+  @include font_loader($alt-family, 3, 'n');
+  @include fsz(14px);
+}
+
+.text-half-spaced {
+  line-height: 1.5rem;
+}

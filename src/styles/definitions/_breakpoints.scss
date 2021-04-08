@@ -1,0 +1,24 @@
+// Sizes
+$container: 1240px;
+$site-width: 1240px;
+$gutter: 15px;
+$gutter_desktop: 32px;
+
+// Media Queries
+$HDPI: 'only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 13/10), only screen and (min-resolution: 120dpi)';
+
+// Media Queries
+$laptop-width: 1439px;
+$small-width: 1199px;
+$tablet-width: 1023px;
+$phone-width: 767px;
+$header-width: 960px;
+$phone-small-width: 500px;
+
+$laptop: 'screen and (max-width: #{$laptop-width})';
+$desktop: 'screen and (max-width: #{$container})';
+$small-screen: 'screen and (max-width: #{$small-width})';
+$tablet: 'screen and (max-width: #{$tablet-width})';
+$phone: 'screen and (max-width: #{$phone-width})';
+$phone-small: 'screen and (max-width: #{$phone-small-width})';
+$header: 'screen and (max-width: #{$header-width})';

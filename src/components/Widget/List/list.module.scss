@@ -1,0 +1,11 @@
+@import "../../../styles/definitions/breakpoints";
+@import "../../../styles/definitions/mixins";
+
+.column__item {
+  margin-bottom: 11px;
+  line-height: 1;
+}
+
+.column__item__link {
+  @include fsz(14px);
+}

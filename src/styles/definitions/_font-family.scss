@@ -1,0 +1,14 @@
+$fonts_path: "../fonts/";
+
+/** Font faces must be defined seperately from the SCSS font family variables,
+* because we import the _fonts.scss definition file into our scss modules. This
+* causes an issue because the $fonts_path is relative. Instead, this partial
+* is only imported into the _base.scss file
+**/
+@font-face {
+  font-family: 'AlternateGothicNo2D';
+  src: url(#{$fonts_path}AlternateGothicNo2D.woff2) format('woff2'),
+  url(#{$fonts_path}AlternateGothicNo2D.woff) format('woff');
+  font-weight: normal;
+  font-style: normal;
+}

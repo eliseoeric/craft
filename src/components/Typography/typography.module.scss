@@ -1,0 +1,44 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.section_title {
+  @include fsz(72px);
+  text-align: center;
+  text-transform: uppercase;
+  color: $secondary;
+  @media #{$phone} {
+    @include fsz(42px);
+  }
+}
+
+.fancy_title{
+  @include fsz(72px);
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  margin-bottom: 50px;
+  color: $secondary;
+  @media #{$phone} {
+    @include fsz(42px);
+    margin-bottom: 30px;
+  }
+  span{
+    background-color: $white;
+    font-weight: normal;
+    position: relative;
+    z-index: 1;
+    padding: 0 20px;
+    display: inline-block;
+  }
+  &:before{
+    content: "";
+    position: absolute;
+    top: calc(50% - 9px);
+    left:-5000px;
+    width: 10000px;
+    height: 2px;
+    background-color: #ECECEC;
+  }
+}

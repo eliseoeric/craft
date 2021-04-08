@@ -1,0 +1,41 @@
+@import "../../styles/definitions/breakpoints";
+
+.logo__large {
+  margin-left: -20px;
+  display: block;
+
+  @media #{$tablet} {
+    margin-left: -15px;
+  }
+
+  @media #{$phone} {
+    margin-left: 0;
+    max-width: 160px;
+  }
+}
+
+.logo__small {
+  display: none;
+  max-width: 47px;
+}
+
+.logo__footer {
+  margin-bottom: 60px;
+  left: -17px;
+  position: relative;
+
+  @media #{$tablet} {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto 60px;
+  }
+
+  @media #{$phone} {
+    max-width: 337px;
+    left: 0;
+  }
+
+  @media #{$phone-small} {
+    max-width: 267px;
+  }
+}

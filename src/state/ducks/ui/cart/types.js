@@ -1,0 +1,3 @@
+export default {
+  CART__TOGGLE_QUICK_CART: 'CART__TOGGLE_QUICK_CART',
+}

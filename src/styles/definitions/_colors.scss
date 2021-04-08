@@ -1,0 +1,61 @@
+// Colors
+$black: #282828;
+$white: #fff;
+$slate: #d8d8d8;
+$green: #87b942;
+$green-light: #def4bf;
+$gray: #707070;
+$gray-light: #aaaaaa;
+$gray-lighter: #c8c8c8;
+$gray-lightest: #ececec;
+$gray-dark: #373936;
+$gray-darker: #1d1d1d;
+$info: #2d91ff;
+$warning: #ffa201;
+$error: #ff0102;
+
+$primary: $green-light;
+$secondary: $gray-dark;
+$base-font-color: $black;
+$brand-color: $green;
+
+// Blue filter over photos
+$blue-filter: rgba(#c6daff, 0.8);
+
+// Color Map
+$colors: (
+  // Brand Colors
+  primary: $primary,
+  secondary: $secondary,
+  brand: $brand-color,
+  // Gray Colors
+  gray: $gray,
+  gray-dark: $gray-dark,
+  gray-light: $gray-light,
+  gray-lighter: $gray-light,
+  gray-darker: $gray-darker,
+  white: $white
+);
+
+// Social Colors Guys, Social Colors
+$twitter: #00aced;
+$facebook: #3b5998;
+$linkedin: #007bb6;
+$googleplus: #dd4b39;
+$pinterest: #cb2027;
+$youtube: #bb0000;
+$vimeo: #aad450;
+$tumblr: #32506d;
+$instagram: #517fa4;
+$flickr: #ff0084;
+$dribbble: #ea4c89;
+$quora: #a82400;
+$foursquare: #0072b1;
+$forrst: #5b9a68;
+$vk: #45668e;
+$wordpress: #21759b;
+$stumbleupon: #eb4823;
+$yahoo: #7b0099;
+$blogger: #fb8f3d;
+$soundcloud: #ff3a00;
+$github: #703083;

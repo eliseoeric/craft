@@ -1,0 +1,14 @@
+@import "../../../styles/definitions/breakpoints";
+
+.root {
+  max-width: $container;
+  width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+  margin: 0 auto;
+
+  @media #{$tablet} {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
