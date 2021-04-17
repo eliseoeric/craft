@@ -27,10 +27,7 @@ export const H6 = ({id, className, text, bold}) => (
   <h6 className={classnames(className, type.h6, {[type.bold]: bold})} id={id}>{text}</h6>
 )
 
+// this is the huge one
 export const SectionTitle = ({id, className, text}) => (
   <h2 className={classnames(className, type.section_title)} id={id}>{text}</h2>
-)
-
-export const FancyTitle = ({id, className, text}) => (
-  <h2 className={classnames(className, type.fancy_title)} id={id}><span>{text}</span></h2>
 )

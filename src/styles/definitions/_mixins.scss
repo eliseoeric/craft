@@ -20,6 +20,7 @@
 @mixin font_loader($font_family, $font_weight, $font_style) {
   font-weight: #{$font_weight + '00'};
   font-family: #{$font_family}, Helvetica, Arial, sans-serif;
+  font-style: #{$font_style};
 }
 
 @mixin clear_list {

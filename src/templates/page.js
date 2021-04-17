@@ -2,9 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
 
-import { useSelector } from 'react-redux'
-import { navigationSelectors } from '@State/ducks/ui/navigation'
-
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
@@ -21,7 +18,7 @@ const PageTemplate = ({ data, pageContext }) => {
 
   const renderLayout = (layout) => {
     return (
-      <CoreLayout className={cx({ 'body--header-fixed': isHeaderFixed })}>
+      <CoreLayout>
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
@@ -32,8 +29,6 @@ const PageTemplate = ({ data, pageContext }) => {
   const { title, slug, description, layout } = data?.contentfulPage
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
-
-  const isHeaderFixed = useSelector(navigationSelectors.isHeaderFixed)
 
   return (
     <>
@@ -58,23 +53,6 @@ export const query = graphql`
       description {
         childrenMarkdownRemark {
           rawMarkdownBody
-        }
-      }
-      layout {
-        contentModules {
-          __typename
-          ...CoverSliderModule
-          ...FeaturedStepsModule
-          ...FeaturedImageSplitModule
-          ...CopyRightAlignedModule
-          ...HeroCenteredTextModule
-          ...CoreValuesModule
-          ...LocationMapModule
-          ...MembershipPlansModule
-          ...ProductGridModule
-          ...CallToActionModule
-          ...FaQsModule
-          ...AccountModule
         }
       }
     }

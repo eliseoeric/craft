@@ -11,7 +11,7 @@
 }
 
 .text_shadow {
-  text-shadow: 0 0 30px $gray-dark;
+  text-shadow: 0 0 30px $gray-darker;
 }
 
 .link_undecorated {
@@ -27,38 +27,51 @@ h3, .h3, h4, .h4 {
 }
 
 h1, .h1 {
-  @include font_loader($alt-family, 3, 'n');
-  @include fsz(72px);
-  @media #{$tablet} {
-    @include fsz(28px);
+  @include font_loader($primary-family, 8, 'normal');
+  @include fsz(60px);
+  letter-spacing: -0.5px;
+  line-height: .91;
+  
+  @media #{$laptop} {
+    @include fsz(100px);
+  }
+
+  @media #{$small-screen} {
+    @include fsz(72px);
+  }
+
+  @media #{$phone} {
+    @include fsz(80px);
+    margin-bottom: 8px;
   }
 }
 
 h2, .h2 {
-  @include font_loader($alt-family, 3, 'n');
-  @include fsz(38px);
+  @include font_loader($primary-family, 8, 'normal');
+  @include fsz(40px);
+  letter-spacing: -0.5px;
   @media #{$tablet} {
     @include fsz(28px);
   }
 }
 
 h3, .h3 {
-  @include font_loader($alt-family, 3, 'n');
-  @include fsz(28px);
+  @include font_loader($primary-family, 8, 'normal');
+  @include fsz(24px)
 }
 
 h4, .h4 {
-  @include font_loader($alt-family, 3, 'n');
+  @include font_loader($primary-family, 3, 'normal');
   @include fsz(21px);
 }
 
 h5, .h5 {
-  @include font_loader($alt-family, 3, 'n');
+  @include font_loader($primary-family, 3, 'normal');
   @include fsz(16px);
 }
 
 h6, .h6 {
-  @include font_loader($alt-family, 3, 'n');
+  @include font_loader($primary-family, 3, 'normal');
   @include fsz(14px);
 }
 

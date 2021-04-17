@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="837px" height="831px" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-19.8%" y="-19.8%" width="139.6%" height="139.6%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="44" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+        <radialGradient id="a" cx="409.689" cy="468.159" r="360.047"  gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.86335, -0.694696, 0.739612, 0.919171, -246.895309, 284.182931)">
+            <stop offset="0.0287" stop-color="#7500ff" />
+            <stop offset="0.759" stop-color="#37ecf2" stop-opacity=".549336" />
+            <stop offset="1" stop-color="#00ffe6" stop-opacity="1" />
+        </radialGradient>
+    </defs>
+    <g id="Casestudy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.800000012">
+        <g id="SVG-Gradient" fill="url(#a)" transform="translate(15 0)">
+            <path d="M293.290263,56.3519025 L533.290263,56.3519025 C641.038029,56.3519025 728.384851,143.698725 728.384851,251.44649 C728.384851,303.188792 707.830302,352.811864 671.242969,389.399196 L395.337557,665.304609 C319.148381,741.493784 195.621321,741.493784 119.432145,665.304609 C82.8448123,628.717276 62.290263,579.094204 62.290263,527.351902 L62.290263,287.351902 C62.290263,159.774125 165.712486,56.3519025 293.290263,56.3519025 Z" id="Blob" filter="url(#filter-1)"></path>
+        </g>
+    </g>
+</svg>

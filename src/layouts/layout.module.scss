@@ -1,0 +1,11 @@
+@import '../styles/modifiers/text';
+@import '../styles/definitions/mixins';
+@import '../styles/definitions/colors';
+@import '../styles/definitions/breakpoints';
+
+.case_study_wrapper {
+  background-color: $gray-lighter;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}

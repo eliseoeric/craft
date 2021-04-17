@@ -1,19 +1,18 @@
 import React from 'react'
 import cx from 'classnames'
-import Header from '@Components/Header'
-import TopBar from '@Components/TopBar'
-import Footer from '@Components/Footer'
-import ToastProvider from '@Components/ToastProvider'
+
+// import Footer from '@Components/Footer'
+import Sidebar from '@Components/Sidebar'
+
 import '../styles/app.scss'
+import * as styles from './layout.module.scss'
 
 const CoreLayout = ({ children, className }) => {
   return (
-    <div className={cx('core-layout', className)}>
-      <TopBar />
-      <Header />
+    <div className={cx('core-layout', className, styles.case_study_wrapper)}>
+      <Sidebar />
       <main>{children}</main>
-      <Footer />
-      <ToastProvider displayCount={3} placement="bottom-left" />
+      {/* <Footer /> */}
     </div>
   )
 }
