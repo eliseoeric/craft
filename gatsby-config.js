@@ -33,12 +33,12 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: 'Kitch - Eat Intentionally',
-    titleTemplate: `%s - Kitch`,
+    title: 'Craft - Made By Craft',
+    titleTemplate: `%s - Craft`,
     description: ``,
-    url: 'https://www.kitch.com',
-    siteUrl: `https://www.kitch.com`,
-    image: '/images/logo-color.png',
+    url: 'https://www.madebycraft.co',
+    siteUrl: `https://www.madebycraft.co`,
+    image: '/images/logo-dark.svg',
     author: `Eleven 11`,
     twitterUsername: ``,
   },
@@ -51,22 +51,6 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
-      },
-    },
-    {
-      resolve: 'gatsby-source-bigcommerce',
-      options: {
-        // REQUIRED
-        clientId: process.env.BIG_COMMERCE_API_CLIENT_ID,
-        secret: process.env.BIG_COMMERCE_API_SECRET,
-        accessToken: process.env.BIG_COMMERCE_API_TOKEN,
-        storeHash: process.env.BIG_COMMERCE_API_STORE_HASH,
-        endpoints: {
-          BigCommerceProducts:
-            '/catalog/products?include=images,variants,custom_fields,options,modifiers,videos',
-          BigCommerceCategories: '/catalog/categories',
-          BigCommerceBrands: '/catalog/brands',
-        },
       },
     },
     'gatsby-transformer-remark',
@@ -86,18 +70,18 @@ module.exports = {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        events: true,
-        google: {
-          families: ['Montserrat']
-        },
-        custom: {
-          families: ['AlternateGothicNo2D']
-        },
-      },
-    },
+    // {
+    //   resolve: 'gatsby-plugin-web-font-loader',
+    //   options: {
+    //     events: true,
+    //     google: {
+    //       families: ['Montserrat']
+    //     },
+    //     custom: {
+    //       families: ['AlternateGothicNo2D']
+    //     },
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -107,13 +91,13 @@ module.exports = {
         respectDNT: true,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [`montserrat\:300,400,500,600,700`],
-        display: 'swap',
-      },
-    },
+    // {
+    //   resolve: `gatsby-plugin-google-fonts`,
+    //   options: {
+    //     fonts: [`montserrat\:300,400,500,600,700`],
+    //     display: 'swap',
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-alias-imports`,
       options: {

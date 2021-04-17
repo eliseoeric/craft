@@ -12,8 +12,8 @@ class LambdaService {
 
   getHeaders = () => {
     let headers = {
-      'X-Client-Type': 'Kitch Gatsby',
-      'X-Client-Name': 'gatsby-bigcommerce-netlify',
+      'X-Client-Type': 'Craft Gatsby',
+      'X-Client-Name': 'gatsby-craft-netlify',
     }
 
     return headers;

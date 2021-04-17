@@ -2,12 +2,14 @@ import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+
+import LogoWhite from '@SVGs/logo-white.svg'
+import LogoDark from '@SVGs/logo-dark.svg'
+import LogoGray from '@SVGs/logo-gray.svg'
+
 import * as logo from './logo.module.scss'
-import BrandLogo from '@SVGs/logo.svg'
-import FooterLogo from '@SVGs/footer-logo.svg'
 
 const Logo = ({ variant, className }) => {
-  // todo update this to get two logos (small and regular)
   const data = useStaticQuery(graphql`
     query LogoQuery {
       site {
@@ -22,17 +24,17 @@ const Logo = ({ variant, className }) => {
   const { title } = data.site.siteMetadata
 
   const variantMap = {
-    default: {
-      class: 'logo__large',
-      src: BrandLogo,
+    white: {
+      class: 'logo__white',
+      src: LogoWhite,
     },
-    small: {
-      class: 'logo__small',
-      src: BrandLogo,
+    gray: {
+      class: 'logo__gray',
+      src: LogoGray,
     },
-    footer: {
-      class: 'logo__footer',
-      src: FooterLogo,
+    dark: {
+      class: 'logo__dark',
+      src: LogoDark,
     },
   }
 
@@ -46,14 +48,12 @@ const Logo = ({ variant, className }) => {
 }
 
 Logo.defaultProps = {
-  variant: 'default',
+  variant: 'dark',
 }
 
 Logo.propTypes = {
-  variant: PropTypes.string,
+  variant: PropTypes.oneOf(['white', 'gray', 'dark']),
   className: PropTypes.string,
 }
-
-// todo add prop types
 
 export default Logo

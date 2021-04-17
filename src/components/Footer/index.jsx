@@ -13,33 +13,7 @@ import SocialIcons from '@Components/SocialIcons'
 import * as footer from './footer.module.scss'
 
 const Footer = ({ className }) => {
-  const data = useStaticQuery(graphql`
-    query footerNavigation {
-      allContentfulNavigationMenu(
-        filter: { slug: { in: ["footer-1", "footer-2"] } }
-      ) {
-        edges {
-          node {
-            slug
-            id
-            title
-            navigationMenuItems {
-              canonicalUrl
-              slug
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  const columns = data.allContentfulNavigationMenu.edges.map((item) => {
-    // flatten the data a bit
-    return {
-      ...item.node,
-    }
-  })
+  
 
   return (
     <footer className={cx(className, footer.site__footer)}>
@@ -50,14 +24,7 @@ const Footer = ({ className }) => {
 
         <Row justifyContent={'between'}>
           <div className={footer.footer__nav}>
-            {columns &&
-              columns.map(({ title, slug, navigationMenuItems: items }) => {
-                return (
-                  <Widget title={title} key={slug}>
-                    <WidgetList links={items} />
-                  </Widget>
-                )
-              })}
+            
             <Widget title={'Stay Updated'} wide>
               <WidgetSubscribe />
             </Widget>

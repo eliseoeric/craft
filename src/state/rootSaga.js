@@ -1,16 +1,9 @@
 import { all, fork, call, takeLatest, cancel, spawn } from 'redux-saga/effects'
-import { cartOperations } from '@State/ducks/cart'
-import { userOperations } from '@State/ducks/user'
-import { groupsOperations } from '@State/ducks/groups'
 
 function* mainSaga() {
-  const sagas = [
-    fork(cartOperations.rootFlow),
-    fork(userOperations.rootFlow),
-    fork(groupsOperations.rootFlow)
-  ].map(forkWrapper)
+  const sagas = [].map(forkWrapper)
 
-  yield all(sagas);
+  yield all(sagas)
 }
 
 /**

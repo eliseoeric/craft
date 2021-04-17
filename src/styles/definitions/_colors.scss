@@ -1,26 +1,23 @@
 // Colors
-$black: #282828;
+$black: #191919;
 $white: #fff;
 $slate: #d8d8d8;
-$green: #87b942;
-$green-light: #def4bf;
-$gray: #707070;
-$gray-light: #aaaaaa;
-$gray-lighter: #c8c8c8;
-$gray-lightest: #ececec;
-$gray-dark: #373936;
-$gray-darker: #1d1d1d;
+$purple: #7700FF;
+$green: #00FFb5;
+$gray: #cccccc;
+$gray-light: #f2f2f2;
+$gray-lighter: #f2f2f2;
+$gray-dark: #979797;
+$gray-darker: #282828;
+$gray-darkest: #191919; // same as black
 $info: #2d91ff;
 $warning: #ffa201;
 $error: #ff0102;
 
-$primary: $green-light;
-$secondary: $gray-dark;
-$base-font-color: $black;
+$primary: $gray-darkest;
+$secondary: $purple;
+$base-font-color: $gray-darkest;
 $brand-color: $green;
-
-// Blue filter over photos
-$blue-filter: rgba(#c6daff, 0.8);
 
 // Color Map
 $colors: (
@@ -30,10 +27,11 @@ $colors: (
   brand: $brand-color,
   // Gray Colors
   gray: $gray,
-  gray-dark: $gray-dark,
   gray-light: $gray-light,
   gray-lighter: $gray-light,
+  gray-dark: $gray-darker,
   gray-darker: $gray-darker,
+  gray-darkest: $gray-darkest,
   white: $white
 );
 

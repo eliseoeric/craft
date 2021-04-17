@@ -1,0 +1,21 @@
+@import '../../../styles/definitions/breakpoints';
+@import '../../../styles/definitions/mixins';
+@import '../../../styles/definitions/fonts';
+@import '../../../styles/definitions/colors';
+
+.root {
+  padding: 120px 0 87px;
+
+  @media #{$small-screen} {
+    padding: 100px 0 67px;
+  }
+  @media #{$phone} {
+    padding-bottom: 52px;
+  }
+}
+
+.block_subtitle {
+  @include fsz(24px);
+  line-height: 1.29;
+  letter-spacing: -0.2px;
+}

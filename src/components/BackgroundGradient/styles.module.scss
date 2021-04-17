@@ -1,0 +1,24 @@
+@import "../../styles/definitions/breakpoints";
+@import "../../styles/definitions/mixins";
+@import "../../styles/definitions/fonts";
+@import "../../styles/definitions/colors";
+
+.root {
+  position: absolute;
+  z-index: -1;
+  transform: rotate(-97deg) translate3d(590px, -275px, 0px);
+
+  @media #{$phone} {
+    top: -280px;
+    left: -600px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    @media #{$phone} {
+      max-width: none;
+    }
+  }
+}

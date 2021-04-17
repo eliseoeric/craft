@@ -1,0 +1,11 @@
+<svg height="545" viewBox="0 0 586 545" width="586" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <radialGradient id="a" cx="44.814771%" cy="40.61546%" r="46.825138%">
+        <stop offset=".00021853147" stop-color="#7500ff" />
+        <stop offset=".750150921" stop-color="#37ecf2" stop-opacity=".549336" />
+        <stop offset="1" stop-color="#00ffe6" stop-opacity=".154365" />
+    </radialGradient>
+    <filter id="b" height="96.6%" width="96.6%" x="-12.9%" y="-12.9%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="44" />
+    </filter>
+    <path d="m-41.7097365-599.779007h278.9999995c116.669556 0 211.248917 94.579362 211.248917 211.248917 0 56.026696-22.256518 109.758685-61.873375 149.375542l-298.7510831 298.7510829c-82.49783364 82.4978341-216.2532499 82.4978341-298.7510829 0-39.616857-39.6168568-61.873376-93.3488454-61.873376-149.3755416v-279.0000003c0-127.577777 103.422223-231 231.0000005-231z" fill="url(#a)" fill-rule="evenodd" filter="url(#b)" opacity=".8" transform="matrix(-.12186934 -.99254615 .99254615 -.12186934 355.318479 134.801222)" />
+</svg> 
