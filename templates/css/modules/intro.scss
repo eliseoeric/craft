@@ -1,0 +1,123 @@
+.intro {
+  padding: 111px 0;
+
+  @media #{$small-screen} {
+    padding: 81px 0;
+  }
+
+  @media #{$phone} {
+    padding: 33px 0;
+  }
+
+  .container {
+    margin: 0;
+    padding: 57px 0 46px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 984px;
+    border-top: 1px solid #cccccc;
+
+    @media #{$phone} {
+      border-top: none;
+      padding: 0;
+    }
+  }
+
+  .intro__title {
+    max-width: 335px;
+    width: 100%;
+    padding-right: 24px;
+    @include fsz(40px);
+    font-family: $primary-family-extra-bold;
+    font-weight: 800;
+
+    @media #{$small-screen} {
+      max-width: 265px;
+    }
+
+    @media #{$tablet} {
+      max-width: 100%;
+    }
+
+    @media #{$phone} {
+      display: none;
+    }
+  }
+
+  .intro__content {
+    width: calc(100% - 479px);
+    @include fsz(18px);
+    color: $primary-color;
+    font-family: $primary-family;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-right: 24px;
+    padding-top: 14px;
+
+    @media #{$small-screen} {
+      width: calc(100% - 415px);
+    }
+
+    @media #{$tablet} {
+      width: calc(100% - 160px);
+    }
+
+    @media #{$phone} {
+      width: 100%;
+    }
+
+    h3 {
+      @include fsz(18px);
+      font-family: $primary-family-bold;
+      font-weight: 700;
+      text-transform: capitalize;
+      line-height: 1.5;
+      color: $primary-color;
+      margin-bottom: 0;
+    }
+  }
+
+  .intro__category {
+    padding: 20px 0 0;
+    list-style: none;
+    margin: 0;
+    max-width: 144px;
+    width: 100%;
+
+    @media #{$phone} {
+      max-width: 272px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    li {
+      @include fsz(15px);
+      padding-left: 12px;
+      line-height: 1.33;
+      font-family: $primary-family;
+      font-weight: normal;
+      color: $primary-color;
+      display: block;
+      position: relative;
+      margin-bottom: 5px;
+      width: 156px;
+
+      @media #{$phone} {
+        width: calc(50% - 8px);
+      }
+
+      &:before {
+        content: '-';
+        display: block;
+        @include fsz(15px);
+        color: #979797;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+}

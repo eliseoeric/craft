@@ -1,0 +1,144 @@
+.quote-block {
+  padding: 150px 0 221px 130px;
+  @media #{$laptop} {
+    padding: 150px 0 171px 90px;
+  }
+
+  @media #{$small-screen} {
+    padding: 90px 0 120px 70px;
+  }
+
+  @media #{$tablet} {
+    padding: 90px 0 120px;
+  }
+
+  @media #{$phone} {
+    padding: 90px 0 95px;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .quote-block__icon {
+    height: 236px;
+    width: 236px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 1;
+    background-color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media #{$tablet} {
+      height: 150px;
+      width: 150px;
+    }
+
+    @media #{$phone} {
+      position: absolute;
+      background-color: #F2F2F2;
+      height: 172px;
+      width: 172px;
+      left: -64px;
+    }
+
+    &:after {
+      content: '';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      top: 0;
+      background-color: $white;
+      border-radius: 50%;
+      display: block;
+      position: absolute;
+
+      @media #{$phone} {
+        background-color: #f2f2f2;
+      }
+    }
+
+    > img {
+      width: 126px;
+      height: 116px;
+
+      @media #{$tablet} {
+        height: 76px;
+        width: 76px;
+      }
+
+      @media #{$phone} {
+        display: none;
+      }
+    }
+  }
+
+  .quote-block__background-orb {
+    position: absolute;
+    z-index: -1;
+    width: 705px;
+    max-width: inherit;
+    user-select: none;
+    pointer-events: none;
+    transform: rotate(190deg);
+
+    @media #{$phone} {
+      transform: rotate(28deg);
+      left: calc(-100% - 202px);
+    }
+
+    img {
+      height: 708px;
+      width: 705px;
+      max-width: inherit;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+
+  .quote-block__blockquote {
+    @include fsz(40px);
+    font-family: $primary-family-extra-bold;
+    font-weight: 800;
+    color: $primary-color;
+    letter-spacing: -0.5px;
+    line-height: 1.1;
+    max-width: 480px;
+    width: 100%;
+    margin-left: -33px;
+    position: relative;
+    z-index: 2;
+    padding-top: 10px;
+
+    @media #{$tablet} {
+      @include fsz(32px);
+      max-width: 408px;
+    }
+    @media #{$phone} {
+      margin-left: 0;
+    }
+
+    p {
+      margin-bottom: 0;
+    }
+
+    cite {
+      font-family: $primary-family;
+      @include fsz(15px);
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      color: #1c1c1c;
+      display: block;
+      margin-top: 13px;
+    }
+  }
+}

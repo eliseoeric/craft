@@ -1,0 +1,18 @@
+/*!
+Theme Name: e11group
+Theme URI: http://e11group.com
+Author: Eleven11 Group
+Author URI: http://e11group.com
+Description: Base WordPress theme created by Eleven11 Group.
+Version:      99.0.0
+*/
+
+@import 'css/libs/**/*.scss';
+
+@import "css/global/**/*.scss";
+
+@import "css/partials/**/*.scss";
+
+@import "css/modules/**/*.scss";
+
+@import "css/templates/**/*.scss";

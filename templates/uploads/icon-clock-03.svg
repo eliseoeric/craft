@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+  <g id="icon-clock-03" transform="translate(-480.598 -0.73)">
+    <g id="Oval" transform="translate(528.598 0.73) rotate(90)" fill="none" stroke="#767676" stroke-miterlimit="10" stroke-width="2">
+      <circle cx="24" cy="24" r="24" stroke="none"/>
+      <circle cx="24" cy="24" r="23" fill="none"/>
+    </g>
+    <ellipse id="Oval-2" data-name="Oval" cx="1.714" cy="1.69" rx="1.714" ry="1.69" transform="translate(506.627 23.016) rotate(90)" fill="#191919"/>
+    <g id="Rectangle" transform="translate(521.837 23.873) rotate(90)" fill="#d8d8d8" stroke="#191919" stroke-miterlimit="10" stroke-width="1">
+      <rect width="1.714" height="16.901" stroke="none"/>
+      <rect x="0.5" y="0.5" width="0.714" height="15.901" fill="none"/>
+    </g>
+    <g id="Rectangle-2" data-name="Rectangle" transform="matrix(-0.966, 0.259, -0.259, -0.966, 508.044, 35.086)" fill="#d8d8d8" stroke-miterlimit="10">
+      <path d="M 0.5017778277397156 10.63656330108643 L 0.5375838875770569 0.504278838634491 L 1.22925877571106 0.5018051862716675 L 1.193452715873718 10.63408946990967 L 0.5017778277397156 10.63656330108643 Z" stroke="none"/>
+      <path d="M 1.731038212776184 4.76837158203125e-06 L 1.691698312759399 11.13231468200684 L -1.668930053710938e-06 11.1383638381958 L 0.03933823108673096 0.006053924560546875 L 1.731038212776184 4.76837158203125e-06 Z" stroke="none" fill="#191919"/>
+    </g>
+  </g>
+</svg>

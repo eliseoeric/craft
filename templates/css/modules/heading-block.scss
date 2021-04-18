@@ -1,0 +1,48 @@
+.heading-block {
+  padding: 120px 0 87px;
+
+  @media #{$small-screen} {
+    padding: 100px 0 67px;
+  }
+  @media #{$phone} {
+    padding-bottom: 52px;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+    max-width: 984px;
+  }
+
+  .heading-block__title {
+    @include fsz(132px);
+    font-weight: 800;
+    color: $primary-color;
+    text-transform: capitalize;
+    letter-spacing: -3px;
+    line-height: .91;
+    font-family: $primary-family-extra-bold;
+    margin-bottom: 2px;
+
+    @media #{$laptop} {
+      @include fsz(100px);
+    }
+
+    @media #{$small-screen} {
+      @include fsz(72px);
+    }
+
+    @media #{$phone} {
+      @include fsz(80px);
+      margin-bottom: 8px;
+    }
+  }
+
+  .heading-block__subtitle {
+    @include fsz(24px);
+    line-height: 1.29;
+    color: $primary-color;
+    font-family: $primary-family-extra-bold;
+    letter-spacing: -0.2px;
+  }
+}
