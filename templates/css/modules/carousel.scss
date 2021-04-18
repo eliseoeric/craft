@@ -1,0 +1,124 @@
+.carousel {
+  margin-right: -84px;
+  @media #{$small-screen} {
+    margin-right: -49px;
+  }
+
+  &:hover {
+    .slick-arrow {
+      opacity: 1;
+    }
+  }
+
+  .slick-arrow {
+    position: absolute;
+    @include fsz(24px);
+    z-index: 9;
+    top: calc(50% - 42px);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    color: #222;
+
+    &.slick-next {
+      right: 30px;
+    }
+
+    &.slick-prev {
+      left: 30px;
+    }
+  }
+
+  .carousel__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: 24px;
+    width: calc(100% - 204px);
+    cursor: pointer;
+
+    @media #{$phone} {
+      margin-right: 12px;
+    }
+
+    &.slick-active {
+      pointer-events: none;
+      cursor: default;
+
+      .carousel__title, .carousel__description {
+        opacity: 1;
+      }
+    }
+  }
+
+  .carousel__image {
+    padding: 68px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: $white;
+    @media #{$phone} {
+      padding: 21px 30px 24px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      @media #{$phone} {
+        max-height: 181px;
+      }
+    }
+  }
+
+  .carousel__title, .carousel__description {
+    width: 100%;
+    opacity: 0;
+    transition: all 300ms ease;
+  }
+
+  .carousel__title {
+    max-width: 338px;
+    @include fsz(12px);
+    text-transform: uppercase;
+    line-height: 1.33;
+    font-family: $primary-family-extra-bold;
+    letter-spacing: 2.5px;
+    color: #979797;
+    padding: 20px 30px 14px 0;
+    margin-bottom: 0;
+
+    @media #{$small-screen} {
+      max-width: 238px;
+    }
+
+    @media #{$tablet} {
+      max-width: 208px;
+    }
+
+    @media #{$phone} {
+      display: none;
+    }
+  }
+
+  .carousel__description {
+    color: #1c1c1c;
+    @include fsz(15px);
+    font-family: $primary-family;
+    line-height: 1.33;
+    padding: 18px 0 12px;
+    max-width: calc(100% - 338px);
+
+    @media #{$small-screen} {
+      max-width: calc(100% - 238px);
+    }
+
+    @media #{$tablet} {
+      max-width: calc(100% - 208px);
+    }
+    @media #{$phone} {
+      max-width: 100%;
+      padding: 11px 0;
+    }
+  }
+}

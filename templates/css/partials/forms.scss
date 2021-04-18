@@ -1,0 +1,45 @@
+/*--------------------------------------------------------------
+# Fields
+--------------------------------------------------------------*/
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"],
+input[type="checkbox"],
+textarea {
+  display: block;
+  @include fsz(16px);
+  font-weight: 500;
+  border: 1px solid $light-gray;
+  border-radius: 0;
+  padding: 8px 16px;
+  color: $secondary-color;
+  background: $white;
+  height: 40px;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font-family: $primary-family;
+  transition: $transition;
+  line-height: 1;
+
+  &:hover {
+    border-color: #373936;
+  }
+
+  &:focus {
+    border-color: #373936;
+  }
+}
+

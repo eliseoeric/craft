@@ -1,0 +1,257 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-size: $base-font-size;
+  line-height: 1.5;
+  font-family: $primary-family;
+  color: $black
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 25px;
+  line-height: 1;
+  font-family: $primary-family-extra-bold;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 72px;
+
+  @media #{$phone} {
+    font-size: 38px;
+  }
+}
+
+h2 {
+  font-size: 38px;
+
+  @media #{$phone} {
+    font-size: 28px;
+  }
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 21px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+h6 {
+  font-size: 14px;
+}
+
+small {
+  font-size: 70%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+p {
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+a {
+  text-decoration: none;
+  transition: .3s;
+
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 0;
+  height: 0;
+  overflow: hidden;
+
+  .video-js,
+  > iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.accessible-text,
+.screen-reader-text {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  top: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.clearfix {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.container {
+  max-width: $container;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  @media #{$tablet} {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.icon {
+  display: inline-block;
+  fill: currentColor;
+  height: 1em;
+  position: relative;
+  vertical-align: middle;
+  width: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.site-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-wrapper {
+  background-color: #f2f2f2;
+  display: flex;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar {
+  width: 144px;
+  background-color: $primary-color;
+  padding: 32px 36px 32px 60px;
+  position: relative;
+  z-index: 2;
+
+  @media #{$phone} {
+    position: absolute;
+    background-color: transparent;
+    padding: 24px;
+  }
+
+  .sidebar__logo-white {
+    display: block;
+    @media #{$phone} {
+      display: none;
+    }
+  }
+
+  .sidebar__logo-dark {
+    display: none;
+    @media #{$phone} {
+      display: block;
+    }
+  }
+}
+
+.case-study {
+  padding: 49px 84px;
+  width: calc(100% - 144px);
+
+  @media #{$small-screen} {
+    padding: 49px;
+  }
+
+  @media #{$phone} {
+    padding: 112px 24px 40px;
+    width: 100%;
+  }
+}
+
+.background-gradient {
+  position: absolute;
+  z-index: -1;
+  top: -525px;
+  left: -430px;
+
+  @media #{$phone} {
+    top: -280px;
+    left: -600px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    @media #{$phone} {
+      max-width: none;
+    }
+  }
+}
+
+.close-button {
+  height: 22px;
+  width: 22px;
+  color: $primary-color;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  z-index: 9;
+  background-color: transparent;
+  outline: none;
+  top: 50px;
+  right: 60px;
+  transition: color 300ms ease;
+  @media #{$phone} {
+    top: 37px;
+    right: 21px;
+  }
+
+  &:hover, &:focus {
+    color: $brand-color;
+  }
+
+  .icon {
+    height: 22px;
+    width: 22px;
+  }
+}

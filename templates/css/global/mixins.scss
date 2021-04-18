@@ -1,0 +1,24 @@
+//FontSize
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin fsz($size) {
+  // font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin lh($size) {
+  // line-height: $size;
+  line-height: calculateRem($size);
+}
+
+@mixin letter-stroke($stroke-color,$color) {
+  @supports ((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+    color: $color;
+    -webkit-text-stroke: 1px $stroke-color;
+    text-stroke: 1px $stroke-color;
+    text-shadow: none;
+  }
+}

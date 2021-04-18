@@ -1,0 +1,153 @@
+.palette {
+  padding: 75px 0 58px;
+
+  @media #{$phone} {
+    padding: 0 0 58px;
+    margin: 0 -24px;
+  }
+
+  .container {
+    padding: 0;
+    max-width: 1068px;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .palette__items {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .palette__item {
+    height: 325px;
+    width: 33.33%;
+    position: relative;
+    z-index: 1;
+
+    @media #{$tablet} {
+      width: 50%;
+      height: 280px;
+    }
+    @media #{$phone} {
+      height: 198px;
+    }
+
+    &.palette__item--c-primary {
+      .palette__color-code {
+        color: $white;
+      }
+
+      .palette__color-number, .palette__color-name {
+        color: $primary-color;
+      }
+    }
+
+    &.palette__item--c-secondary {
+      .palette__color-code {
+        color: $white;
+      }
+
+      .palette__color-number, .palette__color-name {
+        color: $white;
+      }
+    }
+
+    &.palette__item--c-tertiary {
+      .palette__color-code {
+        color: #767676;
+      }
+
+      .palette__color-number, .palette__color-name {
+        color: $primary-color;
+      }
+    }
+
+    .palette__footer, .palette__color-code {
+      position: absolute;
+      z-index: 1;
+
+    }
+
+    .palette__color-code {
+      opacity: .7;
+      line-height: 1.5;
+      font-family: $primary-family-medium;
+      left: 25px;
+      top: 26px;
+      @include fsz(10px);
+      font-weight: 500;
+      text-transform: capitalize;
+      @media #{$phone} {
+        top: 24px;
+        left: 23px;
+        right: 23px;
+      }
+    }
+
+    .palette__footer {
+      bottom: 37px;
+      left: 25px;
+      display: flex;
+      align-items: flex-start;
+      right: 25px;
+      @media #{$phone} {
+        bottom: 30px;
+        left: 23px;
+        right: 23px;
+      }
+
+      .palette__color-number {
+        margin-right: 44px;
+
+        @media #{$phone} {
+          margin-right: 20px;
+        }
+      }
+
+      .palette__color-number, .palette__color-name {
+        @include fsz(18px);
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: top;
+        font-family: $primary-family;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .palette__title {
+    max-width: 338px;
+    @include fsz(12px);
+    text-transform: uppercase;
+    line-height: 1.33;
+    font-family: $primary-family-extra-bold;
+    letter-spacing: 2.5px;
+    color: #979797;
+    padding: 17px 30px 17px 0;
+    margin-bottom: 0;
+    font-weight: 800;
+    width: 100%;
+
+    @media #{$phone} {
+      display: none;
+    }
+  }
+
+  .palette__description {
+    color: #1c1c1c;
+    @include fsz(15px);
+    font-family: $primary-family;
+    line-height: 1.33;
+    padding: 15px 0;
+    font-weight: 400;
+    max-width: calc(100% - 338px);
+    width: 100%;
+
+    @media #{$phone} {
+      max-width: 100%;
+      padding: 11px 0 11px 25px;
+    }
+  }
+}

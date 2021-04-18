@@ -1,0 +1,101 @@
+.stats-block {
+  padding: 85px 0;
+
+  @media #{$small-screen} {
+    padding: 65px 0;
+  }
+
+  .container {
+    margin: 0;
+    padding: 53px 0 29px;
+    display: flex;
+    max-width: 1068px;
+    align-items: flex-start;
+    border-top: 1px solid $light-gray;
+
+    @media #{$tablet} {
+      flex-wrap: wrap;
+    }
+  }
+
+  .stats__title {
+    @include fsz(40px);
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+    color: $primary-color;
+    max-width: 246px;
+    width: 100%;
+    padding-top: 7px;
+    @media #{$tablet} {
+      max-width: 100%;
+    }
+  }
+
+  .stats-block__items {
+    display: flex;
+    align-items: flex-start;
+    width: calc(100% - 246px);
+    padding-left: 66px;
+
+    @media #{$laptop} {
+      padding-left: 26px;
+    }
+
+    @media #{$tablet} {
+      width: 100%;
+      padding-left: 0;
+    }
+
+    @media screen and (max-width: 389px) {
+      flex-wrap: wrap;
+    }
+
+    .stats-block__item {
+      width: 33.33%;
+      padding-left: 24px;
+      @media screen and (max-width: 389px) {
+        width: 100%;
+        padding-left: 0;
+        margin-bottom: 30px;
+      }
+
+      &:first-child {
+        @media #{$tablet} {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  .stats-block__num {
+    display: block;
+    letter-spacing: -3px;
+    @include fsz(132px);
+    line-height: 0.91;
+    color: $primary-color;
+    font-family: $primary-family-extra-bold;
+    margin-bottom: 15px;
+
+    @media #{$laptop} {
+      @include fsz(100px);
+    }
+
+    @media #{$small-screen} {
+      @include fsz(72px);
+    }
+
+    @media #{$phone} {
+      @include fsz(60px);
+    }
+  }
+
+  .stats-block__description {
+    border-top: 1px solid $light-gray;
+    margin-bottom: 0;
+    line-height: 1.33;
+    color: #1c1c1c;
+    font-family: $primary-family;
+    @include fsz(15px);
+    padding-top: 9px;
+  }
+}
