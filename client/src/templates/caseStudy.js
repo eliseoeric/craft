@@ -9,7 +9,6 @@ import Header from '@Components/CaseStudy/Header'
 
 const PageTemplate = ({ data, pageContext }) => {
   const { title, slug, description, layout } = data?.contentfulCaseStudy
-  console.log({description})
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childrenMarkdownRemark[0].rawMarkdownBody
 
@@ -50,6 +49,12 @@ export const query = graphql`
       description {
         childrenMarkdownRemark {
           rawMarkdownBody
+        }
+      }
+      layout {
+        contentModules {
+          __typename
+          ...SingleMediaModule
         }
       }
     }
