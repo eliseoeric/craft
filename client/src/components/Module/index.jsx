@@ -1,12 +1,14 @@
 import React from 'react'
 
+import TestimonyModule from '@Modules/Testimony'
+
 // todo refactor to be stateless
 export default class Module extends React.Component {
   renderModule(type, attributes) {
     const moduleCallbacks = {
-      // ContentfulModuleCoverSlider: (attributes) => (
-      //   <HeroSliderModule {...attributes} transitionSpeed={8000} />
-      // )
+      ContentfulModuleTestimony: (attributes) => (
+        <TestimonyModule {...attributes} />
+      ),
     }
 
     // prevent app from crashing when module is not defined
