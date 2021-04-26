@@ -4,53 +4,18 @@
 @import "../../styles/definitions/colors";
 
 .site__footer {
-  padding: 70px 0;
-  background-color: $secondary;
-  color: $gray-light;
-
-  @media #{$tablet} {
-    padding-bottom: 30px;
-  }
-
-  li a {
-    color: $gray-light;
-    @include fsz(14px);
-
-    &:hover {
-      color: $white;
-    }
-  }
-}
-
-.footer__nav{
+  border-top: 1px solid $gray;
   display: flex;
-  width: 60%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  @media #{$tablet} {
-    margin-right: 0;
-    width: 100%;
-  }
+  flex: 0 0 100%;
 }
 
-.store_map{
-  width: 31.5%;
-  @media #{$small-screen} {
-    width: 41.5%;
-  }
-  @media #{$tablet} {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 500px;
-  }
+.footer__logo_wrap {
+  border-right: 1px solid $gray;
+  padding: 32px 36px 32px 60px;
+  width: 144px;
 }
 
-.copyright {
-  @include fsz(14px);
-  margin-top: -11px;
-
-  @media #{$tablet} {
-    margin-top: 30px;
-    text-align: center;
-  }
+.footer__clock_wrap {
+  display: flex;
+  align-items: center;
 }
