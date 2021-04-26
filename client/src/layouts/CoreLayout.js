@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-// import Footer from '@Components/Footer'
+import Footer from '@Components/Footer'
 import Sidebar from '@Components/Sidebar'
 
 import '../styles/app.scss'
@@ -12,7 +12,7 @@ const CoreLayout = ({ children, className }) => {
     <div className={cx('core-layout', className, styles.case_study_wrapper)}>
       <Sidebar />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
