@@ -1,0 +1,21 @@
+@import "../../styles/definitions/breakpoints";
+
+.canvas {
+  position: absolute;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: -1;
+  transform: rotate(-180deg) translateX(100px);
+
+  @media #{$phone} {
+    top: -280px;
+    left: -600px;
+  }
+}
+
+.root {
+  overflow: hidden;
+}
