@@ -15,12 +15,11 @@ const Clock = ({ className, locationLabel, timeZone, updateInterval }) => {
       timeZone: ianatz
     }));
     const diff = date.getTime() - invdate.getTime();
-    return new Date(date.getTime() - diff); // needs to substract
+    return new Date(date.getTime() - diff);
   }
 
   // get time based on requested timeZone
   const getTime = (timeZone, hourHand, minuteHand) => {
-    console.log('setting time');
     const here = new Date();
     const there = changeTimezone(here, timeZone);
 
@@ -48,7 +47,7 @@ const Clock = ({ className, locationLabel, timeZone, updateInterval }) => {
   }, [hourHand, minuteHand]);
 
   return (
-    <div className={cx(className)}>
+    <div className={cx(className, styles.clock_and_label)}>
       <div className={cx(styles.clock__wrap)}>
         <div className={cx(styles.clock__face)}>
           <div className={cx(styles.hand, styles.hand__hour)} ref={hourHand} />
