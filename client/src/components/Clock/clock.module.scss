@@ -3,6 +3,12 @@
 @import "../../styles/definitions/fonts";
 @import "../../styles/definitions/colors";
 
+.clock_and_label {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .clock__wrap {
   border: 2px solid $gray-dark;
   border-radius: 50%;
