@@ -16,6 +16,51 @@
 }
 
 .footer__clock_wrap {
-  display: flex;
   align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media #{$phone} {
+    display: none;
+  }
+}
+
+.footer__content_wrap {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1rem 4rem;
+  width: 100%;
+
+  @media #{$phone} {
+    padding: 0 1rem;
+  }
+}
+
+.footer__info {
+  border-top: 1px solid $gray;
+  padding-top: 0.25rem;
+
+  @media #{$phone} {
+    margin-top: 1rem;
+  }
+}
+
+.footer__clock {
+  margin: 0 2rem 2rem 0;
+}
+
+.footer__upper {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+}
+
+.footer__text {
+  margin-bottom: 5rem;
+
+  @media #{$tablet} {
+    margin-bottom: 0;
+  }
 }
