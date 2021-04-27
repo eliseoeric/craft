@@ -20,14 +20,15 @@ const Footer = ({ className }) => {
       </div>
 
       <div className={cx(footer.footer__clock_wrap)}>
-        <Clock location="Philly" />
+        <Clock locationLabel="Philly" timeZone="America/New_York" />
+        <Clock locationLabel="Boston" timeZone="America/New_York" />
+        <Clock locationLabel="Portland" timeZone="America/Los_Angeles" />
+        <Clock locationLabel="Toronto" timeZone="America/Toronto" />
+        <Clock locationLabel="Madison" timeZone="America/Chicago" />
       </div>
 
 
       <Container>
-        <Row>
-          
-        </Row>
 
         <Row justifyContent={'between'}>
           <div className={footer.footer__nav}>
