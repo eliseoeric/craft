@@ -19,24 +19,39 @@ const Footer = ({ className }) => {
         <Logo variant={'gray'} title={'Craft'} />
       </div>
 
-      <div className={cx(footer.footer__clock_wrap)}>
-        <Clock locationLabel="Philly" timeZone="America/New_York" />
-        <Clock locationLabel="Boston" timeZone="America/New_York" />
-        <Clock locationLabel="Portland" timeZone="America/Los_Angeles" />
-        <Clock locationLabel="Toronto" timeZone="America/Toronto" />
-        <Clock locationLabel="Madison" timeZone="America/Chicago" />
+      <div className={cx(footer.footer__content_wrap)}>
+        <div className={cx(footer.footer__clock_wrap)}>
+          <Clock 
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Philly"
+            timeZone="America/New_York" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Boston"
+            timeZone="America/New_York" />
+          <Clock 
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Portland"
+            timeZone="America/Los_Angeles" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Toronto"
+            timeZone="America/Toronto" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Madison"
+            timeZone="America/Chicago" />
+        </div>
+        <div className={cx(footer.footer__info)}>
+          <div className={cx(footer.footer__text)}>
+            <p className={cx(footer.footer__upper)}>Find<br/>Us</p>
+            <p>hello@madebycraft.co</p>
+            <p>215.888.8888</p>
+          </div>
+          <SocialIcons />
+        </div>
       </div>
 
-
-      <Container>
-
-        <Row justifyContent={'between'}>
-          <div className={footer.footer__nav}>
-            <SocialIcons />
-          </div>
-        </Row>
-
-      </Container>
     </footer>
   )
 }
