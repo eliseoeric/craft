@@ -1,14 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql, useStaticQuery } from 'gatsby'
 import cx from 'classnames'
 import Container from '@Components/Grid/Container'
 import Row from '@Components/Grid/Row'
 import Logo from '@Components/Logo'
-import Widget from '@Components/Widget'
-import WidgetList from '@Components/Widget/List'
-import WidgetSubscribe from '@Components/Widget/Subscribe'
-import WidgetMap from '@Components/Widget/Map'
+import Clock from '@Components/Clock'
+// import WidgetSubscribe from '@Components/Widget/Subscribe'
+// import WidgetMap from '@Components/Widget/Map'
 import SocialIcons from '@Components/SocialIcons'
 import * as footer from './footer.module.scss'
 
@@ -17,31 +14,44 @@ const Footer = ({ className }) => {
 
   return (
     <footer className={cx(className, footer.site__footer)}>
-      <Container>
-        <Row>
-          <Logo variant={'footer'} title={'Kitch Meals'} />
-        </Row>
 
-        <Row justifyContent={'between'}>
-          <div className={footer.footer__nav}>
-            
-            <Widget title={'Stay Updated'} wide>
-              <WidgetSubscribe />
-            </Widget>
-            <SocialIcons />
+      <div className={cx(footer.footer__logo_wrap)}>
+        <Logo variant={'gray'} title={'Craft'} />
+      </div>
+
+      <div className={cx(footer.footer__content_wrap)}>
+        <div className={cx(footer.footer__clock_wrap)}>
+          <Clock 
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Philly"
+            timeZone="America/New_York" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Boston"
+            timeZone="America/New_York" />
+          <Clock 
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Portland"
+            timeZone="America/Los_Angeles" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Toronto"
+            timeZone="America/Toronto" />
+          <Clock
+            className={cx(footer.footer__clock, footer.footer__upper)}
+            locationLabel="Madison"
+            timeZone="America/Chicago" />
+        </div>
+        <div className={cx(footer.footer__info)}>
+          <div className={cx(footer.footer__text)}>
+            <p className={cx(footer.footer__upper)}>Find<br/>Us</p>
+            <p>hello@madebycraft.co</p>
+            <p>215.888.8888</p>
           </div>
+          <SocialIcons />
+        </div>
+      </div>
 
-          <Widget className={footer.store_map}>
-            <WidgetMap />
-          </Widget>
-        </Row>
-
-        <Row>
-          <p className={footer.copyright}>
-            &copy; Copyright {new Date().getFullYear()} Kitch
-          </p>
-        </Row>
-      </Container>
     </footer>
   )
 }
