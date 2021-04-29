@@ -1,6 +1,6 @@
 @mixin clearfix {
   &:after {
-    content: " "; /* Older browser do not support empty content */
+    content: ' '; /* Older browser do not support empty content */
     visibility: hidden;
     display: block;
     height: 0;
@@ -9,7 +9,11 @@
 }
 
 @mixin clear_link {
-  &, &:hover, &:visited, &:active, &:focus {
+  &,
+  &:hover,
+  &:visited,
+  &:active,
+  &:focus {
     text-decoration: none;
   }
   &:hover {
@@ -37,7 +41,7 @@
 
 @mixin fsz($size) {
   // font-size: $size;
-  font-size: trem($size)
+  font-size: trem($size);
 }
 
 @mixin lh($size) {
@@ -45,64 +49,80 @@
   line-height: calculateRem($size);
 }
 
-@function trem( $px_value ) {
-  @return ( $px_value / 16px ) + rem;
+@function trem($px_value) {
+  @return ($px_value / 16px) + rem;
 }
 
 // these mixin below are fallbacks, but shouldn't be necessary with postcss
-@mixin transform( $transforms ) {
-    -moz-transform: $transforms;
-    -o-transform: $transforms;
-    -ms-transform: $transforms;
-    -webkit-transform: $transforms;
-    transform: $transforms;
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
 }
 
-@mixin transform-origin( $origin ) {
-    -moz-transform-origin: $origin;
-    -o-transform-origin: $origin;
-    -ms-transform-origin: $origin;
-    -webkit-transform-origin: $origin;
-    transform-origin: $origin;
+@mixin transform-origin($origin) {
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
 }
 
-@mixin transform-perspective( $perspective ) {
-    -moz-transform-perspective: $perspective;
-    -o-transform-perspective: $perspective;
-    -ms-transform-perspective: $perspective;
-    -webkit-transform-perspective: $perspective;
-    transform-perspective: $perspective;
+@mixin transform-perspective($perspective) {
+  -moz-transform-perspective: $perspective;
+  -o-transform-perspective: $perspective;
+  -ms-transform-perspective: $perspective;
+  -webkit-transform-perspective: $perspective;
+  transform-perspective: $perspective;
 }
 
-@mixin transition( $transition-property, $transition-time, $method ) {
-    -webkit-transition: $transition-property $transition-time $method;
-    -moz-transition: $transition-property $transition-time $method;
-    -ms-transition: $transition-property $transition-time $method;
-    -o-transition: $transition-property $transition-time $method;
-    transition: $transition-property $transition-time $method;
+@mixin transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
 }
 
-@mixin animation($name, $duration, $iteration_count, $timing_function, $fill-mode, $delay:0s) {
-    // The -webkit- animation value NEEDS the delay in it, the plain animation value will break with it.
-    // And Firefox needs units with the delay number, even if it's 0.
-    -webkit-animation: $name $duration $delay $iteration_count $timing_function $fill-mode;
-    animation: $name $duration $delay $iteration_count $timing_function $fill-mode;
-
+@mixin animation(
+  $name,
+  $duration,
+  $iteration_count,
+  $timing_function,
+  $fill-mode,
+  $delay: 0s
+) {
+  // The -webkit- animation value NEEDS the delay in it, the plain animation value will break with it.
+  // And Firefox needs units with the delay number, even if it's 0.
+  -webkit-animation: $name $duration $delay $iteration_count $timing_function
+    $fill-mode;
+  animation: $name $duration $delay $iteration_count $timing_function $fill-mode;
 }
 
 @mixin anything($property, $value) {
-    -webkit-#{$property}: $value;
-    -moz-#{$property}: $value;
-    -ms-#{$property}: $value;
-    -o-#{$property}: $value;
-    #{$property}: $value;
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
 }
 
 @mixin prefix($property, $value, $vendors: webkit moz ms o) {
-    @if $vendors {
-        @each $vendor in $vendors {
-            #{"-" + $vendor + "-" + $property}: #{$value};
-        }
+  @if $vendors {
+    @each $vendor in $vendors {
+      #{"-" + $vendor + "-" + $property}: #{$value};
     }
-    #{$property}: #{$value};
+  }
+  #{$property}: #{$value};
+}
+
+@mixin letter-stroke($stroke-color, $color) {
+  @supports ((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+    color: $color;
+    -webkit-text-stroke: 1px $stroke-color;
+    text-stroke: 1px $stroke-color;
+    text-shadow: none;
+  }
 }

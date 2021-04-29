@@ -19,10 +19,31 @@ const simplex = new SimplexNoise()
 
 // Orb class
 class Orb {
-  // Pixi takes hex colors as hexidecimal literals (0x rather than a string with '#')
-  constructor(fill = 0x000000) {
+  // origin getters - run on init or resize
+  originXGetter = () => window.innerWidth / 1.25
+  originYGetter = () =>
+    window.innerWidth < 1000 ? window.innerHeight : window.innerHeight / 1.375
+
+  // 2-number array holding min and max radius - [min, max]
+  radiusRange = [window.innerHeight / 4, window.innerHeight / 2]
+
+  /**
+   * Constructor takes optional params that overwrite the default
+   * class properties.
+   *
+   * @param {hexadecimal} fill    hexidecimal literal (0x rather than a string with '#')
+   * @param {func} originXGetter  overwrites default originXGetter
+   * @param {func} originYGetter  overwrites default originXGetter
+   * @param {array} radiusRange   overwrites default radiusRange
+   */
+  constructor(fill = 0x000000, originXGetter, originYGetter, radiusRange) {
+    if (originXGetter !== undefined) this.originXGetter = originXGetter
+    if (originYGetter !== undefined) this.originYGetter = originYGetter
+    if (radiusRange !== undefined) this.radiusRange = radiusRange
+
     // bounds = the area an orb is "allowed" to move within
     this.bounds = this.setBounds()
+
     // initialise the orb's { x, y } values to a random point within it's bounds
     this.x = random(this.bounds['x'].min, this.bounds['x'].max)
     this.y = random(this.bounds['y'].min, this.bounds['y'].max)
@@ -34,7 +55,7 @@ class Orb {
     this.fill = fill
 
     // the original radius of the orb, set relative to window height
-    this.radius = random(window.innerHeight / 4, window.innerHeight / 2)
+    this.radius = random(...this.radiusRange)
 
     // starting points in "time" for the noise/self similar random values
     this.xOff = random(0, 1000)
@@ -59,10 +80,10 @@ class Orb {
     // how far from the { x, y } origin can each orb move
     const maxDist =
       window.innerWidth < 1000 ? window.innerWidth / 6 : window.innerWidth / 10
-    // the { x, y } origin for each orb (the bottom right of the screen)
-    const originX = window.innerWidth / 1.25
-    const originY =
-      window.innerWidth < 1000 ? window.innerHeight : window.innerHeight / 1.375
+
+    // the { x, y } origin for each orb (from the bottom right of the screen)
+    const originX = this.originXGetter()
+    const originY = this.originYGetter()
 
     // allow each orb to move x distance away from it's x / y origin
     return {

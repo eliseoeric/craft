@@ -55,6 +55,9 @@ export const query = graphql`
         contentModules {
           __typename
           ...SingleMediaModule
+          ...CaseStudyMockUpModule
+          ...TestimonyModule
+          ...ContentThreeColumnsModule
         }
       }
     }
