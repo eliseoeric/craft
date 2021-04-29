@@ -55,6 +55,7 @@ export const query = graphql`
         contentModules {
           __typename
           ...TestimonyModule
+          ...ContentThreeColumnsModule
         }
       }
     }

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import TestimonyModule from '@Modules/Testimony'
+import ContentThreeColumns from '@Modules/ContentThreeColumns'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -8,6 +9,9 @@ export default class Module extends React.Component {
     const moduleCallbacks = {
       ContentfulModuleTestimony: (attributes) => (
         <TestimonyModule {...attributes} />
+      ),
+      ContentfulModuleContentThreeColumns: (attributes) => (
+        <ContentThreeColumns {...attributes} />
       ),
     }
 
