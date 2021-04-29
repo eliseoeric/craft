@@ -2,6 +2,7 @@ import React from 'react'
 
 import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
+import ContentThreeColumns from '@Modules/ContentThreeColumns'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -12,6 +13,9 @@ export default class Module extends React.Component {
       ),
       ContentfulModuleTestimony: (attributes) => (
         <TestimonyModule {...attributes} />
+      ),
+      ContentfulModuleContentThreeColumns: (attributes) => (
+        <ContentThreeColumns {...attributes} />
       ),
     }
 

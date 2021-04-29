@@ -56,6 +56,7 @@ export const query = graphql`
           __typename
           ...CaseStudyMockUpModule
           ...TestimonyModule
+          ...ContentThreeColumnsModule
         }
       }
     }

@@ -1,0 +1,27 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.root {
+  padding: 111px 0;
+
+  @media #{$small-screen} {
+    padding: 81px 0;
+  }
+
+  @media #{$phone} {
+    padding: 33px 0;
+    border-top: none;
+  }
+}
+
+.container {
+  padding-bottom: 46px;
+}
+
+.divider {
+  border-top: 1px solid $gray;
+
+  padding-top: 57px;
+}

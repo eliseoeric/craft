@@ -62,16 +62,17 @@ img {
   width: 1px;
 }
 
-.col {
-  flex: 0 0 100%;
-  max-width: 100%;
-  padding-right: $gutter;
-  padding-left: $gutter;
+// .col {
+//   flex: 0 0 100%;
+//   max-width: 100%;
+//   padding-right: $gutter;
+//   padding-left: $gutter;
 
-  @media #{$tablet} {
-    flex-grow: 1;
-    flex-basis: 33%;
-    padding-right: $gutter-desktop;
-    padding-left: $gutter-desktop;
-  }
-}
+//   @media #{$tablet} {
+//     flex-grow: 1;
+//     flex-basis: 33%;
+//     padding-right: $gutter-desktop;
+//     padding-left: $gutter-desktop;
+//   }
+// }
+
