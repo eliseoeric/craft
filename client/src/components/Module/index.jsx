@@ -1,11 +1,15 @@
 import React from 'react'
 
+import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
   renderModule(type, attributes) {
     const moduleCallbacks = {
+      ContentfulModuleCaseStudyMockUp: (attributes) => (
+        <CaseStudyMockUp {...attributes} />
+      ),
       ContentfulModuleTestimony: (attributes) => (
         <TestimonyModule {...attributes} />
       ),
