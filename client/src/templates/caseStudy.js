@@ -54,6 +54,7 @@ export const query = graphql`
       layout {
         contentModules {
           __typename
+          ...CaseStudyMockUpModule
           ...TestimonyModule
           ...ContentThreeColumnsModule
         }

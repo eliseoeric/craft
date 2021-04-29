@@ -1,5 +1,6 @@
 import React from 'react'
 
+import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
 
@@ -7,6 +8,9 @@ import ContentThreeColumns from '@Modules/ContentThreeColumns'
 export default class Module extends React.Component {
   renderModule(type, attributes) {
     const moduleCallbacks = {
+      ContentfulModuleCaseStudyMockUp: (attributes) => (
+        <CaseStudyMockUp {...attributes} />
+      ),
       ContentfulModuleTestimony: (attributes) => (
         <TestimonyModule {...attributes} />
       ),
