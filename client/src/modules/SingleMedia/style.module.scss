@@ -1,0 +1,50 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.root {
+  padding: 27px 0 63px;
+}
+
+.title,
+.description {
+  width: 100%;
+}
+
+.title {
+  max-width: 338px;
+  @include fsz(12px);
+  text-transform: uppercase;
+  line-height: 1.33;
+  @include font_loader($primary-family, 8, 'normal');
+  letter-spacing: 2.5px;
+  color: $gray-dark;
+  padding: 17px 30px 17px 0;
+  margin-bottom: 0;
+
+  @media #{$small-screen} {
+    max-width: 238px;
+  }
+  @media #{$phone} {
+    display: none;
+  }
+}
+
+.description {
+  color :$gray-darkest;
+  @include fsz(15px);
+  @include font_loader($primary-family, 400, 'normal');
+  line-height: 1.33;
+  padding: 15px 0;
+  max-width: calc(100% - 338px);
+
+  @media #{$small-screen} {
+    max-width: calc(100% - 238px);
+  }
+
+  @media #{$phone} {
+    max-width: 100%;
+    padding: 11px 0;
+  }
+}

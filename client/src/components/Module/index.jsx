@@ -1,5 +1,6 @@
 import React from 'react'
 
+import SingleMedia from '@Modules/SingleMedia'
 import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
@@ -8,6 +9,9 @@ import ContentThreeColumns from '@Modules/ContentThreeColumns'
 export default class Module extends React.Component {
   renderModule(type, attributes) {
     const moduleCallbacks = {
+      ContentfulModuleSingleMedia: (attributes) => (
+        <SingleMedia {...attributes} />
+      ),
       ContentfulModuleCaseStudyMockUp: (attributes) => (
         <CaseStudyMockUp {...attributes} />
       ),

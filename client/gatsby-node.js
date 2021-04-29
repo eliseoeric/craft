@@ -7,7 +7,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
       module: {
         rules: [
           {
-            test: /masonry-layout/,
+            test: /pixi.js|filter-kawase-blur/,
             use: loaders.null(),
           },
         ],
