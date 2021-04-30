@@ -4,6 +4,7 @@ import SingleMedia from '@Modules/SingleMedia'
 import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
+import IconShowcase from '@Modules/IconShowcase'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -20,6 +21,9 @@ export default class Module extends React.Component {
       ),
       ContentfulModuleContentThreeColumns: (attributes) => (
         <ContentThreeColumns {...attributes} />
+      ),
+      ContentfulModuleIconShowcase: (attributes) => (
+        <IconShowcase {...attributes} />
       ),
     }
 
