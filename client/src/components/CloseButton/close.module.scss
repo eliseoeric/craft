@@ -1,20 +1,32 @@
+@import '../../styles/definitions/breakpoints';
 @import '../../styles/definitions/colors';
 
 .action_close {
-  width: 30px;
-  height: 30px;
-  background-color: $brand-color;
-  display: block;
-  padding: 4px;
-  text-align: center;
-  cursor: pointer;
-  color: $white;
+  height: 22px;
+  width: 22px;
+  color: $primary;
+  display: inline-block;
+  vertical-align: top;
+  position: absolute;
+  z-index: 9;
+  background-color: transparent;
+  outline: none;
+  top: 50px;
+  right: -16px;
+  transition: fill 300ms ease;
 
-  &:hover {
-    background-color: $secondary;
+  @media #{$phone} {
+    top: 37px;
+    right: 21px;
   }
 
-  & svg {
-    fill: $white;
+  &:hover,
+  &:focus {
+    fill: $brand-color;
+  }
+
+  svg {
+    height: 22px;
+    width: 22px;
   }
 }
