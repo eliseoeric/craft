@@ -1,0 +1,29 @@
+@import "../../styles/definitions/breakpoints";
+@import "../../styles/definitions/mixins";
+
+.square {
+  display: flex;
+  height: 325px;
+  flex: 33.33333%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media #{$tablet} {
+    flex: 50%;
+    height: 280px;
+  }
+
+  @media #{$phone} {
+    flex: 50%;
+    height: 198px;
+  }
+}
+
+.index {
+  margin-right: 2rem;
+}
+
+.top__info {
+  font-size: 0.8rem;
+}

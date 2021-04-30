@@ -1,0 +1,43 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.section {
+  margin-bottom: 4rem;
+}
+
+.container {
+  @media #{$phone} {
+    padding: 0;
+  }
+}
+
+.title {
+  max-width: 338px;
+  @include fsz(12px);
+  text-transform: uppercase;
+  line-height: 1.33;
+  @include font_loader($primary-family, 8, 'normal');
+  letter-spacing: 2.5px;
+  color: $gray-dark;
+  padding: 17px 30px 17px 0;
+  margin-bottom: 0;
+
+  @media #{$small-screen} {
+    max-width: 238px;
+  }
+  @media #{$phone} {
+    display: none;
+  }
+}
+
+.desc {
+  line-height: 1.33;
+  margin-left: 35%;
+  padding: 14px 30px 17px 0;
+
+  @media #{$phone} {
+    margin-left: 1rem;
+  }
+}
