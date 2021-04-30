@@ -39,3 +39,32 @@
     max-width: 267px;
   }
 }
+
+.logo__all:hover {
+  path {
+    // fill: none;
+    stroke: #3bb779 !important;
+    stroke-dasharray: 280 280;
+    stroke-dashoffset: 280;
+    animation-duration: 1s;
+    animation-name: draw;
+    animation-fill-mode: forwards;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+}
+
+@keyframes draw {
+  from {
+    fill: transparent;
+    stroke-dashoffset: 280;
+    stroke-width: 1;
+  }
+
+  to {
+    fill: #3bb779;
+    stroke-dashoffset: 100;
+    stroke-width: 0;
+  }
+}

@@ -41,7 +41,7 @@ const Logo = ({ variant, className }) => {
   const LogoComponent = variantMap[variant].src
 
   return (
-    <Link to="/" className={cx(className, logo[variantMap[variant].class])}>
+    <Link to="/" className={cx(className, logo[variantMap[variant].class], logo.logo__all)}>
       <LogoComponent alt={title} />
     </Link>
   )
