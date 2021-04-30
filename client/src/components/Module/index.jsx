@@ -5,6 +5,7 @@ import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
 import IconShowcase from '@Modules/IconShowcase'
+import ColorPaletteModule from '@Modules/ColorPalette'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -24,6 +25,9 @@ export default class Module extends React.Component {
       ),
       ContentfulModuleIconShowcase: (attributes) => (
         <IconShowcase {...attributes} />
+      ),
+      ContentfulModuleColorPalette: (attributes) => (
+        <ColorPaletteModule {...attributes} />
       ),
     }
 
