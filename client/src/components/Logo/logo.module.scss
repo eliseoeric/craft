@@ -1,3 +1,4 @@
+@import "../../styles/definitions/colors";
 @import "../../styles/definitions/breakpoints";
 
 .logo__large {
@@ -37,5 +38,55 @@
 
   @media #{$phone-small} {
     max-width: 267px;
+  }
+}
+
+.logo__all:hover {
+  path {
+    // fill: none;
+    stroke: $green !important;
+    stroke-dasharray: 280 280;
+    stroke-dashoffset: 280;
+    animation-duration: 1s;
+    animation-name: drawGreen;
+    animation-fill-mode: forwards;
+    // animation-iteration-count: infinite;
+    // animation-direction: alternate;
+    animation-timing-function: linear;
+  }
+}
+
+.logo__gray:hover {
+  path {
+    stroke: $purple !important;
+    animation-name: drawPurple;
+  }
+}
+
+@keyframes drawGreen {
+  from {
+    fill: transparent;
+    stroke-dashoffset: 280;
+    stroke-width: 1;
+  }
+
+  to {
+    fill: $green;
+    stroke-dashoffset: 100;
+    stroke-width: 0;
+  }
+}
+
+@keyframes drawPurple {
+  from {
+    fill: transparent;
+    stroke-dashoffset: 280;
+    stroke-width: 1;
+  }
+
+  to {
+    fill: $purple;
+    stroke-dashoffset: 100;
+    stroke-width: 0;
   }
 }
