@@ -122,6 +122,66 @@ $transition: all 0.25s ease-in;
 
 /**
  * ----------------------------------------
+ * animation slide_in_left_full
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide_in_left_full {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slide_in_left_full {
+  0% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation slide_out_right_full
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide_out_right_full {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes slide_out_right_full {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/**
+ * ----------------------------------------
  * animation scale-in-ver-top
  * ----------------------------------------
  */
