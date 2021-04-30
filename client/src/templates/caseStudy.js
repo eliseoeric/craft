@@ -6,11 +6,17 @@ import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import Header from '@Components/CaseStudy/Header'
+import CloseButton from '@Components/CloseButton'
 
-const PageTemplate = ({ data, pageContext }) => {
+import useToggle from '@Hooks/useToggle'
+import * as styles from './styles.module.scss'
+
+const CaseStudyTemplate = ({ data, pageContext }) => {
   const { title, slug, description, layout } = data?.contentfulCaseStudy
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childrenMarkdownRemark[0].rawMarkdownBody
+
+  const [open, toggleOpen] = useToggle(true)
 
   const renderModules = (modules) => {
     return modules.map((module) => {
@@ -30,16 +36,23 @@ const PageTemplate = ({ data, pageContext }) => {
         description={seoDescription}
       />
       <CoreLayout>
-        <Header title={title} byline={seoDescription} />
-        {layout &&
-          layout.contentModules &&
-          renderModules(layout.contentModules)}
+        <div
+          className={cx(styles.slide_in_left_full, {
+            [styles.slide_out_right_full]: !open,
+          })}
+        >
+          <CloseButton onClick={toggleOpen} />
+          <Header title={title} byline={seoDescription} />
+          {layout &&
+            layout.contentModules &&
+            renderModules(layout.contentModules)}
+        </div>
       </CoreLayout>
     </Fragment>
   )
 }
 
-export default PageTemplate
+export default CaseStudyTemplate
 
 export const query = graphql`
   query($slug: String!) {
