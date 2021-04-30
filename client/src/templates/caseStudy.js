@@ -58,6 +58,7 @@ export const query = graphql`
           ...CaseStudyMockUpModule
           ...TestimonyModule
           ...ContentThreeColumnsModule
+          ...IconShowcaseModule
         }
       }
     }
