@@ -5,6 +5,7 @@
 
 .site__footer {
   border-top: 1px solid $gray;
+  grid-area: footer;
   display: flex;
   flex: 0 0 100%;
 }

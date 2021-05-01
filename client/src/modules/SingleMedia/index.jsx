@@ -1,27 +1,34 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
+import ScrollTrigger from 'react-scroll-trigger'
 
-import Container from '@Components/Grid/Container'
+import Slide from '@Components/Slider/Slide'
+import useWindowSize from '@Hooks/useWindowSize'
 
 import * as styles from './style.module.scss'
 
+const maxOffset = 24
+
 const SingleMedia = ({ title, slug, description, media }) => {
+  const [visible, setVisible] = useState(false)
+  const [offset, setOffset] = useState(maxOffset)
+
+  const handleScrollProgress = ({ progress }) => {
+    const newOffset = maxOffset - 0.9 * progress * maxOffset
+    setOffset(Math.min(Math.round(newOffset), maxOffset))
+  }
   return (
-    <section className={styles.root}>
-      <Container>
-        <figure className={styles.media}>
-          {media && <img alt={media.file.fileName} src={media.file.url} />}
-        </figure>
-        <div className={styles.caption}>
-          {title && <h4 className={styles.title}>{title}</h4>}
-          {description && (
-            <div className={styles.description}>
-              <p>{description}</p>
-            </div>
-          )}
-        </div>
-      </Container>
+    <section
+      className={cx(styles.root, styles.scroll_reveal, {
+        [styles.fade_in_bottom]: visible,
+      })}
+    >
+      <ScrollTrigger
+        onEnter={() => setVisible(true)}
+        onProgress={handleScrollProgress}
+      />
+      <Slide title={title} description={description} media={media} contained={true} />
     </section>
   )
 }

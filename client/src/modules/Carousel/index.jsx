@@ -2,8 +2,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import uuid from 'uuid'
 
-import Container from '@Components/Grid/Container'
-import Row from '@Components/Grid/Row'
 import Slider from '@Components/Slider'
 import Slide from '@Components/Slider/Slide'
 import * as styles from './styles.module.scss'
@@ -19,7 +17,7 @@ const CarouselModule = ({ title, slug, slides }) => {
           {slides &&
             slides.map(({ title, description, media }, index) => {
               return (
-                <Slide key={uuid.v4()} title={title} description={description} media={media} />
+                <Slide key={uuid.v4()} title={title} description={description} media={media} contained={false} />
               )
             })}
         </Slider>

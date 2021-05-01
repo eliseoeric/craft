@@ -11,7 +11,7 @@ const CoreLayout = ({ children, className }) => {
   return (
     <div className={cx('core-layout', className, styles.case_study_wrapper)}>
       <Sidebar />
-      <main>{children}</main>
+      <main className={styles.content_wrapper}>{children}</main>
       <Footer />
     </div>
   )

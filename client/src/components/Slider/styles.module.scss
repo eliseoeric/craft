@@ -3,27 +3,11 @@
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
 
-.root {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  margin-right: 24px;
-  width: calc(100% - 204px);
-  cursor: pointer;
 
-  @media #{$phone} {
-    margin-right: 12px;
-  }
-
-  &.slick-active {
-    pointer-events: none;
-    cursor: default;
-
-    .title,
-    .description {
-      opacity: 1;
-    }
-  }
+.contained {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .media {
