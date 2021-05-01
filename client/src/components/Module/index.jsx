@@ -6,6 +6,7 @@ import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
 import IconShowcase from '@Modules/IconShowcase'
 import ColorPaletteModule from '@Modules/ColorPalette'
+import CarouselModule from '@Modules/Carousel'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -29,6 +30,9 @@ export default class Module extends React.Component {
       ContentfulModuleColorPalette: (attributes) => (
         <ColorPaletteModule {...attributes} />
       ),
+      ContentfulModuleCarousel: (attributes) => (
+        <CarouselModule {...attributes} />
+      )
     }
 
     // prevent app from crashing when module is not defined

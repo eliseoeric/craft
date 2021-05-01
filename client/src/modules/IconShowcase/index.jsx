@@ -8,22 +8,15 @@ import IconBlock from './IconBlock'
 import TypeBlock from './TypeBlock'
 
 import useWindowSize from '@Hooks/useWindowSize'
+import useScrollProgress from '@Hooks/useScrollProgress'
 import * as styles from './iconShowcase.module.scss'
 
-const maxOffset = 24
-
 const IconShowcase = ({ title, category, iconBox, typeVariant }) => {
-  const [visible, setVisible] = useState(false)
-  const [offset, setOffset] = useState(maxOffset)
+  const { handleScrollProgress, setVisible, visible, offset } = useScrollProgress()
   const { width } = useWindowSize()
 
   const Block = typeVariant ? TypeBlock : IconBlock
   const blockSize = typeVariant ? 'large' : 'small'
-
-  const handleScrollProgress = ({ progress }) => {
-    const newOffset = maxOffset - 0.9 * progress * maxOffset
-    setOffset(Math.min(Math.round(newOffset), maxOffset))
-  }
 
   return (
     <section className={styles.floating_cards}>

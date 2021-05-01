@@ -1,0 +1,62 @@
+.carousel {
+  margin-right: -84px;
+  @media #{$small-screen} {
+    margin-right: -49px;
+  }
+
+  min-height: 0;
+  min-width: 0;
+
+  &:hover {
+    .slick-arrow {
+      opacity: 1;
+    }
+  }
+
+  &.slick-initialized {
+    .slick-slide {
+      min-height: 0;
+      min-width: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      margin-right: 24px;
+      cursor: pointer;
+
+      & > div {
+        min-width: 70vw;
+      }
+
+      @media #{$phone} {
+        margin-right: 12px;
+      }
+
+      &.slick-active {
+        pointer-events: none;
+        cursor: default;
+
+        .title,
+        .description {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .slick-arrow {
+    position: absolute;
+    @include fsz(24px);
+    z-index: 9;
+    top: calc(50% - 42px);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    color: $black;
+  }
+  .slick-next {
+    right: 30px;
+  }
+
+  .slick-prev {
+    left: 30px;
+  }
+}

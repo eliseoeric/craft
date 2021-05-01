@@ -2,10 +2,33 @@
 @import '../../styles/definitions/mixins';
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
-@import '../../styles/modifiers/animations';
 
-.root {
-  padding: 27px 0 63px;
+
+.contained {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.media {
+  padding: 68px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: $white;
+  @media #{$phone} {
+    padding: 21px 30px 24px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    @media #{$phone} {
+      max-height: 181px;
+    }
+  }
 }
 
 .title,
@@ -33,7 +56,7 @@
 }
 
 .description {
-  color :$gray-darkest;
+  color: $gray-darkest;
   @include fsz(15px);
   @include font_loader($primary-family, 400, 'normal');
   line-height: 1.33;
