@@ -1,0 +1,92 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/modifiers/animations';
+
+.root {
+  padding: 85px 0;
+
+  @media #{$small-screen} {
+    padding: 65px 0;
+  }
+}
+
+.items_wrapper {
+  display: flex;
+  align-items: flex-start;
+  width: calc(100% - 246px);
+  padding-left: 66px;
+
+  @media #{$laptop} {
+    padding-left: 26px;
+  }
+
+  @media #{$tablet} {
+    width: 100%;
+    padding-left: 0;
+  }
+
+  @media screen and (max-width: 389px) {
+    flex-wrap: wrap;
+  }
+}
+
+.item {
+  width: 33.33%;
+  padding-left: 24px;
+
+  @media screen and (max-width: 389px) {
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 30px;
+  }
+
+  &:first-child {
+    @media #{$tablet} {
+      padding-left: 0;
+    }
+  }
+}
+
+.title {
+  max-width: 246px;
+  width: 100%;
+  padding-top: 7px;
+
+  @media #{$tablet} {
+    max-width: 100%;
+  }
+}
+
+.description {
+  border-top: 1px solid $gray;
+  margin-bottom: 0;
+  line-height: 1.33;
+  color: $gray-darkest;
+  @include font_loader($primary-family, 4, 'normal');
+  @include fsz(15px);
+  padding-top: 9px;
+}
+
+.value {
+  display: block;
+  letter-spacing: -3px;
+  @include fsz(132px);
+  line-height: 0.91;
+  color: $primary;
+  @include font_loader($primary-family, 8, 'normal');
+  margin-bottom: 15px;
+
+  @media #{$laptop} {
+    @include fsz(100px);
+  }
+
+  @media #{$small-screen} {
+    @include fsz(72px);
+  }
+
+  @media #{$phone} {
+    @include fsz(60px);
+  }
+}

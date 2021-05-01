@@ -76,7 +76,11 @@ export const query = graphql`
           ...ContentThreeColumnsModule
           ...IconShowcaseModule
           ...ColorPaletteModule
+<<<<<<< HEAD
           ...CarouselModule
+=======
+          ...StatisticModule
+>>>>>>> c0b6fef (Add statistics module)
         }
       }
     }
