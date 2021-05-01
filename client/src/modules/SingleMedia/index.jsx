@@ -4,20 +4,12 @@ import cx from 'classnames'
 import ScrollTrigger from 'react-scroll-trigger'
 
 import Slide from '@Components/Slider/Slide'
-import useWindowSize from '@Hooks/useWindowSize'
-
+import useScrollProgress from '@Hooks/useScrollProgress'
 import * as styles from './style.module.scss'
 
-const maxOffset = 24
-
 const SingleMedia = ({ title, slug, description, media }) => {
-  const [visible, setVisible] = useState(false)
-  const [offset, setOffset] = useState(maxOffset)
+  const { handleScrollProgress, setVisible, visible } = useScrollProgress()
 
-  const handleScrollProgress = ({ progress }) => {
-    const newOffset = maxOffset - 0.9 * progress * maxOffset
-    setOffset(Math.min(Math.round(newOffset), maxOffset))
-  }
   return (
     <section
       className={cx(styles.root, styles.scroll_reveal, {
@@ -28,7 +20,12 @@ const SingleMedia = ({ title, slug, description, media }) => {
         onEnter={() => setVisible(true)}
         onProgress={handleScrollProgress}
       />
-      <Slide title={title} description={description} media={media} contained={true} />
+      <Slide
+        title={title}
+        description={description}
+        media={media}
+        contained={true}
+      />
     </section>
   )
 }

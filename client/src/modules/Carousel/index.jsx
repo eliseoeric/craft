@@ -7,7 +7,7 @@ import Slide from '@Components/Slider/Slide'
 import * as styles from './styles.module.scss'
 
 const CarouselModule = ({ title, slug, slides }) => {
-  if (!window) {
+  if (window === undefined) {
     return
   }
   return (
