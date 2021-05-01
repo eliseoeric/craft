@@ -11,6 +11,8 @@ import CloseButton from '@Components/CloseButton'
 import useToggle from '@Hooks/useToggle'
 import * as styles from './styles.module.scss'
 
+import Container from '@Components/Grid/Container'
+
 const CaseStudyTemplate = ({ data, pageContext }) => {
   const { title, slug, description, layout } = data?.contentfulCaseStudy
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
@@ -37,11 +39,12 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout>
         <div
-          className={cx(styles.slide_in_left_full, {
+          className={cx(styles.slide_in_left_full, styles.case_study, {
             [styles.slide_out_right_full]: !open,
           })}
         >
           <CloseButton onClick={toggleOpen} />
+
           <Header title={title} byline={seoDescription} />
           {layout &&
             layout.contentModules &&
@@ -73,6 +76,7 @@ export const query = graphql`
           ...ContentThreeColumnsModule
           ...IconShowcaseModule
           ...ColorPaletteModule
+          ...CarouselModule
         }
       }
     }

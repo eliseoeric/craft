@@ -1,0 +1,44 @@
+.carousel {
+  margin-right: -84px;
+  @media #{$small-screen} {
+    margin-right: -49px;
+  }
+
+  &:hover {
+    .slick-arrow {
+      opacity: 1;
+    }
+  }
+
+  .slick-slide > div {
+    max-width: $container;
+  }
+
+  .slick-arrow {
+    position: absolute;
+    @include fsz(24px);
+    z-index: 9;
+    top: calc(50% - 42px);
+    opacity: 0;
+    transition: opacity 300ms ease;
+    color: #222;
+
+    &.slick-next {
+      right: 30px;
+    }
+
+    &.slick-prev {
+      left: 30px;
+    }
+  }
+}
+
+.slick-track
+{
+    display: flex !important;
+}
+
+.slick-slide
+{
+    height: inherit !important;
+}

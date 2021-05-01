@@ -2,16 +2,16 @@
 @import '../styles/definitions/breakpoints';
 @import '../styles/definitions/colors';
 
-// .case_study {
-//   padding: 49px 84px;
-//   width: calc(100% - 144px);
+.case_study {
+  padding: 49px 84px;
+  width: calc(100% - 144px);
 
-//   @media #{$small-screen} {
-//     padding: 49px;
-//   }
+  @media #{$small-screen} {
+    padding: 49px;
+  }
 
-//   @media #{$phone} {
-//     padding: 112px 24px 40px;
-//     width: 100%;
-//   }
-// }
+  @media #{$phone} {
+    padding: 112px 24px 40px;
+    width: 100%;
+  }
+}
