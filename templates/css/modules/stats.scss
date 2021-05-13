@@ -1,8 +1,23 @@
 .stats-block {
   padding: 85px 0;
-
+  position: relative;
+  @media #{$phone} {
+    &:before {
+      content: "";
+      background-color: $light-gray;
+      width: calc(100% - 30px);
+      position: absolute;
+      top: 14px;
+      left: 0;
+      height: 1px;
+    }
+  }
   @media #{$small-screen} {
     padding: 65px 0;
+  }
+  @media #{$phone} {
+    padding: 10px 0;
+    margin-right: -30px;
   }
 
   .container {
@@ -15,6 +30,10 @@
 
     @media #{$tablet} {
       flex-wrap: wrap;
+    }
+    @media #{$phone} {
+       padding-top: 17px;
+       border-top: none;
     }
   }
 
@@ -29,6 +48,9 @@
     @media #{$tablet} {
       max-width: 100%;
     }
+    @media #{$phone} {
+      margin-bottom: 30px;
+    }
   }
 
   .stats-block__items {
@@ -36,6 +58,17 @@
     align-items: flex-start;
     width: calc(100% - 246px);
     padding-left: 66px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &:after {
+      content: "e";
+      width: 20px;
+      height: 100%;
+      display: block;
+      font-size: 16px;
+      opacity: 0;
+    }
 
     @media #{$laptop} {
       padding-left: 26px;
@@ -46,17 +79,21 @@
       padding-left: 0;
     }
 
-    @media screen and (max-width: 389px) {
-      flex-wrap: wrap;
+    @media #{$phone} {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .stats-block__item {
       width: 33.33%;
       padding-left: 24px;
-      @media screen and (max-width: 389px) {
-        width: 100%;
-        padding-left: 0;
-        margin-bottom: 30px;
+
+      @media #{$phone} {
+        @include fsz(132px);
+        flex: 0 0 auto;
+        width: auto;
+        margin-right: 50px;
       }
 
       &:first-child {
@@ -80,12 +117,8 @@
       @include fsz(100px);
     }
 
-    @media #{$small-screen} {
-      @include fsz(72px);
-    }
-
     @media #{$phone} {
-      @include fsz(60px);
+      @include fsz(132px);
     }
   }
 

@@ -12,12 +12,25 @@
     margin: 0;
     display: flex;
     flex-wrap: wrap;
+    @media #{$phone-small} {
+      padding: 0 24px;
+    }
   }
 
   .palette__items {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    @media #{$phone-small} {
+      display: none;
+    }
+  }
+
+  .palette__mobile-image{
+    display: none;
+    @media #{$phone-small} {
+      display: block;
+    }
   }
 
   .palette__item {
@@ -148,6 +161,9 @@
     @media #{$phone} {
       max-width: 100%;
       padding: 11px 0 11px 25px;
+    }
+    @media #{$phone-small} {
+     padding-left: 0;
     }
   }
 }

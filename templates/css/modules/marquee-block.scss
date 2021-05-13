@@ -1,0 +1,22 @@
+.marquee-block{
+  overflow: hidden;
+  padding: 42px 0 67px;
+  border-top: 1px solid $light-gray;
+  position: relative;
+  z-index: 3;
+  background-color: #f2f2f2;
+  @media #{$phone} {
+     padding: 40px 0;
+     border-top: none;
+  }
+}
+.marquee-block__text{
+  @include fsz(132px);
+  letter-spacing: -2px;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: 0;
+  @media #{$header} {
+    @include fsz(60px);
+  }
+}

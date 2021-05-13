@@ -1,0 +1,244 @@
+.hero-block{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 100px 0;
+  position: relative;
+  @media #{$phone} {
+    min-height: inherit;
+    padding-top: 170px;
+  }
+  @media #{$phone-small} {
+    padding-bottom: 120px;
+  }
+  .container{
+    padding: 0;
+    z-index: 1;
+    margin: 0;
+    max-width: 1220px;
+    position: relative;
+  }
+}
+.hero-block--home{
+  .container{
+    position: relative;
+    &:before{
+      content:"";
+      display: block;
+      width: 840px;
+      height: 766px;
+      position: absolute;
+      right: -510px;
+      top: -110px;
+      background: url('images/hero-graident.png') no-repeat 0 0;
+      background-size: cover;
+      z-index: 1;
+      @media #{$desktop} {
+        right: -380px;
+        top: -260px;
+      }
+      @media #{$phone-small} {
+        right: -470px;
+        top: -260px;
+      }
+    }
+  }
+  &:after{
+    content:"Scroll";
+    text-transform: uppercase;
+    font-family: $primary-family-extra-bold;
+    @include fsz(12px);
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    writing-mode: vertical-rl;
+    transform: rotateZ(180deg);
+    position: absolute;
+    left: 60px;
+    bottom: 30px;
+    color: #979797;
+    @media #{$phone} {
+     display: none;
+    }
+  }
+  .hero-block__title{
+    &:after{
+      content:"";
+      position: absolute;
+      bottom: 50px;
+      left: 0;
+      display: block;
+      height: 1px;
+      width: 5000px;
+      background-color: $light-gray;
+      z-index: -1;
+      @media #{$desktop} {
+        left: -340px;
+        bottom: 40px;
+      }
+      @media #{$phone} {
+        bottom: 30px;
+      }
+    }
+  }
+}
+.hero-block__title{
+  @include fsz(132px);
+  line-height: 1;
+  padding-left: 16vw;
+  position: relative;
+  z-index: 1;
+  @media #{$desktop} {
+    @include fsz(80px);
+    max-width: 570px;
+    margin: 0 auto 20px;
+    padding-left: 0;
+  }
+  @media #{$phone} {
+    @include fsz(60px);
+    padding: 0 24px
+  }
+  &:after{
+    content:"";
+    position: absolute;
+    bottom: 86px;
+    left: 0;
+    display: block;
+    height: 1px;
+    width: 5000px;
+    background-color: $light-gray;
+    z-index: -1;
+    @media #{$desktop} {
+      left: -340px;
+      bottom: 40px;
+    }
+    @media #{$phone} {
+      display: none;
+    }
+  }
+  span{
+    margin-top: 7px;
+    display: inline-block;
+    @include fsz(210px);
+    font-weight: 800;
+    font-family: $primary-family-extra-bold;
+    text-transform: uppercase;
+    line-height: 1.03;
+    letter-spacing: 2px;
+    @include letter-stroke(#000000, transparent, 4px);
+    position: relative;
+    top: -18px;
+    z-index: 1;
+    @media #{$desktop} {
+      font-size: 13vw;
+    }
+    @media #{$phone} {
+      @include fsz(75px);
+      @include letter-stroke(#000000, transparent, 2px);
+      margin-top: 25px;
+      width: 100%;
+    }
+    &:before{
+      content:"";
+      display: block;
+      width: 130px;
+      height: 130px;
+      position: absolute;
+      right: -88px;
+      bottom: -62px;
+      background: url('images/text-badge.svg') no-repeat 0 0;
+      background-size: cover;
+      z-index: 1;
+      @media #{$phone} {
+        bottom: -92px;
+      }
+      @media #{$phone-small} {
+        right: 0;
+        bottom: -208px;
+      }
+    }
+  }
+}
+
+.hero-block--careers{
+  min-height: 600px;
+  position: relative;
+  overflow: initial;
+  &:after{
+    content:"";
+    display: block;
+    width: 1340px;
+    height: 100%;
+    position: absolute;
+    right:0;
+    top: 0;
+    background: url('images/careers-hero-lines.png') no-repeat 0 0;
+    background-size: cover;
+    z-index: 1;
+  }
+  @media #{$phone} {
+    min-height: inherit;
+    padding-bottom: 42px;
+    padding-top: 160px;
+  }
+  .container{
+    padding-left: 16vw;
+    @media #{$tablet} {
+      max-width: 540px;
+      padding-left: 24px;
+      margin: 0 auto;
+    }
+  }
+  .hero-block__title{
+      padding-left: 0;
+      max-width: inherit;
+      @media #{$phone} {
+         margin-bottom: 10px;
+      }
+      &:after{
+        display: none;
+      }
+  }
+  &:before{
+    content:"";
+    display: block;
+    width: 738px;
+    height: 1050px;
+    position: absolute;
+    left:0;
+    top: 160px;
+    background: url('images/gradient-style4.png') no-repeat 0 0;
+    background-size: cover;
+    z-index: 1;
+    @media #{$phone-small} {
+      width: 548px;
+      height: 870px;
+      position: absolute;
+      left: -100px;
+      top: -20px;
+      opacity: 0.9;
+      background-size: contain;
+    }
+  }
+}
+.hero-block__mobile-title{
+  display: none;
+  @media #{$phone} {
+    display: block;
+    @include fsz(132px);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    @include fsz(60px);
+    padding: 0 24px;
+    margin-bottom: 10px;
+  }
+  + .hero-block__title{
+    @media #{$phone} {
+      @include fsz(24px);
+    }
+  }
+}

@@ -16,328 +16,132 @@
 </head>
 <body>
 <div class="site-wrapper">
-    <header>
+    <header class="header js-header">
+        <div class="logo__container">
+            <a href="index.html" class="logo__link">
+                <div class="logo__wrap">
+                    <img class="sidebar__logo-white" src="images/logo-green-dark.svg" alt="logo">
+                </div>
+            </a>
+        </div>
+        <a href="#" class="mobileNav__toggle js-nav-toggle">
+            <span class="accessible-text">Click to toggle navigation menu.</span>
+            <div class="menuBar__container">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </a>
+        <nav class="nav-container">
+            <div class="nav-container__mobile-logo">
+                <div class="logo__container">
+                    <a href="index.html" class="logo__link">
+                        <div class="logo__wrap">
+                            <img class="sidebar__logo-white" src="images/logo-dark.svg" alt="logo">
+                        </div>
+                    </a>
+                </div>
+                <a href="#" class="mobileNav__toggle js-nav-toggle">
+                    <span class="accessible-text">Click to toggle navigation menu.</span>
+                    <div class="menuBar__container">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </a>
+            </div>
+            <span class="nav-container__text">Menu</span>
+            <ul id="menu-main-navigation" class="primaryNav">
+                <li><a href="about.html">About</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="careers.html">Careers</a></li>
+            </ul>
+        </nav>
     </header>
     <main id="page" class="site">
         <div class="page-wrapper">
-            <button type="button" class="close-button">
-                <svg class="icon icon-close">
-                    <use xlink:href="#icon-close"></use>
-                </svg>
-            </button>
-            <div class="background-gradient">
-                <img src="images/gradient-orb-01.png" alt="alt">
-            </div>
-            <div class="sidebar">
-                <a href="#">
-                    <img class="sidebar__logo-white" src="images/logo.svg" alt="logo">
-                    <img class="sidebar__logo-dark" src="images/logo-dark.svg" alt="logo">
-
-                </a>
-            </div>
-            <div class="case-study">
-                <section class="heading-block">
+            <div class="main-content">
+                <section class="hero-block hero-block--home" style="background-image: url('uploads/hero-bg.png')">
                     <div class="container">
-                        <h1 class="heading-block__title">Shark</h1>
-                        <h2 class="heading-block__subtitle">Helping you clean your home from anywhere in the world.</h2>
+                        <h1 class="hero-block__title">We craft <span>Culture</span></h1>
                     </div>
-                </section><!-- End: heading section-->
-                <div class="carousel">
-                    <div class="carousel__item">
-                        <figure class="carousel__image">
-                            <img src="uploads/slide-01.png" alt="slide01">
-                        </figure>
-                        <h3 class="carousel__title">PRODUCT DESIGN</h3>
-                        <div class="carousel__description">
-                            <p>Primary screens lorme ipsum dolor sit amet alles andre salem.</p>
-                        </div>
-                    </div>
-                    <div class="carousel__item">
-                        <figure class="carousel__image">
-                            <img src="uploads/slide-01.png" alt="slide01">
-                        </figure>
-                        <h3 class="carousel__title">PRODUCT DESIGN</h3>
-                        <div class="carousel__description">
-                            <p>Primary screens lorme ipsum dolor sit amet alles andre salem.</p>
-                        </div>
-                    </div>
-                </div><!-- End: Carousel-->
-
-                <section class="intro">
+                </section><!-- End: hero-->
+                <section class="work-block">
                     <div class="container">
-                        <h2 class="intro__title">SharkClean</h2>
-                        <div class="intro__content">
-                            <h3>The Challenge</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi.</p>
-                            <h3>The Solution</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco
-                                laboris nisi.</p>
-                        </div>
-                        <ul class="intro__category">
-                            <li>Strategy</li>
-                            <li>Research</li>
-                            <li>Branding</li>
-                            <li>Optimization</li>
-                            <li>Branding</li>
-                            <li>Strategy</li>
+                        <h2 class="work-block__vcenter">Select Works</h2>
+                        <ul class="work-block__list">
+                            <li class="work-block__list-item"><a href="case_study.html">SharkNinja</a></li>
+                            <li class="work-block__list-item"><a href="case_study.html">Brightcove</a></li>
+                            <li class="work-block__list-item"><a href="case_study.html">Socratic</a></li>
+                            <li class="work-block__list-item"><a href="case_study.html">Hometap</a></li>
+                            <li class="work-block__list-item"><a href="case_study.html">Startup</a></li>
                         </ul>
                     </div>
-                </section><!-- End: intro-->
-
-                <div class="showcase-block">
-                    <div class="showcase-block__gradient">
-                        <img src="images/gradient-orb-02.png" alt="alt">
-                    </div>
+                </section><!-- End: work-->
+                <section class="accordion-block">
                     <div class="container">
-                        <div class="showcase-block__items">
-                            <div class="showcase-block__item">
-                                <figure class="showcase-block__media">
-                                    <img src="uploads/showcase-01.png" alt="showcase">
-                                </figure>
+                        <div class="accordion-block__title">
+                            <h2>The Craft Philosophy</h2>
+                        </div>
+                        <div class="accordion-block__list">
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">People first</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
                             </div>
-                            <div class="showcase-block__item">
-                                <figure class="showcase-block__media">
-                                    <img src="uploads/showcase-02.png" alt="showcase">
-                                </figure>
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">Director-led teams</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
                             </div>
-                            <div class="showcase-block__item">
-                                <figure class="showcase-block__media">
-                                    <img src="uploads/showcase-03.png" alt="showcase">
-                                </figure>
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">Prototype or perish</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
+                            </div>
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">Insight-driven design</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
+                            </div>
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">Holistic experiences</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
+                            </div>
+                            <div class="accordion-block__card">
+                                <h2 class="accordion-block__card-title">Start-up energy</h2>
+                                <div class="accordion-block__card-panel">
+                                    <p>The best results come from working with inspiring people and organizations. Working with partners and collaborators we admire helps us deliver exceptional digital products in every engagement. </p>
+                                </div>
                             </div>
                         </div>
-                        <h2 class="showcase-block__title">Start Cleaning</h2>
+                        <!-- .accordion-block__list -->
                     </div>
-                </div><!-- End: showcase-block-->
-
-                <div class="media-block">
-                    <div class="container">
-                        <figure class="media-block__media">
-                            <img src="uploads/media-showcase.jpg" alt="showcase">
-                        </figure>
-                        <!--                    <div class="media-block__video">-->
-                        <!--                        <iframe src="https://player.vimeo.com/video/69639953"-->
-                        <!--                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-                        <!--                    </div>-->
-                        <h3 class="media-block__title">PRODUCT DESIGN</h3>
-                        <div class="media-block__description">
-                            <p>Component library </p>
-                        </div>
-                    </div>
-                </div><!-- End: media-block-->
-                <section class="floating-cards">
-                    <div class="container">
-                        <p class="floating-cards__lead-text">Branding</p>
-                        <h2 class="floating-cards__title">Typography</h2>
-                        <div class="floating-cards___items floating-cards___items--large">
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <h3 class="floating-cards__heading">Aa</h3>
-                                    <p class="floating-cards__heading-name">Gotham bold</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <h3 class="floating-cards__heading">Aa</h3>
-                                    <p class="floating-cards__heading-name">Gotham Book</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <h3 class="floating-cards__heading">Aa</h3>
-                                    <p class="floating-cards__heading-name">Gotham Light</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section><!-- End: floating-cards-->
-
-                <div class="palette">
-                    <div class="container">
-                        <div class="palette__items">
-                            <div class="palette__item palette__item--c-primary" style="background-color: #7700FF;">
-                                <p class="palette__color-code">#7700FF<br>RGB 119 0 255 <br>100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">01</span>
-                                    <span class="palette__color-name">#purple</span>
-                                </div>
-                            </div>
-                            <div class="palette__item palette__item--c-secondary" style="background-color: #191923;">
-                                <p class="palette__color-code">#191923 <br>RGB 25 25 25 <br>100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">02</span>
-                                    <span class="palette__color-name">#dark-grey</span>
-                                </div>
-                            </div>
-                            <div class="palette__item palette__item--c-primary" style="background-color: #bac1d2;">
-                                <p class="palette__color-code">#bac1d2 <br>RGB 186 193 210 <br> 100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">03</span>
-                                    <span class="palette__color-name">#map-cloudy-blue</span>
-                                </div>
-                            </div>
-                            <div class="palette__item palette__item--c-primary" style="background-color: #36bff1;">
-                                <p class="palette__color-code">#36bff1 <br>RGB 54 191 241 <br>100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">04</span>
-                                    <span class="palette__color-name">#mop-blue</span>
-                                </div>
-                            </div>
-                            <div class="palette__item palette__item--c-tertiary" style="background-color: #22E8DD;">
-                                <p class="palette__color-code">#22E8DD <br> RGB 34 232 221<br>100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">05</span>
-                                    <span class="palette__color-name">#teal</span>
-                                </div>
-                            </div>
-                            <div class="palette__item palette__item--c-tertiary" style="background-color: #ffffff;">
-                                <p class="palette__color-code">#ffffff <br> RGB 255 255 255 <br>100%</p>
-                                <div class="palette__footer">
-                                    <span class="palette__color-number">06</span>
-                                    <span class="palette__color-name">#white</span>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 class="palette__title">SYSTEM DESIGN</h3>
-                        <div class="palette__description">
-                            <p>Primary color palette</p>
-                        </div>
-                    </div>
-                </div><!-- End: color-board-->
-
-                <section class="floating-cards">
-                    <div class="container">
-                        <p class="floating-cards__lead-text">24 x 24 icon set</p>
-                        <h2 class="floating-cards__title">Iconography</h2>
-                        <div class="floating-cards___items floating-cards___items--small">
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-pass.svg" alt="alt">
-                                    </figure>
-                                    <p class="floating-cards__heading-name">Pass</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-charge.svg" alt="alt">
-                                    </figure>
-                                    <p class="floating-cards__heading-name">Charge</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-map.svg" alt="alt">
-                                    </figure>
-                                    <p class="floating-cards__heading-name">Map</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-trash.svg" alt="alt">
-                                    </figure>
-
-                                    <p class="floating-cards__heading-name">TRASH</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-room.svg" alt="alt">
-                                    </figure>
-                                    <p class="floating-cards__heading-name">ROOM</p>
-                                </div>
-                            </div>
-                            <div class="floating-cards__item">
-                                <div class="floating-cards__card">
-                                    <figure class="floating-cards__icon">
-                                        <img src="uploads/icon-QRCode.svg" alt="alt">
-                                    </figure>
-                                    <p class="floating-cards__heading-name">QR Code</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section><!-- End: floating-cards-->
-
-                <div class="media-block">
-                    <div class="container">
-                        <figure class="media-block__media">
-                            <img src="uploads/media-showcase-02.jpg" alt="showcase">
-                        </figure>
-                        <!-- <div class="media-block__video"> -->
-                        <!--  <iframe src="https://player.vimeo.com/video/69639953"-->
-                        <!-- webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-                        <!-- </div>-->
-                        <h3 class="media-block__title">ANIMATION</h3>
-                        <div class="media-block__description">
-                            <p>Robot cleaning mode</p>
-                        </div>
-                    </div>
-                </div><!-- End: media-block-->
-
-                <div class="quote-block">
-                    <div class="container">
-                        <div class="quote-block__icon">
-                            <img src="images/icon-quote.png" alt="icon quote">
-                            <div class="quote-block__background-orb">
-                                <img src="images/gradient-orb-03.png" alt="bg orb">
-                            </div>
-                        </div>
-                        <blockquote class="quote-block__blockquote">
-                            <p>Craft built something truly unique. A design we have never seen before.”</p>
-                            <cite>– Shark Ninja CMO Lorem </cite>
-                        </blockquote>
-                    </div>
-                </div><!-- End: quote-block-->
-
-                <div class="media-block">
-                    <div class="container">
-                        <figure class="media-block__media">
-                            <img src="uploads/media-showcase-03.jpg" alt="showcase">
-                        </figure>
-                        <!-- <div class="media-block__video"> -->
-                        <!--  <iframe src="https://player.vimeo.com/video/69639953"-->
-                        <!-- webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-                        <!-- </div>-->
-                        <h3 class="media-block__title">SYSTEM DESIGN</h3>
-                        <div class="media-block__description">
-                            <p>Components lorem ipsum dolor set</p>
-                        </div>
-                    </div>
-                </div><!-- End: media-block-->
-
-                <section class="stats-block">
-                    <div class="container">
-                        <h2 class="stats__title">The Results</h2>
-                        <div class="stats-block__items">
-                            <div class="stats-block__item">
-                                <span class="stats-block__num">3.5</span>
-                                <p class="stats-block__description">Lorem ipsum dolor</p>
-                            </div>
-                            <div class="stats-block__item">
-                                <span class="stats-block__num">68</span>
-                                <p class="stats-block__description">Lorem ipsum dolor</p>
-                            </div>
-                            <div class="stats-block__item">
-                                <span class="stats-block__num">11+</span>
-                                <p class="stats-block__description">Lorem ipsum dolor</p>
-                            </div>
-                        </div>
-                    </div>
+                </section> <!--End: accordion-block -->
+                <section class="marquee-block">
+                    <h2 class="marquee-block__text">Good Business is Good De Good Business is Good De</h2>
                 </section>
-            </div> <!--End: close-->
-        </div>
+            </div>
+          </div>
     </main>
     <footer class="footer">
         <div class="footer__logo-holder">

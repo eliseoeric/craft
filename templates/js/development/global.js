@@ -119,6 +119,71 @@ jQuery(document).ready(function ($) {
     //     $(elm).animate({scrollLeft: scrollLeft - walk}, 0)
     // });
 
+
+    $('.accordion-block__card-title').click(function(j) {
+
+        var dropDown = $(this).closest('.accordion-block__card').find('.accordion-block__card-panel');
+        $(this).closest('.accordion-block__list').find('.accordion-block__card-panel').not(dropDown).slideUp();
+
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        } else {
+            $(this).closest('.accordion-block__list').find('.accordion-block__card-title.active').removeClass('active');
+            $(this).addClass('active');
+        }
+
+        dropDown.stop(false, true).slideToggle();
+        j.preventDefault();
+    });
+
+    if ($(".accordion-block__card-title").length > 0) {
+        $('.accordion-block__list .accordion-block__card:first-child .accordion-block__card-title').click();
+    }
+
+    $(".work-block__list li").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $(".news-list__item").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $(".contact-block__list-item").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $('.image-list').slick({
+        variableWidth: true,
+        arrows: false,
+        dots: false,
+        infinite: false,
+        mobileFirst: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: 'unslick'
+            }
+        ]
+    });
+
+    if ($('.marquee-block__text').length > 0) {
+        $('.marquee-block__text').marquee({
+            duration: 15000,
+            gap: 10,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true,
+            startVisible: true
+        });
+    }
+
+
 });
 
 
