@@ -24,11 +24,14 @@ gulp
 
 // Config for theme
 var themePath = './';
+var projectURL = 'http://madebycraft.loc/';
 
 // Gulp Nodes
 var gulp        = require( 'gulp' ),
     gulpPlugins = require( 'gulp-load-plugins' )();
 
+// Browserstack
+const browserSync = require('browser-sync').create();
 // Error Handling
 var onError = function( err ) {
     console.log( 'An error occurred:', err.message );
@@ -46,6 +49,7 @@ gulp.task('scss', function () {
         .pipe(autoprefixer('last 4 version'))
         .pipe(cleanCss())
         .pipe(gulp.dest(themePath))
+        .pipe( browserSync.stream() )
         .pipe(notify({ message: 'Scss task complete' }));
 });
 
@@ -64,11 +68,20 @@ gulp.task('scripts', function() {
 // Watch task -- this runs on every save.
 gulp.task( 'watch', function() {
 
+    browserSync.init({
+        proxy: projectURL,
+        // `true` Automatically open the browser with BrowserSync live server.
+        // `false` Stop the browser from automatically opening.
+        //open: true,
+        injectChanges: true,
+    });
     // Watch all .scss files
     gulp.watch( themePath + '**/**/*.scss', gulp.series( 'scss' ) );
 
     // Watch js files
-    gulp.watch( themePath + 'js/development/**/*.js', gulp.series( 'scripts' ) );
+    gulp.watch( themePath + 'js/development/**/*.js', gulp.series( 'scripts' ) ).on('change',browserSync.reload);
+
+    gulp.watch( themePath + '**/**/*.php').on('change',browserSync.reload);
 });
 
 // Default task -- runs scss and watch functions

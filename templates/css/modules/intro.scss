@@ -6,7 +6,7 @@
   }
 
   @media #{$phone} {
-    padding: 33px 0;
+    padding: 65px 0 95px;
   }
 
   .container {
@@ -41,7 +41,7 @@
     }
 
     @media #{$phone} {
-      display: none;
+      margin-bottom: 20px;
     }
   }
 
@@ -65,6 +65,7 @@
 
     @media #{$phone} {
       width: 100%;
+      padding-right: 0;
     }
 
     h3 {
@@ -107,6 +108,10 @@
 
       @media #{$phone} {
         width: calc(50% - 8px);
+      }
+
+      @media #{$phone-small} {
+        width: 100%;
       }
 
       &:before {

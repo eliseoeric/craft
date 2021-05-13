@@ -1,0 +1,97 @@
+.contact-block{
+  border-top: 1px solid $light-gray;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 144px;
+  position: relative;
+  @media #{$laptop} {
+    padding-left: 0;
+  }
+  &:after{
+    content:"";
+    display: block;
+    width: 378px;
+    height: 600px;
+    position: absolute;
+    right:0;
+    top: 130px;
+    background: url('images/gradient-style3.png') no-repeat 0 0;
+    background-size: cover;
+    z-index: -1;
+  }
+}
+.contact-block__list-item{
+  @include fsz(40px);
+  font-family: $primary-family-extra-bold;
+  border-bottom: 1px solid $light-gray;
+  padding: 45px 85px;
+  @media #{$phone} {
+    padding: 47px 24px 45px;
+    line-height: 1.3;
+  }
+  a{
+    margin-bottom: 0;
+    display: inline-block;
+    line-height: 1;
+    color:$primary-color;
+    transition: $transition;
+  }
+  &:hover a{
+    border-bottom: 1px solid $brand-color;
+  }
+  &.fade a{
+    margin-bottom: 0;
+    color: transparent;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transition: $transition;
+  }
+}
+.contact-block__list{
+  width: 45%;
+  @media #{$tablet} {
+    width: 100%;
+  }
+}
+.contact-block__details{
+  width: 55%;
+  padding: 60px 60px 187px 84px;
+  border-left: 1px solid $light-gray;
+  @media #{$tablet} {
+    width: 100%;
+  }
+  @media #{$phone} {
+    padding: 54px 24px 50px;
+  }
+}
+.contact-block__address{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  @media #{$phone-small} {
+    justify-content: space-between;
+  }
+  address{
+    margin-bottom: 3px;
+    margin-right: 80px;
+    width: 170px;
+    @media #{$phone} {
+      margin-right: 40px;
+    }
+    @media #{$phone-small} {
+      margin-right: 0;
+      width: 45%;
+    }
+  }
+  strong{
+    @include fsz(15px);
+    font-family: $primary-family-bold;
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+.contact-block__image{
+  max-width: 564px;
+  img{
+    border-bottom: 1px solid $brand-color;
+  }
+}

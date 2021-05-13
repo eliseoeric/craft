@@ -1,0 +1,113 @@
+.news-list__item{
+  border-top: 1px solid $light-gray;
+  padding: 10px 0;
+  @media #{$desktop} {
+    padding: 30px 0;
+  }
+  @media #{$phone} {
+    padding: 53px 0;
+  }
+}
+.news-list__item-inner{
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  min-height: 240px;
+  align-items: center;
+  margin-left: 230px;
+  @media #{$desktop} {
+    margin-left: 40px;
+    margin-right: 40px;
+    min-height: inherit;
+  }
+  @media #{$phone} {
+    margin-left: 24px;
+    margin-right: 24px;
+    min-height: inherit;
+  }
+}
+.news-list__item-content{
+  width: 59%;
+  @media #{$phone} {
+    width: 100%;
+  }
+}
+.news-list__item-image{
+  width: 39.5%;
+  opacity: 0;
+  transition: $transition;
+  @media #{$phone} {
+    width: 100%;
+    height: 0;
+    margin-top: 10px;
+    display: none;
+  }
+  .news-list__item:hover &{
+    opacity: 1;
+    transition: $transition;
+  }
+}
+.news-list__item-title{
+  margin-bottom: 10px;
+  line-height: 1.15;
+  a{
+    color: $primary-color;
+    @include fsz(40px);
+    &:hover,
+    &:focus{
+      transition: none;
+      background-image: linear-gradient(to bottom, #f2f2f2 50%, $brand-color 50%);
+      background-repeat: repeat-x;
+      background-size: 1px 1px;
+      background-position: 0 42px;
+    }
+  }
+}
+.news-list__item-published{
+  @include fsz(18px);
+  font-family: $primary-family-bold;
+  display: block;
+}
+.news-list__item-category{
+  a{
+    color: $primary-color;
+    &:hover,
+    &:focus{
+     color: $brand-color;
+    }
+    &:after{
+      content:"";
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      margin-right: 10px;
+      margin-left: 10px;
+      vertical-align: middle;
+      background-color: $primary-color;
+    }
+  }
+}
+.news-list__item{
+  &.fade .news-list__item-title a{
+    color: transparent;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    transition: $transition;
+  }
+  &.fade .news-list__item-published{
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: $transition;
+  }
+  &.fade .news-list__item-category a,
+  &.fade .news-list__item-category span{
+    color: transparent;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: $transition;
+  }
+  &.fade .news-list__item-category a:after{
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+    background-color: $light-gray;
+    opacity: 0.3;
+  }
+}

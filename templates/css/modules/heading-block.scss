@@ -1,11 +1,12 @@
 .heading-block {
-  padding: 120px 0 87px;
+  padding: 120px 0 82px;
 
   @media #{$small-screen} {
     padding: 100px 0 67px;
   }
   @media #{$phone} {
-    padding-bottom: 52px;
+    padding-bottom: 72px;
+    padding-top: 50px;
   }
 
   .container {
@@ -22,7 +23,7 @@
     letter-spacing: -3px;
     line-height: .91;
     font-family: $primary-family-extra-bold;
-    margin-bottom: 2px;
+    margin-bottom: 7px;
 
     @media #{$laptop} {
       @include fsz(100px);
@@ -33,8 +34,8 @@
     }
 
     @media #{$phone} {
-      @include fsz(80px);
-      margin-bottom: 8px;
+      @include fsz(60px);
+      margin-bottom: 12px;
     }
   }
 

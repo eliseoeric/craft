@@ -16,6 +16,10 @@
     padding: 44px 0 43px;
   }
 
+  @media #{$phone-small} {
+    padding: 0;
+  }
+
   .container {
     margin: 0;
     @media #{$small-screen} {
@@ -35,15 +39,22 @@
       left: -200px;
     }
     @media #{$phone} {
-      display: none;
+      overflow: hidden;
+      left: -260px;
+      top: -150px;
     }
-
     img {
       max-width: 100%;
       width: auto;
       height: auto;
       @media #{$small-screen} {
-        max-width: 80%;
+        margin-left: -50px;
+        margin-top: -70px;
+      }
+      @media #{$phone} {
+        width: 885px;
+        height: 885px;
+        max-width: inherit;
       }
     }
   }
@@ -159,19 +170,16 @@
     text-transform: uppercase;
     line-height: 1.03;
     letter-spacing: 2px;
-    @include letter-stroke(#979797, transparent);
+    @include letter-stroke(#979797, transparent, 1px);
     position: relative;
     top: -18px;
     z-index: 1;
     max-width: 570px;
 
-    @media #{$tablet} {
-      @include fsz(60px);
-    }
     @media #{$phone} {
-      @include fsz(39px);
       padding: 0 24px;
-      margin-top: -32px;
+      margin-top: -36px;
+      @include fsz(67px);
     }
   }
 }

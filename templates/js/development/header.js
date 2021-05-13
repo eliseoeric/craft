@@ -27,7 +27,7 @@ $(function () {
 
             this.$toggle.on('click', function (e) {
                 e.preventDefault();
-
+                $('body').toggleClass("fixed-position");
                 self.$el.toggleClass(self.activeClass);
             });
         }

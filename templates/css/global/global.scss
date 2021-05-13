@@ -12,7 +12,7 @@ body {
   font-size: $base-font-size;
   line-height: 1.5;
   font-family: $primary-family;
-  color: $black
+  color: $primary-color;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -161,25 +161,52 @@ a {
 .page-wrapper {
   background-color: #f2f2f2;
   display: flex;
+  flex-wrap: wrap;
   position: relative;
   z-index: 1;
+  overflow: hidden;
+}
+.page-wrapper--no-hero{
+  padding-top: 160px;
+  @media #{$desktop} {
+    padding-top: 120px;
+  }
+  @media #{$phone} {
+    padding-top: 100px;
+  }
 }
 
 .sidebar {
   width: 144px;
-  background-color: $primary-color;
+  background-color: transparent;
   padding: 32px 36px 32px 60px;
   position: relative;
   z-index: 2;
+  border-right: 1px solid $light-gray;
 
-  @media #{$phone} {
-    position: absolute;
-    background-color: transparent;
-    padding: 24px;
+  &.sidebar--dark{
+    background-color: $primary-color;
+    @media #{$phone} {
+      position: absolute;
+      background-color: transparent;
+      padding: 24px;
+      border-right: none;
+    }
+  }
+
+  &.sidebar--light{
+    background-color: #F2F2F2;
+    @media #{$phone} {
+      position: absolute;
+      background-color: transparent;
+      padding: 24px;
+      border-right: none;
+    }
   }
 
   .sidebar__logo-white {
     display: block;
+    width: 100%;
     @media #{$phone} {
       display: none;
     }
@@ -189,6 +216,8 @@ a {
     display: none;
     @media #{$phone} {
       display: block;
+      max-width: 48px;
+      width: 100%;
     }
   }
 }
@@ -210,12 +239,17 @@ a {
 .background-gradient {
   position: absolute;
   z-index: -1;
-  top: -525px;
-  left: -430px;
+  top: -395px;
+  left: -360px;
 
   @media #{$phone} {
     top: -280px;
     left: -600px;
+  }
+
+  @media #{$phone-small} {
+    top: -260px;
+    left: -540px;
   }
 
   img {
@@ -224,13 +258,15 @@ a {
     width: auto;
     @media #{$phone} {
       max-width: none;
+      width: auto;
+      height: 720px;
     }
   }
 }
 
 .close-button {
-  height: 22px;
-  width: 22px;
+  height: 16px;
+  width: 16px;
   color: $primary-color;
   display: inline-block;
   vertical-align: top;
@@ -251,7 +287,29 @@ a {
   }
 
   .icon {
-    height: 22px;
-    width: 22px;
+    height: 16px;
+    width: 16px;
+  }
+}
+.sidebar__close{
+  text-transform: uppercase;
+  font-family: $primary-family-extra-bold;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  writing-mode: vertical-rl;
+  transform: rotateZ(180deg);
+  position: absolute;
+  left: 60px;
+  top: 40vh;
+  height: 120px;
+  color: #979797;
+  transition: color 0.3s ease;
+  &:hover,
+  &:focus{
+    color:$brand-color;
+  }
+  @media #{$phone} {
+    display: none;
   }
 }

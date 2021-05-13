@@ -1,0 +1,112 @@
+.accordion-block{
+  position: relative;
+  @media #{$phone} {
+    padding-top: 60px;
+  }
+  &:before{
+    content:"";
+    display: block;
+    width: 518px;
+    height: 485px;
+    position: absolute;
+    left:0;
+    bottom: 0;
+    background: url('images/circle-gradient.png') no-repeat 0 0;
+    background-size: cover;
+    z-index: 1;
+    @media #{$phone} {
+      background: url('images/circle-gradient-mobile.png') no-repeat 0 0;
+      bottom: auto;
+      top: -37px;
+      left: -270px;
+    }
+  }
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    max-width: inherit;
+    min-height: 485px;
+    position: relative;
+    z-index: 1;
+  }
+}
+.accordion-block__list{
+  width: 50%;
+  padding-top: 40px;
+  padding-bottom: 83px;
+  border-left: 1px solid #cccccc;
+  @media #{$phone} {
+    width: 100%;
+    padding-top: 225px;
+    padding-bottom: 0;
+    border-left: none;
+  }
+}
+.accordion-block__card {
+  position: relative;
+}
+.accordion-block__card-title {
+  cursor: pointer;
+  display: block;
+  position: relative;
+  @include fsz(18px);
+  margin-bottom: 0;
+  font-family: $primary-family-bold;
+  transition: $transition;
+  padding: 23px 46px 22px 85px;
+  line-height: 1.5;
+  @media #{$phone} {
+    padding-left: 25px;
+    padding-top: 21px;
+  }
+  &::after {
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: rgb(204,204,204);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+  &.active{
+    font-weight: 400;
+    &::after {
+      background: rgb(204,204,204); /* Old browsers */
+      background: -moz-linear-gradient(left, rgba(204,204,204,1) 24%, rgba(25,247,193,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(204,204,204,1) 24%,rgba(25,247,193,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(204,204,204,1) 24%,rgba(25,247,193,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cccccc', endColorstr='#19f7c1',GradientType=1 );
+    }
+  }
+}
+.accordion-block__card-panel {
+  display: none;
+  margin: 0;
+  text-align: left;
+  @include fsz(18px);
+  color: $primary-color;
+  padding: 20px 20% 3px 85px;
+  border-bottom: 1px solid $light-gray;
+  @media #{$phone} {
+    padding: 20px 20px 5px 25px;
+  }
+  p{
+    margin-bottom: 15px;
+  }
+}
+.accordion-block__title{
+  width: 50%;
+  text-align: right;
+  padding-right: 125px;
+  padding-top: 80px;
+  @media #{$phone} {
+    width: 100%;
+    text-align: left;
+    padding: 0 25px;
+  }
+  h2{
+    @include fsz(40px);
+  }
+}

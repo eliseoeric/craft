@@ -19,6 +19,443 @@
  */
 
 (function(){function e(){}function t(e,t){for(var n=e.length;n--;)if(e[n].listener===t)return n;return-1}function n(e){return function(){return this[e].apply(this,arguments)}}var i=e.prototype,r=this,o=r.EventEmitter;i.getListeners=function(e){var t,n,i=this._getEvents();if("object"==typeof e){t={};for(n in i)i.hasOwnProperty(n)&&e.test(n)&&(t[n]=i[n])}else t=i[e]||(i[e]=[]);return t},i.flattenListeners=function(e){var t,n=[];for(t=0;e.length>t;t+=1)n.push(e[t].listener);return n},i.getListenersAsObject=function(e){var t,n=this.getListeners(e);return n instanceof Array&&(t={},t[e]=n),t||n},i.addListener=function(e,n){var i,r=this.getListenersAsObject(e),o="object"==typeof n;for(i in r)r.hasOwnProperty(i)&&-1===t(r[i],n)&&r[i].push(o?n:{listener:n,once:!1});return this},i.on=n("addListener"),i.addOnceListener=function(e,t){return this.addListener(e,{listener:t,once:!0})},i.once=n("addOnceListener"),i.defineEvent=function(e){return this.getListeners(e),this},i.defineEvents=function(e){for(var t=0;e.length>t;t+=1)this.defineEvent(e[t]);return this},i.removeListener=function(e,n){var i,r,o=this.getListenersAsObject(e);for(r in o)o.hasOwnProperty(r)&&(i=t(o[r],n),-1!==i&&o[r].splice(i,1));return this},i.off=n("removeListener"),i.addListeners=function(e,t){return this.manipulateListeners(!1,e,t)},i.removeListeners=function(e,t){return this.manipulateListeners(!0,e,t)},i.manipulateListeners=function(e,t,n){var i,r,o=e?this.removeListener:this.addListener,s=e?this.removeListeners:this.addListeners;if("object"!=typeof t||t instanceof RegExp)for(i=n.length;i--;)o.call(this,t,n[i]);else for(i in t)t.hasOwnProperty(i)&&(r=t[i])&&("function"==typeof r?o.call(this,i,r):s.call(this,i,r));return this},i.removeEvent=function(e){var t,n=typeof e,i=this._getEvents();if("string"===n)delete i[e];else if("object"===n)for(t in i)i.hasOwnProperty(t)&&e.test(t)&&delete i[t];else delete this._events;return this},i.removeAllListeners=n("removeEvent"),i.emitEvent=function(e,t){var n,i,r,o,s=this.getListenersAsObject(e);for(r in s)if(s.hasOwnProperty(r))for(i=s[r].length;i--;)n=s[r][i],n.once===!0&&this.removeListener(e,n.listener),o=n.listener.apply(this,t||[]),o===this._getOnceReturnValue()&&this.removeListener(e,n.listener);return this},i.trigger=n("emitEvent"),i.emit=function(e){var t=Array.prototype.slice.call(arguments,1);return this.emitEvent(e,t)},i.setOnceReturnValue=function(e){return this._onceReturnValue=e,this},i._getOnceReturnValue=function(){return this.hasOwnProperty("_onceReturnValue")?this._onceReturnValue:!0},i._getEvents=function(){return this._events||(this._events={})},e.noConflict=function(){return r.EventEmitter=o,e},"function"==typeof define&&define.amd?define("eventEmitter/EventEmitter",[],function(){return e}):"object"==typeof module&&module.exports?module.exports=e:this.EventEmitter=e}).call(this),function(e){function t(t){var n=e.event;return n.target=n.target||n.srcElement||t,n}var n=document.documentElement,i=function(){};n.addEventListener?i=function(e,t,n){e.addEventListener(t,n,!1)}:n.attachEvent&&(i=function(e,n,i){e[n+i]=i.handleEvent?function(){var n=t(e);i.handleEvent.call(i,n)}:function(){var n=t(e);i.call(e,n)},e.attachEvent("on"+n,e[n+i])});var r=function(){};n.removeEventListener?r=function(e,t,n){e.removeEventListener(t,n,!1)}:n.detachEvent&&(r=function(e,t,n){e.detachEvent("on"+t,e[t+n]);try{delete e[t+n]}catch(i){e[t+n]=void 0}});var o={bind:i,unbind:r};"function"==typeof define&&define.amd?define("eventie/eventie",o):e.eventie=o}(this),function(e,t){"function"==typeof define&&define.amd?define(["eventEmitter/EventEmitter","eventie/eventie"],function(n,i){return t(e,n,i)}):"object"==typeof exports?module.exports=t(e,require("wolfy87-eventemitter"),require("eventie")):e.imagesLoaded=t(e,e.EventEmitter,e.eventie)}(window,function(e,t,n){function i(e,t){for(var n in t)e[n]=t[n];return e}function r(e){return"[object Array]"===d.call(e)}function o(e){var t=[];if(r(e))t=e;else if("number"==typeof e.length)for(var n=0,i=e.length;i>n;n++)t.push(e[n]);else t.push(e);return t}function s(e,t,n){if(!(this instanceof s))return new s(e,t);"string"==typeof e&&(e=document.querySelectorAll(e)),this.elements=o(e),this.options=i({},this.options),"function"==typeof t?n=t:i(this.options,t),n&&this.on("always",n),this.getImages(),a&&(this.jqDeferred=new a.Deferred);var r=this;setTimeout(function(){r.check()})}function f(e){this.img=e}function c(e){this.src=e,v[e]=this}var a=e.jQuery,u=e.console,h=u!==void 0,d=Object.prototype.toString;s.prototype=new t,s.prototype.options={},s.prototype.getImages=function(){this.images=[];for(var e=0,t=this.elements.length;t>e;e++){var n=this.elements[e];"IMG"===n.nodeName&&this.addImage(n);var i=n.nodeType;if(i&&(1===i||9===i||11===i))for(var r=n.querySelectorAll("img"),o=0,s=r.length;s>o;o++){var f=r[o];this.addImage(f)}}},s.prototype.addImage=function(e){var t=new f(e);this.images.push(t)},s.prototype.check=function(){function e(e,r){return t.options.debug&&h&&u.log("confirm",e,r),t.progress(e),n++,n===i&&t.complete(),!0}var t=this,n=0,i=this.images.length;if(this.hasAnyBroken=!1,!i)return this.complete(),void 0;for(var r=0;i>r;r++){var o=this.images[r];o.on("confirm",e),o.check()}},s.prototype.progress=function(e){this.hasAnyBroken=this.hasAnyBroken||!e.isLoaded;var t=this;setTimeout(function(){t.emit("progress",t,e),t.jqDeferred&&t.jqDeferred.notify&&t.jqDeferred.notify(t,e)})},s.prototype.complete=function(){var e=this.hasAnyBroken?"fail":"done";this.isComplete=!0;var t=this;setTimeout(function(){if(t.emit(e,t),t.emit("always",t),t.jqDeferred){var n=t.hasAnyBroken?"reject":"resolve";t.jqDeferred[n](t)}})},a&&(a.fn.imagesLoaded=function(e,t){var n=new s(this,e,t);return n.jqDeferred.promise(a(this))}),f.prototype=new t,f.prototype.check=function(){var e=v[this.img.src]||new c(this.img.src);if(e.isConfirmed)return this.confirm(e.isLoaded,"cached was confirmed"),void 0;if(this.img.complete&&void 0!==this.img.naturalWidth)return this.confirm(0!==this.img.naturalWidth,"naturalWidth"),void 0;var t=this;e.on("confirm",function(e,n){return t.confirm(e.isLoaded,n),!0}),e.check()},f.prototype.confirm=function(e,t){this.isLoaded=e,this.emit("confirm",this,t)};var v={};return c.prototype=new t,c.prototype.check=function(){if(!this.isChecked){var e=new Image;n.bind(e,"load",this),n.bind(e,"error",this),e.src=this.src,this.isChecked=!0}},c.prototype.handleEvent=function(e){var t="on"+e.type;this[t]&&this[t](e)},c.prototype.onload=function(e){this.confirm(!0,"onload"),this.unbindProxyEvents(e)},c.prototype.onerror=function(e){this.confirm(!1,"onerror"),this.unbindProxyEvents(e)},c.prototype.confirm=function(e,t){this.isConfirmed=!0,this.isLoaded=e,this.emit("confirm",this,t)},c.prototype.unbindProxyEvents=function(e){n.unbind(e.target,"load",this),n.unbind(e.target,"error",this)},s});
+/**
+ * jQuery.marquee - scrolling text like old marquee element
+ * @author Aamir Afridi - aamirafridi(at)gmail(dot)com / http://aamirafridi.com/jquery/jquery-marquee-plugin
+ */;
+(function($) {
+    $.fn.marquee = function(options) {
+        return this.each(function() {
+            // Extend the options if any provided
+            var o = $.extend({}, $.fn.marquee.defaults, options),
+                $this = $(this),
+                $marqueeWrapper, containerWidth, animationCss, verticalDir, elWidth,
+                loopCount = 3,
+                playState = 'animation-play-state',
+                css3AnimationIsSupported = false,
+                // Private methods
+                _prefixedEvent = function(element, type, callback) {
+                    var pfx = ["webkit", "moz", "MS", "o", ""];
+                    for (var p = 0; p < pfx.length; p++) {
+                        if (!pfx[p]) type = type.toLowerCase();
+                        element.addEventListener(pfx[p] + type, callback, false);
+                    }
+                },
+                _objToString = function(obj) {
+                    var tabjson = [];
+                    for (var p in obj) {
+                        if (obj.hasOwnProperty(p)) {
+                            tabjson.push(p + ':' + obj[p]);
+                        }
+                    }
+                    tabjson.push();
+                    return '{' + tabjson.join(',') + '}';
+                },
+                _startAnimationWithDelay = function() {
+                    $this.timer = setTimeout(animate, o.delayBeforeStart);
+                },
+                // Public methods
+                methods = {
+                    pause: function() {
+                        if (css3AnimationIsSupported && o.allowCss3Support) {
+                            $marqueeWrapper.css(playState, 'paused');
+                        } else {
+                            // pause using pause plugin
+                            if ($.fn.pause) {
+                                $marqueeWrapper.pause();
+                            }
+                        }
+                        // save the status
+                        $this.data('runningStatus', 'paused');
+                        // fire event
+                        $this.trigger('paused');
+                    },
+                    resume: function() {
+                        // resume using css3
+                        if (css3AnimationIsSupported && o.allowCss3Support) {
+                            $marqueeWrapper.css(playState, 'running');
+                        } else {
+                            // resume using pause plugin
+                            if ($.fn.resume) {
+                                $marqueeWrapper.resume();
+                            }
+                        }
+                        // save the status
+                        $this.data('runningStatus', 'resumed');
+                        // fire event
+                        $this.trigger('resumed');
+                    },
+                    toggle: function() {
+                        methods[$this.data('runningStatus') == 'resumed' ? 'pause' : 'resume']();
+                    },
+                    destroy: function() {
+                        // Clear timer
+                        clearTimeout($this.timer);
+                        // Unbind all events
+                        $this.find("*").addBack().off();
+                        // Just unwrap the elements that has been added using this plugin
+                        $this.html($this.find('.js-marquee:first').html());
+                    }
+                };
+            // Check for methods
+            if (typeof options === 'string') {
+                if ($.isFunction(methods[options])) {
+                    // Following two IF statements to support public methods
+                    if (!$marqueeWrapper) {
+                        $marqueeWrapper = $this.find('.js-marquee-wrapper');
+                    }
+                    if ($this.data('css3AnimationIsSupported') === true) {
+                        css3AnimationIsSupported = true;
+                    }
+                    methods[options]();
+                }
+                return;
+            }
+            /* Check if element has data attributes. They have top priority
+             For details https://twitter.com/aamirafridi/status/403848044069679104 - Can't find a better solution :/
+             jQuery 1.3.2 doesn't support $.data().KEY hence writting the following */
+            var dataAttributes = {},
+                attr;
+            $.each(o, function(key, value) {
+                // Check if element has this data attribute
+                attr = $this.attr('data-' + key);
+                if (typeof attr !== 'undefined') {
+                    // Now check if value is boolean or not
+                    switch (attr) {
+                        case 'true':
+                            attr = true;
+                            break;
+                        case 'false':
+                            attr = false;
+                            break;
+                    }
+                    o[key] = attr;
+                }
+            });
+            // Reintroduce speed as an option. It calculates duration as a factor of the container width
+            // measured in pixels per second.
+            if (o.speed) {
+                o.duration = parseInt($this.width(), 10) / o.speed * 1000;
+            }
+            // Shortcut to see if direction is upward or downward
+            verticalDir = o.direction == 'up' || o.direction == 'down';
+            // no gap if not duplicated
+            o.gap = o.duplicated ? parseInt(o.gap) : 0;
+            // wrap inner content into a div
+            $this.wrapInner('<div class="js-marquee"></div>');
+            // Make copy of the element
+            var $el = $this.find('.js-marquee').css({
+                'margin-right': o.gap,
+                'float': 'left'
+            });
+            if (o.duplicated) {
+                $el.clone(true).appendTo($this);
+            }
+            // wrap both inner elements into one div
+            $this.wrapInner('<div style="width:100000px" class="js-marquee-wrapper"></div>');
+            // Save the reference of the wrapper
+            $marqueeWrapper = $this.find('.js-marquee-wrapper');
+            // If direction is up or down, get the height of main element
+            if (verticalDir) {
+                var containerHeight = $this.height();
+                $marqueeWrapper.removeAttr('style');
+                $this.height(containerHeight);
+                // Change the CSS for js-marquee element
+                $this.find('.js-marquee').css({
+                    'float': 'none',
+                    'margin-bottom': o.gap,
+                    'margin-right': 0
+                });
+                // Remove bottom margin from 2nd element if duplicated
+                if (o.duplicated) $this.find('.js-marquee:last').css({
+                    'margin-bottom': 0
+                });
+                var elHeight = $this.find('.js-marquee:first').height() + o.gap;
+                // adjust the animation duration according to the text length
+                if (o.startVisible && !o.duplicated) {
+                    // Compute the complete animation duration and save it for later reference
+                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * duration;
+                    o._completeDuration = ((parseInt(elHeight, 10) + parseInt(containerHeight, 10)) / parseInt(containerHeight, 10)) * o.duration;
+                    // formula is to: (Height of the text node / height of the main container) * duration
+                    o.duration = (parseInt(elHeight, 10) / parseInt(containerHeight, 10)) * o.duration;
+                } else {
+                    // formula is to: (Height of the text node + height of the main container / Height of the main container) * duration;
+                    o.duration = ((parseInt(elHeight, 10) + parseInt(containerHeight, 10)) / parseInt(containerHeight, 10)) * o.duration;
+                }
+            } else {
+                // Save the width of the each element so we can use it in animation
+                elWidth = $this.find('.js-marquee:first').width() + o.gap;
+                // container width
+                containerWidth = $this.width();
+                // adjust the animation duration according to the text length
+                if (o.startVisible && !o.duplicated) {
+                    // Compute the complete animation duration and save it for later reference
+                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * duration;
+                    o._completeDuration = ((parseInt(elWidth, 10) + parseInt(containerWidth, 10)) / parseInt(containerWidth, 10)) * o.duration;
+                    // (Width of the text node / width of the main container) * duration
+                    o.duration = (parseInt(elWidth, 10) / parseInt(containerWidth, 10)) * o.duration;
+                } else {
+                    // formula is to: (Width of the text node + width of the main container / Width of the main container) * duration;
+                    o.duration = ((parseInt(elWidth, 10) + parseInt(containerWidth, 10)) / parseInt(containerWidth, 10)) * o.duration;
+                }
+            }
+            // if duplicated then reduce the duration
+            if (o.duplicated) {
+                o.duration = o.duration / 2;
+            }
+            if (o.allowCss3Support) {
+                var
+                    elm = document.body || document.createElement('div'),
+                    animationName = 'marqueeAnimation-' + Math.floor(Math.random() * 10000000),
+                    domPrefixes = 'Webkit Moz O ms Khtml'.split(' '),
+                    animationString = 'animation',
+                    animationCss3Str = '',
+                    keyframeString = '';
+                // Check css3 support
+                if (elm.style.animation !== undefined) {
+                    keyframeString = '@keyframes ' + animationName + ' ';
+                    css3AnimationIsSupported = true;
+                }
+                if (css3AnimationIsSupported === false) {
+                    for (var i = 0; i < domPrefixes.length; i++) {
+                        if (elm.style[domPrefixes[i] + 'AnimationName'] !== undefined) {
+                            var prefix = '-' + domPrefixes[i].toLowerCase() + '-';
+                            animationString = prefix + animationString;
+                            playState = prefix + playState;
+                            keyframeString = '@' + prefix + 'keyframes ' + animationName + ' ';
+                            css3AnimationIsSupported = true;
+                            break;
+                        }
+                    }
+                }
+                if (css3AnimationIsSupported) {
+                    animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's infinite ' + o.css3easing;
+                    $this.data('css3AnimationIsSupported', true);
+                }
+            }
+            var _rePositionVertically = function() {
+                    $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? containerHeight + 'px' : '-' + elHeight + 'px') + ')');
+                },
+                _rePositionHorizontally = function() {
+                    $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? containerWidth + 'px' : '-' + elWidth + 'px') + ')');
+                };
+            // if duplicated option is set to true than position the wrapper
+            if (o.duplicated) {
+                if (verticalDir) {
+                    if (o.startVisible) {
+                        $marqueeWrapper.css('transform', 'translateY(0)');
+                    } else {
+                        $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? containerHeight + 'px' : '-' + ((elHeight * 2) - o.gap) + 'px') + ')');
+                    }
+                } else {
+                    if (o.startVisible) {
+                        $marqueeWrapper.css('transform', 'translateX(0)');
+                    } else {
+                        $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? containerWidth + 'px' : '-' + ((elWidth * 2) - o.gap) + 'px') + ')');
+                    }
+                }
+                // If the text starts out visible we can skip the two initial loops
+                if (!o.startVisible) {
+                    loopCount = 1;
+                }
+            } else if (o.startVisible) {
+                // We only have two different loops if marquee is duplicated and starts visible
+                loopCount = 2;
+            } else {
+                if (verticalDir) {
+                    _rePositionVertically();
+                } else {
+                    _rePositionHorizontally();
+                }
+            }
+            // Animate recursive method
+            var animate = function() {
+                if (o.duplicated) {
+                    // When duplicated, the first loop will be scroll longer so double the duration
+                    if (loopCount === 1) {
+                        o._originalDuration = o.duration;
+                        if (verticalDir) {
+                            o.duration = o.direction == 'up' ? o.duration + (containerHeight / ((elHeight) / o.duration)) : o.duration * 2;
+                        } else {
+                            o.duration = o.direction == 'left' ? o.duration + (containerWidth / ((elWidth) / o.duration)) : o.duration * 2;
+                        }
+                        // Adjust the css3 animation as well
+                        if (animationCss3Str) {
+                            animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's ' + o.css3easing;
+                        }
+                        loopCount++;
+                    }
+                    // On 2nd loop things back to normal, normal duration for the rest of animations
+                    else if (loopCount === 2) {
+                        o.duration = o._originalDuration;
+                        // Adjust the css3 animation as well
+                        if (animationCss3Str) {
+                            animationName = animationName + '0';
+                            keyframeString = $.trim(keyframeString) + '0 ';
+                            animationCss3Str = animationName + ' ' + o.duration / 1000 + 's 0s infinite ' + o.css3easing;
+                        }
+                        loopCount++;
+                    }
+                }
+                if (verticalDir) {
+                    if (o.duplicated) {
+                        // Adjust the starting point of animation only when first loops finishes
+                        if (loopCount > 2) {
+                            $marqueeWrapper.css('transform', 'translateY(' + (o.direction == 'up' ? 0 : '-' + elHeight + 'px') + ')');
+                        }
+                        animationCss = {
+                            'transform': 'translateY(' + (o.direction == 'up' ? '-' + elHeight + 'px' : 0) + ')'
+                        };
+                    } else if (o.startVisible) {
+                        // This loop moves the marquee out of the container
+                        if (loopCount === 2) {
+                            // Adjust the css3 animation as well
+                            if (animationCss3Str) {
+                                animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's ' + o.css3easing;
+                            }
+                            animationCss = {
+                                'transform': 'translateY(' + (o.direction == 'up' ? '-' + elHeight + 'px' : containerHeight + 'px') + ')'
+                            };
+                            loopCount++;
+                        } else if (loopCount === 3) {
+                            // Set the duration for the animation that will run forever
+                            o.duration = o._completeDuration;
+                            // Adjust the css3 animation as well
+                            if (animationCss3Str) {
+                                animationName = animationName + '0';
+                                keyframeString = $.trim(keyframeString) + '0 ';
+                                animationCss3Str = animationName + ' ' + o.duration / 1000 + 's 0s infinite ' + o.css3easing;
+                            }
+                            _rePositionVertically();
+                        }
+                    } else {
+                        _rePositionVertically();
+                        animationCss = {
+                            'transform': 'translateY(' + (o.direction == 'up' ? '-' + ($marqueeWrapper.height()) + 'px' : containerHeight + 'px') + ')'
+                        };
+                    }
+                } else {
+                    if (o.duplicated) {
+                        // Adjust the starting point of animation only when first loops finishes
+                        if (loopCount > 2) {
+                            $marqueeWrapper.css('transform', 'translateX(' + (o.direction == 'left' ? 0 : '-' + elWidth + 'px') + ')');
+                        }
+                        animationCss = {
+                            'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : 0) + ')'
+                        };
+                    } else if (o.startVisible) {
+                        // This loop moves the marquee out of the container
+                        if (loopCount === 2) {
+                            // Adjust the css3 animation as well
+                            if (animationCss3Str) {
+                                animationCss3Str = animationName + ' ' + o.duration / 1000 + 's ' + o.delayBeforeStart / 1000 + 's ' + o.css3easing;
+                            }
+                            animationCss = {
+                                'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px') + ')'
+                            };
+                            loopCount++;
+                        } else if (loopCount === 3) {
+                            // Set the duration for the animation that will run forever
+                            o.duration = o._completeDuration;
+                            // Adjust the css3 animation as well
+                            if (animationCss3Str) {
+                                animationName = animationName + '0';
+                                keyframeString = $.trim(keyframeString) + '0 ';
+                                animationCss3Str = animationName + ' ' + o.duration / 1000 + 's 0s infinite ' + o.css3easing;
+                            }
+                            _rePositionHorizontally();
+                        }
+                    } else {
+                        _rePositionHorizontally();
+                        animationCss = {
+                            'transform': 'translateX(' + (o.direction == 'left' ? '-' + elWidth + 'px' : containerWidth + 'px') + ')'
+                        };
+                    }
+                }
+                // fire event
+                $this.trigger('beforeStarting');
+                // If css3 support is available than do it with css3, otherwise use jQuery as fallback
+                if (css3AnimationIsSupported) {
+                    // Add css3 animation to the element
+                    $marqueeWrapper.css(animationString, animationCss3Str);
+                    var keyframeCss = keyframeString + ' { 100%  ' + _objToString(animationCss) + '}',
+                        $styles = $marqueeWrapper.find('style');
+                    // Now add the keyframe animation to the marquee element
+                    if ($styles.length !== 0) {
+                        // Bug fixed for jQuery 1.3.x - Instead of using .last(), use following
+                        $styles.filter(":last").html(keyframeCss);
+                    } else {
+                        $('head').append('<style>' + keyframeCss + '</style>');
+                    }
+                    // Animation iteration event
+                    _prefixedEvent($marqueeWrapper[0], "AnimationIteration", function() {
+                        $this.trigger('finished');
+                    });
+                    // Animation stopped
+                    _prefixedEvent($marqueeWrapper[0], "AnimationEnd", function() {
+                        animate();
+                        $this.trigger('finished');
+                    });
+                } else {
+                    // Start animating
+                    $marqueeWrapper.animate(animationCss, o.duration, o.easing, function() {
+                        // fire event
+                        $this.trigger('finished');
+                        // animate again
+                        if (o.pauseOnCycle) {
+                            _startAnimationWithDelay();
+                        } else {
+                            animate();
+                        }
+                    });
+                }
+                // save the status
+                $this.data('runningStatus', 'resumed');
+            };
+            // bind pause and resume events
+            $this.on('pause', methods.pause);
+            $this.on('resume', methods.resume);
+            if (o.pauseOnHover) {
+                $this.on('mouseenter', methods.pause);
+                $this.on('mouseleave', methods.resume);
+            }
+            // If css3 animation is supported than call animate method at once
+            if (css3AnimationIsSupported && o.allowCss3Support) {
+                animate();
+            } else {
+                // Starts the recursive method
+                _startAnimationWithDelay();
+            }
+        });
+    }; // End of Plugin
+    // Public: plugin defaults options
+    $.fn.marquee.defaults = {
+        // If you wish to always animate using jQuery
+        allowCss3Support: true,
+        // works when allowCss3Support is set to true - for full list see http://www.w3.org/TR/2013/WD-css3-transitions-20131119/#transition-timing-function
+        css3easing: 'linear',
+        // requires jQuery easing plugin. Default is 'linear'
+        easing: 'linear',
+        // pause time before the next animation turn in milliseconds
+        delayBeforeStart: 1000,
+        // 'left', 'right', 'up' or 'down'
+        direction: 'left',
+        // true or false - should the marquee be duplicated to show an effect of continues flow
+        duplicated: false,
+        // duration in milliseconds of the marquee in milliseconds
+        duration: 5000,
+        // Speed allows you to set a relatively constant marquee speed regardless of the width of the containing element. Speed is measured in pixels per second.
+        speed: 0,
+        // gap in pixels between the tickers
+        gap: 20,
+        // on cycle pause the marquee
+        pauseOnCycle: false,
+        // on hover pause the marquee - using jQuery plugin https://github.com/tobia/Pause
+        pauseOnHover: false,
+        // the marquee is visible initially positioned next to the border towards it will be moving
+        startVisible: false
+    };
+})(jQuery);
 $(function () {
     var lazyImages = $('.lazy-image');
     var inAdvance = 300;
@@ -3607,6 +4044,71 @@ jQuery(document).ready(function ($) {
     //     $(elm).animate({scrollLeft: scrollLeft - walk}, 0)
     // });
 
+
+    $('.accordion-block__card-title').click(function(j) {
+
+        var dropDown = $(this).closest('.accordion-block__card').find('.accordion-block__card-panel');
+        $(this).closest('.accordion-block__list').find('.accordion-block__card-panel').not(dropDown).slideUp();
+
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+        } else {
+            $(this).closest('.accordion-block__list').find('.accordion-block__card-title.active').removeClass('active');
+            $(this).addClass('active');
+        }
+
+        dropDown.stop(false, true).slideToggle();
+        j.preventDefault();
+    });
+
+    if ($(".accordion-block__card-title").length > 0) {
+        $('.accordion-block__list .accordion-block__card:first-child .accordion-block__card-title').click();
+    }
+
+    $(".work-block__list li").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $(".news-list__item").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $(".contact-block__list-item").mouseover(function () {
+        $(this).siblings().addClass("fade");
+    }).mouseout(function () {
+        $(this).siblings().removeClass("fade");
+    });
+
+    $('.image-list').slick({
+        variableWidth: true,
+        arrows: false,
+        dots: false,
+        infinite: false,
+        mobileFirst: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: 'unslick'
+            }
+        ]
+    });
+
+    if ($('.marquee-block__text').length > 0) {
+        $('.marquee-block__text').marquee({
+            duration: 15000,
+            gap: 10,
+            delayBeforeStart: 0,
+            direction: 'left',
+            duplicated: true,
+            startVisible: true
+        });
+    }
+
+
 });
 
 
@@ -3640,7 +4142,7 @@ $(function () {
 
             this.$toggle.on('click', function (e) {
                 e.preventDefault();
-
+                $('body').toggleClass("fixed-position");
                 self.$el.toggleClass(self.activeClass);
             });
         }
