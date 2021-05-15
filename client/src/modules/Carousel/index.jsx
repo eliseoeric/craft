@@ -2,13 +2,14 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import uuid from 'uuid'
 
+import { isBrowser } from '../../utils'
 import Slider from '@Components/Slider'
 import Slide from '@Components/Slider/Slide'
 import * as styles from './styles.module.scss'
 
 const CarouselModule = ({ title, slug, slides }) => {
-  if (window === undefined) {
-    return
+  if (!isBrowser) {
+    return null;
   }
   return (
     <section id={slug} className={styles.root}>
@@ -17,7 +18,13 @@ const CarouselModule = ({ title, slug, slides }) => {
           {slides &&
             slides.map(({ title, description, media }, index) => {
               return (
-                <Slide key={uuid.v4()} title={title} description={description} media={media} contained={false} />
+                <Slide
+                  key={uuid.v4()}
+                  title={title}
+                  description={description}
+                  media={media}
+                  contained={false}
+                />
               )
             })}
         </Slider>
@@ -33,7 +40,7 @@ export const query = graphql`
     title
     slug
     slides {
-      title 
+      title
       slug
       description
       media {
