@@ -14,7 +14,7 @@ import * as styles from './styles.module.scss'
 import Container from '@Components/Grid/Container'
 
 const CaseStudyTemplate = ({ data, pageContext }) => {
-  const { title, slug, description, layout } = data?.contentfulCaseStudy
+  const { title, slug, description, layout } = data?.contentfulTypeCaseStudy
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childrenMarkdownRemark[0].rawMarkdownBody
 
@@ -59,7 +59,7 @@ export default CaseStudyTemplate
 
 export const query = graphql`
   query($slug: String!) {
-    contentfulCaseStudy(slug: { eq: $slug }) {
+    contentfulTypeCaseStudy(slug: { eq: $slug }) {
       title
       slug
       description {
@@ -76,11 +76,8 @@ export const query = graphql`
           ...ContentThreeColumnsModule
           ...IconShowcaseModule
           ...ColorPaletteModule
-<<<<<<< HEAD
           ...CarouselModule
-=======
           ...StatisticModule
->>>>>>> c0b6fef (Add statistics module)
         }
       }
     }

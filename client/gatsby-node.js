@@ -22,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const caseStudyTemplate = path.resolve('./src/templates/caseStudy.js')
   const results = await graphql(`
     {
-      allContentfulCaseStudy {
+      allContentfulTypeCaseStudy {
         edges {
           node {
             slug
@@ -66,7 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  results.data.allContentfulCaseStudy.edges.forEach((post, index) => {
+  results.data.allContentfulTypeCaseStudy.edges.forEach((post, index) => {
     // front-page slug should be /
     const path = `/case-studies/${post.node.slug}/`
 
