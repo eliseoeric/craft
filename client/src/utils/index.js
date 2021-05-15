@@ -17,3 +17,5 @@ export const stopBodyScrolling = (preventScrolling) => {
     document.body.removeEventListener("touchmove", freezeVeiwPort, false);
   }
 }
+
+export const isBrowser = typeof window !== "undefined";

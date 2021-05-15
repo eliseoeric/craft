@@ -6,7 +6,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Container from '@Components/Grid/Container'
 import Row from '@Components/Grid/Row'
 import Column from '@Components/Grid/Column'
-import { H2 } from '@Components/Typography'
+import Divider from '@Components/Divider'
 
 import * as styles from './styles.module.scss'
 
@@ -21,7 +21,7 @@ const ContentThreeColumns = ({
   return (
     <section className={styles.root}>
       <Container className={cx(styles.container, 'remark-content')}>
-        <div className={styles.divider}/>
+        <Divider />
         <Row>
           <Column lg={4}>{documentToReactComponents(JSON.parse(columnLeft.raw))}</Column>
           <Column lg={6}>{documentToReactComponents(JSON.parse(columnCenter.raw))}</Column>

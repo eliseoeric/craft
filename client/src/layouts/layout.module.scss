@@ -5,9 +5,7 @@
 
 .case_study_wrapper {
   background-color: $gray-lighter;
-  display: flex;
   position: relative;
-
   display: grid;
   grid-template-columns: 144px auto;
   grid-template-areas:
@@ -17,4 +15,10 @@
 
 .content_wrapper {
   grid-area: content;
+  z-index: 1;
+}
+
+.main {
+  padding: 49px 84px;
+  width: calc(100% - 144px);
 }
