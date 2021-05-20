@@ -8,6 +8,7 @@ import IconShowcase from '@Modules/IconShowcase'
 import ColorPaletteModule from '@Modules/ColorPalette'
 import CarouselModule from '@Modules/Carousel'
 import Statistics from '@Modules/Statistics'
+import SelectedWorks from '@Modules/SelectedWorks'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -35,6 +36,9 @@ export default class Module extends React.Component {
         <CarouselModule {...attributes} />
       ),
       ContentfulModuleStats: (attributes) => <Statistics {...attributes} />,
+      ContentfulModuleSelectedWorks: (attributes) => (
+        <SelectedWorks {...attributes} />
+      ),
     }
 
     // prevent app from crashing when module is not defined

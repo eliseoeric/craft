@@ -1,0 +1,23 @@
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/fonts';
+@import '../../styles/definitions/colors';
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+  padding: 32px 60px;
+  @media #{$desktop} {
+    padding: 32px 40px;
+  }
+  @media #{$phone} {
+    padding: 24px;
+  }
+}

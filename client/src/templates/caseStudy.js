@@ -37,7 +37,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
         // image={`https:${socialShareImage?.file?.url}`}
         description={seoDescription}
       />
-      <CoreLayout>
+      <CoreLayout caseStudy>
         <div
           className={cx(styles.slide_in_left_full, styles.case_study, {
             [styles.slide_out_right_full]: !open,

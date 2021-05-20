@@ -55,6 +55,12 @@ export const query = graphql`
           rawMarkdownBody
         }
       }
+      layout {
+        contentModules {
+          __typename
+          ...SelectedWorksModule
+        }
+      }
     }
   }
 `
