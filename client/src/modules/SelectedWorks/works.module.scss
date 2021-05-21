@@ -1,0 +1,79 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+$transition: all 0.25s ease-in;
+
+.work_block {
+  background-color: $primary;
+  color: $white;
+  padding: 118px 0;
+  position: relative;
+  @media #{$phone} {
+    padding: 110px 0 105px;
+  }
+  .container {
+    padding-left: 16vw;
+    margin: 0;
+    max-width: 1380px;
+    @media #{$phone} {
+      padding: 0 24px;
+    }
+  }
+
+  &__list {
+    position: relative;
+    z-index: 1;
+    @media #{$phone} {
+      padding-left: 0;
+    }
+    .work_block__list_item {
+      font-family: $primary-family;
+      font-weight: 700;
+      @include fsz(132px);
+      line-height: 1;
+      margin-bottom: 23px;
+      transition: $transition;
+      @media #{$laptop} {
+        @include fsz(100px);
+      }
+      @media #{$header} {
+        @include fsz(60px);
+      }
+      &.fade a {
+        color: transparent;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        transition: $transition;
+        @media #{$phone} {
+          text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+      }
+      a {
+        transition: $transition;
+        color: $white;
+      }
+    }
+  }
+
+  &__vcenter {
+    text-transform: uppercase;
+    font-family: $primary-family;
+    @include fsz(12px);
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    writing-mode: vertical-rl;
+    transform: rotateZ(180deg);
+    position: absolute;
+    left: 60px;
+    bottom: calc(50% - 60px);
+    height: 120px;
+    color: #979797;
+    @media #{$phone} {
+      writing-mode: inherit;
+      transform: none;
+      position: static;
+      height: auto;
+    }
+  }
+}
