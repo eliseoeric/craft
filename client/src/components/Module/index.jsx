@@ -9,36 +9,22 @@ import ColorPaletteModule from '@Modules/ColorPalette'
 import CarouselModule from '@Modules/Carousel'
 import Statistics from '@Modules/Statistics'
 import SelectedWorks from '@Modules/SelectedWorks'
+import HeroModule from '@Modules/Hero'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
   renderModule(type, attributes) {
     const moduleCallbacks = {
-      ContentfulModuleSingleMedia: (attributes) => (
-        <SingleMedia {...attributes} />
-      ),
-      ContentfulModuleCaseStudyMockUp: (attributes) => (
-        <CaseStudyMockUp {...attributes} />
-      ),
-      ContentfulModuleTestimony: (attributes) => (
-        <TestimonyModule {...attributes} />
-      ),
-      ContentfulModuleContentThreeColumns: (attributes) => (
-        <ContentThreeColumns {...attributes} />
-      ),
-      ContentfulModuleIconShowcase: (attributes) => (
-        <IconShowcase {...attributes} />
-      ),
-      ContentfulModuleColorPalette: (attributes) => (
-        <ColorPaletteModule {...attributes} />
-      ),
-      ContentfulModuleCarousel: (attributes) => (
-        <CarouselModule {...attributes} />
-      ),
+      ContentfulModuleSingleMedia: (attributes) => <SingleMedia {...attributes} />,
+      ContentfulModuleCaseStudyMockUp: (attributes) => <CaseStudyMockUp {...attributes} />,
+      ContentfulModuleTestimony: (attributes) => <TestimonyModule {...attributes} />,
+      ContentfulModuleContentThreeColumns: (attributes) => <ContentThreeColumns {...attributes} />,
+      ContentfulModuleIconShowcase: (attributes) => <IconShowcase {...attributes} />,
+      ContentfulModuleColorPalette: (attributes) => <ColorPaletteModule {...attributes} />,
+      ContentfulModuleCarousel: (attributes) => <CarouselModule {...attributes} />,
       ContentfulModuleStats: (attributes) => <Statistics {...attributes} />,
-      ContentfulModuleSelectedWorks: (attributes) => (
-        <SelectedWorks {...attributes} />
-      ),
+      ContentfulModuleSelectedWorks: (attributes) => <SelectedWorks {...attributes} />,
+      ContentfulModuleHero: (attributes) => <HeroModule {...attributes} />,
     }
 
     // prevent app from crashing when module is not defined

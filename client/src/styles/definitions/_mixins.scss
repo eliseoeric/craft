@@ -118,11 +118,11 @@
   #{$property}: #{$value};
 }
 
-@mixin letter-stroke($stroke-color, $color) {
-  @supports ((text-stroke: 1px white) or (-webkit-text-stroke: 1px white)) {
+@mixin letter-stroke($stroke-color, $color, $size) {
+  @supports ((text-stroke: $size white) or (-webkit-text-stroke: $size white)) {
     color: $color;
-    -webkit-text-stroke: 1px $stroke-color;
-    text-stroke: 1px $stroke-color;
+    -webkit-text-stroke: $size $stroke-color;
+    text-stroke: $size $stroke-color;
     text-shadow: none;
   }
 }
