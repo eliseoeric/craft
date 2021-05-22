@@ -114,7 +114,7 @@
     text-transform: uppercase;
     line-height: 1.03;
     letter-spacing: 2px;
-    @include letter-stroke(#979797, transparent);
+    @include letter-stroke($gray-dark, transparent, 1px);
     position: relative;
     top: -18px;
     z-index: 1;

@@ -9,7 +9,7 @@ import useToggle from '@Hooks/useToggle'
 
 import * as styles from './styles.module.scss'
 
-const OrbContainer = ({ originXGetter, originYGetter, radiusRange }) => {
+const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className }) => {
   const [hasBooted, toggleBootState] = useToggle()
   const orbElement = useRef(null)
   const orbApp = useRef(null)
@@ -66,13 +66,13 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange }) => {
   }, [orbElement, orbApp, hasBooted, toggleBootState, orbs])
 
   return (
-    <div className={cx(styles.root)}>
+    <div className={cx(styles.root, className)}>
       <canvas className={cx(styles.canvas)} ref={orbElement}></canvas>
     </div>
   )
 }
 
-OrbContainer.PropTypes = {
+OrbContainer.propTypes = {
   originXGetter: PropTypes.func,
   originYGetter: PropTypes.func,
   radiusRange: PropTypes.arrayOf(PropTypes.number),
