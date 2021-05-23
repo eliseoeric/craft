@@ -1,0 +1,284 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/modifiers/remark-content';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.team_grid {
+  &__overlay {
+    position: absolute;
+  }
+
+  &__title {
+    font-family: $primary-family;
+    @include fsz(15px);
+    margin-bottom: 0;
+    a {
+      color: $primary;
+      cursor: pointer;
+      &:hover,
+      &:focus {
+        color: $brand-color;
+      }
+    }
+  }
+
+  &__item {
+    width: 25%;
+    padding: 0 12px;
+    margin-bottom: 60px;
+    @media #{$header} {
+      width: 50%;
+    }
+    @media #{$phone-small} {
+      margin-bottom: 55px;
+      padding: 0 9px;
+    }
+  }
+
+  &__item_image {
+    border-bottom: 1px solid $brand-color;
+    margin-bottom: 12px;
+    position: relative;
+    cursor: pointer;
+    figcaption {
+      color: $white;
+      padding: 10px 26px;
+      position: absolute;
+      bottom: 15px;
+      left: calc(50% - 40px);
+      letter-spacing: 2.5px;
+      @include fsz(12px);
+      font-family: $primary-family;
+      font-weight: 900;
+      background-color: $primary;
+      text-transform: uppercase;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    &:hover figcaption {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+    }
+  }
+
+  &__designation {
+    font-family: $primary-family;
+    color: #979797;
+    @include fsz(15px);
+  }
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    @media #{$phone} {
+      flex-wrap: wrap;
+    }
+  }
+  &__social {
+    display: flex;
+    a {
+      margin: 0 4px;
+      color: $primary;
+      &:hover,
+      &:focus {
+        color: $brand-color;
+      }
+    }
+  }
+  &__meta {
+    padding-top: 4px;
+    @media #{$phone} {
+      margin-bottom: 7px;
+      width: 100%;
+    }
+  }
+}
+
+/* Popup */
+.root {
+  justify-content: center;
+  align-items: center;
+}
+.member_popup {
+  // display: none;
+  width: 100%;
+  max-width: 983px;
+  padding: 0 !important;
+  border-top: 3px solid $brand-color;
+
+  &__wrapper {
+    margin: 6px !important;
+  }
+}
+.popup_header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-bottom: 1px solid $gray;
+  @media #{$phone-small} {
+    padding: 15px 60px 15px 20px;
+    height: 80px;
+  }
+
+  &__member_info {
+    width: 74.5%;
+    display: flex;
+    align-items: center;
+    padding: 10px 84px;
+    border-left: 1px solid $gray;
+    @media #{$phone-small} {
+      width: 100%;
+      text-align: left;
+      padding: 0;
+      border-left: none;
+    }
+  }
+
+  &__member_social {
+    display: block;
+    width: 25.5%;
+    text-align: center;
+    padding: 48px 20px;
+    @media #{$phone-small} {
+      width: 100%;
+      padding: 0;
+      text-align: left;
+    }
+    a {
+      margin: 0 2px;
+      color: $primary;
+      &:hover,
+      &:focus {
+        color: $brand-color;
+      }
+    }
+  }
+
+  &__member_name {
+    @include fsz(18px);
+    margin-bottom: 0;
+    margin-right: 13px;
+  }
+
+  &__member_designation {
+    color: #979797;
+    @include fsz(18px);
+  }
+
+  &__member_info,
+  &__member_social {
+    @media #{$phone-small} {
+      display: none;
+    }
+  }
+}
+.popup_content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__member_photo {
+    width: 25.5%;
+    padding: 50px 20px;
+    border-bottom: 1px solid $gray;
+    @media #{$phone-small} {
+      width: 100%;
+      padding: 60px 20px;
+    }
+    .popup_header__member_social {
+      display: none;
+      @media #{$phone-small} {
+        display: block;
+        max-width: 198px;
+        margin: 10px auto 0;
+      }
+    }
+    img {
+      max-width: 145px;
+      margin: 0 auto;
+      width: 100%;
+      @media #{$phone-small} {
+        max-width: 198px;
+      }
+    }
+  }
+
+  &__member_bio {
+    width: 74.5%;
+    padding: 48px 90px 60px 83px;
+    border-left: 1px solid $gray;
+    position: relative;
+    @media #{$phone} {
+      padding: 30px 50px 50px;
+    }
+    @media #{$phone-small} {
+      width: 100%;
+      padding: 40px 20px;
+    }
+    &:after {
+      content: '.';
+      color: $brand-color;
+      @include fsz(80px);
+      line-height: 10px;
+      @media #{$phone-small} {
+        line-height: 32px;
+      }
+    }
+  }
+
+  &__mobile_details {
+    display: none;
+    padding: 32px 24px;
+    width: 100%;
+    @media #{$phone-small} {
+      display: block;
+      border-bottom: 1px solid $gray;
+    }
+  }
+}
+.fancybox_is_open .fancybox_bg {
+  background-color: $primary;
+  opacity: 0.25;
+}
+.fancybox_button {
+  background: rgba(30, 30, 30, 0.6);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  padding: 10px;
+  position: relative;
+  transition: color 0.2s;
+  vertical-align: top;
+  visibility: inherit;
+}
+.fancybox_close_small {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  color: #ccc;
+  cursor: pointer;
+  opacity: 0.8;
+  padding: 8px;
+  position: absolute;
+  right: -12px;
+  top: -44px;
+  z-index: 401;
+}
+.member_popup .fancybox_close_small {
+  padding: 3px 14px;
+  right: 0;
+  top: 0;
+  height: 120px !important;
+  width: 60px !important;
+  border-left: 2px solid $gray;
+  @media #{$phone-small} {
+    top: 0;
+    height: 80px !important;
+    border-left: 1px solid $gray;
+  }
+}

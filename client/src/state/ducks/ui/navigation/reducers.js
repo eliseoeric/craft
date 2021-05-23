@@ -12,10 +12,10 @@ export default function navigation(state = InitialState.ui.navigation, action) {
       }
     }
 
-    case types.NAVIGATION_TOGGLE_LOCATION_MODAL: {
+    case types.NAVIGATION_SET_TEAM_MEMBER_MODAL: {
       return {
         ...state,
-        locationModalActive: !state.locationModalActive,
+        activeTeamMemberIndex: action.payload,
       }
     }
 

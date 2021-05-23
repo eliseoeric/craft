@@ -4,8 +4,9 @@ const toggleMobileMenu = (data) => ({
   type: types.NAVIGATION_TOGGLE_MOBILE_MENU,
 })
 
-const toggleLocationModal = (data) => ({
-  type: types.NAVIGATION_TOGGLE_LOCATION_MODAL,
+const setActiveTeamMemberIndex = (data) => ({
+  type: types.NAVIGATION_SET_TEAM_MEMBER_MODAL,
+  payload: data,
 })
 
 const toggleLoginModal = (data) => ({
@@ -19,7 +20,7 @@ const setFixedState = (data) => ({
 
 export default {
   toggleMobileMenu,
-  toggleLocationModal,
+  setActiveTeamMemberIndex,
   toggleLoginModal,
   setFixedState,
 }

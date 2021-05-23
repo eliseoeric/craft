@@ -2,14 +2,14 @@ import actions from '@State/ducks/ui/navigation/actions'
 
 const {
   toggleMobileMenu,
-  toggleLocationModal,
+  setActiveTeamMemberIndex,
   toggleLoginModal,
   setFixedState,
 } = actions
 
 export default {
   toggleMobileMenu,
-  toggleLocationModal,
+  setActiveTeamMemberIndex,
   toggleLoginModal,
   setFixedState,
 }

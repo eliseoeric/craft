@@ -60,6 +60,7 @@ export const query = graphql`
           __typename
           ...SelectedWorksModule
           ...HeroModule
+          ...TeamMembersModule
         }
       }
     }

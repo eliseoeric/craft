@@ -10,6 +10,7 @@ import CarouselModule from '@Modules/Carousel'
 import Statistics from '@Modules/Statistics'
 import SelectedWorks from '@Modules/SelectedWorks'
 import HeroModule from '@Modules/Hero'
+import TeamMembers from '@Modules/TeamMembers'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -25,6 +26,7 @@ export default class Module extends React.Component {
       ContentfulModuleStats: (attributes) => <Statistics {...attributes} />,
       ContentfulModuleSelectedWorks: (attributes) => <SelectedWorks {...attributes} />,
       ContentfulModuleHero: (attributes) => <HeroModule {...attributes} />,
+      ContentfulModuleTeamMembers: (attributes) => <TeamMembers {...attributes} />,
     }
 
     // prevent app from crashing when module is not defined

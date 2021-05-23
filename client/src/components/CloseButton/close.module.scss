@@ -2,8 +2,6 @@
 @import '../../styles/definitions/colors';
 
 .action_close {
-  height: 22px;
-  width: 22px;
   color: $primary;
   display: inline-block;
   vertical-align: top;
@@ -15,18 +13,8 @@
   right: -16px;
   transition: fill 300ms ease;
 
-  @media #{$phone} {
-    top: 37px;
-    right: 21px;
-  }
-
   &:hover,
   &:focus {
     fill: $brand-color;
-  }
-
-  svg {
-    height: 22px;
-    width: 22px;
   }
 }
