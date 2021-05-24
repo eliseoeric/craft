@@ -5,6 +5,7 @@ import cx from 'classnames'
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
+import Banner from '@Components/Banner'
 
 const PageTemplate = ({ data, pageContext }) => {
   const renderModules = (modules) => {
@@ -18,7 +19,9 @@ const PageTemplate = ({ data, pageContext }) => {
 
   const renderLayout = (layout) => {
     return (
-      <CoreLayout>
+      <CoreLayout
+        renderBelowModules={ <Banner bannerText={layout.frontmatter.banner_text} /> }
+      >
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
@@ -61,6 +64,9 @@ export const query = graphql`
           ...SelectedWorksModule
           ...HeroModule
           ...TeamMembersModule
+        }
+        frontmatter {
+          banner_text
         }
       }
     }
