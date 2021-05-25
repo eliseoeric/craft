@@ -1,5 +1,4 @@
 import React from 'react'
-import uuid from 'uuid'
 
 import SingleMedia from '@Modules/SingleMedia'
 import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
@@ -17,7 +16,6 @@ import TeamMembers from '@Modules/TeamMembers'
 // todo refactor to be stateless
 export default class Module extends React.Component {
   renderModule(type, attributes) {
-    // attributes.key = uuid.v4()
     const moduleCallbacks = {
       ContentfulModuleSingleMedia: (attributes) => <SingleMedia {...attributes} />,
       ContentfulModuleCaseStudyMockUp: (attributes) => <CaseStudyMockUp {...attributes} />,
