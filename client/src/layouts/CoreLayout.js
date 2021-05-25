@@ -22,7 +22,7 @@ const CoreLayout = ({ children, className, caseStudy, renderBelowModules }) => {
         })}
       >
         {children}
-        {renderBelowModules}
+        {renderBelowModules && renderBelowModules()}
       </main>
       <Footer />
     </div>

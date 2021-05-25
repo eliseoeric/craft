@@ -20,7 +20,7 @@ const PageTemplate = ({ data, pageContext }) => {
   const renderLayout = (layout) => {
     return (
       <CoreLayout
-        renderBelowModules={ <Banner bannerText={layout.frontmatter.banner_text} /> }
+        renderBelowModules={() => (<Banner bannerText={layout.frontmatter.banner_text} />) }
       >
         {layout &&
           layout.contentModules &&
