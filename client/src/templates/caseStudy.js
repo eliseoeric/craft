@@ -78,6 +78,7 @@ export const query = graphql`
           ...ColorPaletteModule
           ...CarouselModule
           ...StatisticModule
+          ...ContentWithHeadlineModuleQuery
         }
       }
     }

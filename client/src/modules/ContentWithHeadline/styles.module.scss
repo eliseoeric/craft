@@ -1,0 +1,22 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.content_with_headline {
+  padding-bottom: 57px;
+  padding-left: 16vw;
+
+  @media #{$desktop} {
+    margin: 0 auto 20px;
+    padding-left: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+
+  ul {
+      column-count: 2;
+  }
+}
