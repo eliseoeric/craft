@@ -31,6 +31,7 @@
     "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
     "hex-to-hsl": "^1.0.2",
+    "htmr": "^1.0.0",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.20",
     "node-sass": "^5.0.0",
