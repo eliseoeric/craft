@@ -8,7 +8,7 @@ import Sidebar from '@Components/Sidebar'
 import '../styles/app.scss'
 import * as styles from './layout.module.scss'
 
-const CoreLayout = ({ children, className, caseStudy }) => {
+const CoreLayout = ({ children, className, caseStudy, renderBelowModules }) => {
   return (
     <div
       className={cx('core-layout', className, {
@@ -22,6 +22,7 @@ const CoreLayout = ({ children, className, caseStudy }) => {
         })}
       >
         {children}
+        {renderBelowModules && renderBelowModules()}
       </main>
       <Footer />
     </div>
