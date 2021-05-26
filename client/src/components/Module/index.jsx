@@ -4,6 +4,7 @@ import SingleMedia from '@Modules/SingleMedia'
 import CaseStudyMockUp from '@Modules/CaseStudyMockUp'
 import TestimonyModule from '@Modules/Testimony'
 import ContentThreeColumns from '@Modules/ContentThreeColumns'
+import ContentWithHeadline from '@Modules/ContentWithHeadline'
 import IconShowcase from '@Modules/IconShowcase'
 import ColorPaletteModule from '@Modules/ColorPalette'
 import CarouselModule from '@Modules/Carousel'
@@ -20,6 +21,7 @@ export default class Module extends React.Component {
       ContentfulModuleCaseStudyMockUp: (attributes) => <CaseStudyMockUp {...attributes} />,
       ContentfulModuleTestimony: (attributes) => <TestimonyModule {...attributes} />,
       ContentfulModuleContentThreeColumns: (attributes) => <ContentThreeColumns {...attributes} />,
+      ContentfulModuleContentWithHeadline: (attributes) => <ContentWithHeadline {...attributes} />,
       ContentfulModuleIconShowcase: (attributes) => <IconShowcase {...attributes} />,
       ContentfulModuleColorPalette: (attributes) => <ColorPaletteModule {...attributes} />,
       ContentfulModuleCarousel: (attributes) => <CarouselModule {...attributes} />,
