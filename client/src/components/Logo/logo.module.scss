@@ -41,25 +41,36 @@
   }
 }
 
-.logo__all:hover {
-  path {
-    // fill: none;
-    stroke: $green !important;
-    stroke-dasharray: 280 280;
-    stroke-dashoffset: 280;
-    animation-duration: 1s;
-    animation-name: drawGreen;
-    animation-fill-mode: forwards;
-    // animation-iteration-count: infinite;
-    // animation-direction: alternate;
-    animation-timing-function: linear;
-  }
-}
-
 .logo__gray:hover {
   path {
     stroke: $purple !important;
     animation-name: drawPurple;
+  }
+}
+
+.logo__white {
+  svg path:nth-of-type(1) {
+    fill: $white;
+    transition: fill 0.2s ease-in-out;
+  }
+  svg path:nth-of-type(2) {
+    fill: $black;
+  }
+  &:hover svg path:nth-of-type(1) {
+    fill: $green;
+  }
+}
+
+.logo__case_study {
+  svg path:nth-of-type(1) {
+    fill: $black;
+    transition: fill 0.2s ease-in-out;
+  }
+  svg path:nth-of-type(2) {
+    fill: $white;
+  }
+  &:hover svg path:nth-of-type(1) {
+    fill: $green;
   }
 }
 

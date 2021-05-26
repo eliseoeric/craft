@@ -28,6 +28,10 @@ const Logo = ({ variant, className }) => {
       class: 'logo__white',
       src: LogoWhite,
     },
+    caseStudy: {
+      class: 'logo__case_study',
+      src: LogoWhite,
+    },
     gray: {
       class: 'logo__gray',
       src: LogoGray,
@@ -52,7 +56,7 @@ Logo.defaultProps = {
 }
 
 Logo.propTypes = {
-  variant: PropTypes.oneOf(['white', 'gray', 'dark']),
+  variant: PropTypes.oneOf(['white', 'gray', 'dark', 'caseStudy']),
   className: PropTypes.string,
 }
 

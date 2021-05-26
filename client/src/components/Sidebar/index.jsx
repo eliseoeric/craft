@@ -9,7 +9,7 @@ const Sidebar = ({className}) => {
   // todo on smaller screens, change the logo variant
   return (
     <section className={styles.root}>
-      <Logo variant={'white'} />
+      <Logo variant={'caseStudy'} />
     </section>
   )
 }
