@@ -5,11 +5,16 @@ import cx from 'classnames'
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
+import BlogIndexModule from '@Modules/BlogIndex'
 
 const PageTemplate = ({ data, pageContext }) => {
+
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
+      if(__typename === 'ContentfulModuleBlogIndex') {
+        return <BlogIndexModule posts={data.newsPages.edges} key={__typename} />
+      }
       return (
         <Module attributes={attributes} type={__typename} key={__typename} />
       )
@@ -62,6 +67,13 @@ export const query = graphql`
           ...HeroModule
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
+        }
+      }
+    }
+    newsPages: allContentfulTypeBlogPost {
+      edges {
+        node {
+          ...BlogExcerptQuery
         }
       }
     }
