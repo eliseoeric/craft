@@ -3,13 +3,13 @@ import cx from 'classnames'
 
 import Logo from '@Components/Logo'
 
-import styles from './header.module.scss'
+import * as styles from './header.module.scss'
 
 function Header() {
   return (
-    <header className={cx(styles.header, styles.js_header)}>
+    <header className={cx(styles.header)}>
       <Logo variant="white" />
-      <nav className={styles.nav_container} />
+      <nav />
     </header>
   )
 }
