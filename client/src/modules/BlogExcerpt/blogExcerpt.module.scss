@@ -11,6 +11,7 @@ $transition: all 0.25s ease-in;
   padding-top: 2rem;
   padding-left: calc(144px + #{$gutter_desktop});
   padding-right: calc(144px + #{$gutter_desktop});
+  transition: $transition;
 
   @media #{$laptop} {
     padding-left: 80px; 
@@ -39,18 +40,35 @@ $transition: all 0.25s ease-in;
   display: inline-block;
   margin-bottom: 0.5rem;
   padding: 0;
+  transition: $transition;
 
   &:hover {
     border-bottom: 1px solid $green;
-    transition: $transition;
   }
 }
 
-.blur > * {
+.blur, .blur > * {
   color: transparent;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: $transition;
   @media #{$phone} {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
+
+  a {
+    color: transparent;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.imgWrap {
+  transition: $transition;
+}
+
+.flexItem {
+  flex: 0 0 50%;
 }

@@ -13,7 +13,7 @@ const PageTemplate = ({ data, pageContext }) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
       if(__typename === 'ContentfulModuleBlogIndex') {
-        return <BlogIndexModule posts={data.newsPages.edges} key={__typename} />
+        return <BlogIndexModule key={__typename} />
       }
       return (
         <Module attributes={attributes} type={__typename} key={__typename} />
@@ -67,13 +67,6 @@ export const query = graphql`
           ...HeroModule
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
-        }
-      }
-    }
-    newsPages: allContentfulTypeBlogPost {
-      edges {
-        node {
-          ...BlogExcerptQuery
         }
       }
     }
