@@ -18,22 +18,22 @@ const SocialIconsAlt = ({
   <div className={cx(styles.root, className)}>
     {dribbleUrl && (
       <a href={dribbleUrl} target="blank">
-        <DribbbleIcon className={cx(styles.icon, styles.icon_dribbble)} />
+        <DribbbleIcon className={cx(styles.icon)} />
       </a>
     )}
     {instagramUrl && (
       <a href={instagramUrl} target="blank">
-        <InstagramIcon className={cx(styles.icon, styles.icon_instagram_alt)} />
+        <InstagramIcon className={cx(styles.icon)} />
       </a>
     )}
     {linkedInUrl && (
       <a href={linkedInUrl} target="blank">
-        <LinkedInIcon className={cx(styles.icon, styles.icon_medium)} />
+        <LinkedInIcon className={cx(styles.icon)} />
       </a>
     )}
     {mediumUrl && (
       <a href={mediumUrl} target="blank">
-        <MediumIcon className={cx(styles.icon, styles.icon_linkedin)} />
+        <MediumIcon className={cx(styles.icon)} />
       </a>
     )}
   </div>

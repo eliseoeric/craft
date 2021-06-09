@@ -1,6 +1,7 @@
 import React from 'react'
 import htmr from 'htmr'
 import cx from 'classnames'
+import { graphql } from 'gatsby'
 import * as styles from './styles.module.scss'
 
 import { H2 } from '@Components/Typography'
