@@ -1,173 +1,50 @@
-@import "../../styles/definitions/breakpoints";
-@import "../../styles/definitions/mixins";
-@import "../../styles/definitions/fonts";
-@import "../../styles/definitions/colors";
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/fonts';
+@import '../../styles/definitions/colors';
 
-.root {
+.navigation__anchor {
+  color: $primary;
   position: relative;
-  margin-left: 23px;
 
-  @media #{$header} {
-    width: 100%;
-    margin-right: 0;
-    margin-left: 0;
-    padding: 0 32px;
-  }
-
-  &:hover > a {
-    color: $brand-color;
-  }
-
-  &.current-menu-item > a {
-    color: $brand-color;
-  }
-
-  > a {
-    display: flex;
-    align-items: center;
-    color: $secondary;
-    @include fsz(24px); 
-    padding: 9px 0;
-    font-family: $primary-family;
-    text-decoration: none;
-    font-weight: 400;
-    text-transform: uppercase;
-    line-height: 1;
-
-    @media #{$header} {
-      display: flex;
-      width: 100%;
-      padding: 15px 0 10px;
-    }
-  }
-
-  &.item-active {
-    > .sub-menu {
-      visibility: visible;
-      opacity: 1;
-      transition: visibility 0s linear 0s, opacity 0.3s;
-    }
-  }
-
-  &:hover {
-    > .sub-menu {
-      visibility: visible;
-      opacity: 1;
-
-      li a {
-        display: block;
-        transition: background-color 0.3s;
-        
-        &:hover,
-        &:focus {
-          background-color: #ececec;
-          &:before {
-            top: 0;
-            transition: 0.5s;
-          }
-        }
-      }
-
-      .sub-menu {
-        visibility: visible;
-        opacity: 1;
-      }
-    }
-  }
-
-  .sub-menu {
+  &:before {
+    content: '';
     position: absolute;
-    top: 100%;
-    left: 0;
-    width: 160px;
-    background-color: $white;
-    visibility: hidden;
-    opacity: 0;
-    z-index: 2;
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    bottom: -4px;
+    right: 0;
+    left: auto;
+    width: 0;
+    border-top: 1px solid $brand-color;
+    -webkit-transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.25s cubic-bezier(0.77, 0, 0.175, 1);
+  }
 
-    li {
-      margin-left: 0;
-      border-bottom: 1px solid #ececec;
-      @media #{$header} {
-        border-bottom: none;
-        border-top: 1px solid #ececec;
-        padding: 0;
-      }
-
-      &.menu-item-has-children {
-        margin-left: 0;
-        padding-right: 0;
-      }
-
-      a {
-        padding: 15px 22px 9px;
-        text-transform: uppercase;
-        position: relative;
-        overflow: hidden;
-
-        @media #{$header} {
-          padding: 8px 12px 3px;
-        }
-
-        &:before {
-          content: '';
-          display: block;
-          position: absolute;
-          top: -100%;
-          left: 0;
-          width: 4px;
-          background-color: $brand-color;
-          height: 100%;
-          transition: none;
-        }
-      }
-    }
-
-    // todo disable/enable via state
-    .nav__visible & {
-      @media #{$header} {
-        box-shadow: none;
-        transform: translate(0, 0);
-        padding-top: 0;
-      }
-    }
-
-    @media #{$header} {
-      position: static;
-      visibility: visible;
-      opacity: 1;
-      background: none;
-      display: none;
+  &:hover,
+  &:focus,
+  &:active {
+    &:before {
+      right: auto;
       width: 100%;
-    }
-
-    .sub-menu {
-      position: static;
-      padding: 0 0 0 10px;
-      visibility: hidden;
-      opacity: 0;
-
-      @media #{$header} {
-        display: block !important;
-        visibility: visible;
-        opacity: 1;
-      }
-
-      &:before {
-        display: none;
-      }
-    }
-
-    > li {
-      > a {
-        position: relative;
-        @media #{$header} {
-          color: $secondary;
-          @include fsz(18px);
-        }
+      left: 0;
+      border-top: 1px solid $brand-color;
+      bottom: -4px;
+      @media #{$phone} {
+        bottom: 4px;
       }
     }
   }
 }
 
+a.active {
+  @include font_loader($primary-family, 9, 'normal');
+  &:before {
+    right: auto;
+    width: 100%;
+    left: 0;
+    border-top: 1px solid $brand-color;
+    bottom: -4px;
+    @media #{$phone} {
+      display: none;
+    }
+  }
+}
