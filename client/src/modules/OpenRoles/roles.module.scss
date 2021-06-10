@@ -1,0 +1,61 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.content {
+  padding-bottom: 57px;
+  padding-left: 16vw;
+  width: 100%;
+
+  @media #{$desktop} {
+    margin: 0 auto 20px;
+    padding-left: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+  }
+
+  ul {
+    column-count: 2;
+  }
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0;
+}
+
+.careers_list {
+  margin-top: -20px;
+
+  a {
+    color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @include fsz(18px);
+    border-bottom: 1px solid $white;
+    padding: 18px 0;
+    &:hover,
+    &:focus {
+      border-bottom-color: $brand-color;
+    }
+  }
+}
+.careers_list__item__title {
+  @include font_loader($primary-family, 9, 'bold');
+  width: 57%;
+}
+.careers_list__item__location {
+  width: 40%;
+  @media #{$phone-small} {
+    text-align: right;
+  }
+}

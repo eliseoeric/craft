@@ -70,6 +70,7 @@ export const query = graphql`
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
           ...ImageGroupModule
+          ...OpenRoles
         }
       }
     }

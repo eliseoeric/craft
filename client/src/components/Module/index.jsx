@@ -14,6 +14,7 @@ import HeroModule from '@Modules/Hero'
 import TeamMembers from '@Modules/TeamMembers'
 import BlogIndex from '@Modules/BlogIndex'
 import ImageGroup from '@Modules/ImageGroup'
+import OpenRoles from '@Modules/OpenRoles'
 
 // todo refactor to be stateless
 export default class Module extends React.Component {
@@ -33,6 +34,7 @@ export default class Module extends React.Component {
       ContentfulModuleTeamMembers: (attributes) => <TeamMembers {...attributes} />,
       ContentfulModuleBlogIndex: (attributes) => <BlogIndex {...attributes} />,
       ContentfulModuleImageGroup: (attributes) => <ImageGroup {...attributes} />,
+      ContentfulModuleOpenRoles: (attributes) => <OpenRoles {...attributes} />,
     }
 
     // prevent app from crashing when module is not defined
