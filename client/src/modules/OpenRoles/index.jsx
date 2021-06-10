@@ -29,7 +29,8 @@ const OpenRoles = ({ title, slug, openRoles }) => {
                 openRoles.map((role, index) => {
                   return (
                     <div class="careers_list__item">
-                      <Link to={`careers/${role.slug}`}>
+                      {/* todo this needs to dispatch the open drawer */}
+                      <Link to={`/careers/${role.slug}`} >
                         <span className={styles.careers_list__item__title}>
                           {role.title}
                         </span>

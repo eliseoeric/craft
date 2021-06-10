@@ -1,25 +1,24 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
+import { useSelector, useDispatch } from 'react-redux'
 
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import Header from '@Components/CaseStudy/Header'
-import CloseButton from '@Components/CloseButton'
+import {
+  navigationActions,
+} from '@State/ducks/ui/navigation'
 import { TEMPLATES } from '../utils/enums'
-
-import useToggle from '@Hooks/useToggle'
+import Drawer from '@Components/Drawer'
 import * as styles from './styles.module.scss'
 
-import Container from '@Components/Grid/Container'
-
 const CaseStudyTemplate = ({ data, pageContext }) => {
+  const dispatch = useDispatch()
   const { title, slug, description, layout } = data?.contentfulTypeCaseStudy
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childrenMarkdownRemark[0].rawMarkdownBody
-
-  const [open, toggleOpen] = useToggle(true)
 
   const renderModules = (modules) => {
     return modules.map((module) => {
@@ -30,6 +29,18 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
     })
   }
 
+  /**
+   * On boot, open the drawer
+   */
+  useEffect(() => {
+    dispatch(
+      navigationActions.requestOpenDrawer({
+        template: 'case-study',
+        slug: slug,
+      })
+    )
+  }, [])
+
   return (
     <Fragment>
       <SEO
@@ -38,19 +49,13 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
         // image={`https:${socialShareImage?.file?.url}`}
         description={seoDescription}
       />
-      <CoreLayout caseStudy templateSlug={TEMPLATES[layout.template]}>
-        <div
-          className={cx(styles.slide_in_left_full, styles.case_study, {
-            [styles.slide_out_right_full]: !open,
-          })}
-        >
-          <CloseButton onClick={toggleOpen} />
-
+      <CoreLayout drawerOpen templateSlug={TEMPLATES['Case Study']}>
+        <Drawer className={styles.case_study}>
           <Header title={title} byline={seoDescription} />
           {layout &&
             layout.contentModules &&
             renderModules(layout.contentModules)}
-        </div>
+        </Drawer>
       </CoreLayout>
     </Fragment>
   )
@@ -59,7 +64,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
 export default CaseStudyTemplate
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulTypeCaseStudy(slug: { eq: $slug }) {
       title
       slug

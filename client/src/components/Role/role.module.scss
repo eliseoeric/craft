@@ -1,0 +1,83 @@
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/fonts';
+@import '../../styles/definitions/colors';
+
+.careers_single__heading {
+  margin-bottom: 73px;
+  @media #{$phone} {
+    margin-bottom: 47px;
+  }
+}
+.careers_single__title {
+  @include fsz(60px);
+  margin-bottom: 12px;
+  @media #{$phone} {
+    @include fsz(40px);
+    margin-bottom: 16px;
+  }
+}
+.careers_single__published {
+  @include fsz(18px);
+  @include font_loader($primary-family, 6, 'normal');
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  @media #{$phone} {
+    margin-bottom: 0;
+  }
+}
+.careers_single__category {
+  a {
+    color: $primary;
+    &:hover,
+    &:focus {
+      color: $brand-color;
+    }
+  }
+}
+.careers_single__content {
+  max-width: 730px;
+  margin-left: 12vw;
+  @media #{$phone} {
+    margin-left: 0;
+  }
+  .remark_content {
+    > h3 {
+      @include fsz(18px);
+      @include font_loader($primary-family, 6, 'normal');
+      margin-bottom: 12px;
+      margin-top: 43px;
+    }
+    figure {
+      margin-top: 70px;
+      margin-bottom: 80px;
+    }
+    h5 {
+      @include fsz(15px);
+      @include font_loader($primary-family, 6, 'normal');
+    }
+  }
+}
+.careers_single__description {
+  margin-bottom: 65px;
+  @media #{$phone} {
+    margin-bottom: 48px;
+  }
+  ul {
+    padding: 0;
+    li {
+      list-style: none;
+      padding-left: 26px;
+      position: relative;
+      margin-bottom: 10px;
+      &:before {
+        content: '-';
+        color: $gray-dark;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+}

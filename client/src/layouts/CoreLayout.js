@@ -12,7 +12,7 @@ import * as styles from './layout.module.scss'
 const CoreLayout = ({
   children,
   className,
-  caseStudy,
+  drawerOpen,
   hasHero,
   templateSlug,
   invertPalette,
@@ -20,18 +20,18 @@ const CoreLayout = ({
   return (
     <div
       className={cx('core-layout', className, `layout__${templateSlug}`, {
-        [styles.case_study_wrapper]: caseStudy,
+        [styles.drawer_wrapper]: drawerOpen,
       })}
     >
-      {caseStudy ? <Sidebar /> : <Header />}
+      {drawerOpen ? <Sidebar /> : <Header />}
       <main
         className={cx(styles.content_wrapper, {
-          [styles.content_wrapper__flair]: !caseStudy,
+          [styles.content_wrapper__flair]: !drawerOpen,
         })}
       >
         <div
           className={cx(styles.page_wrapper, {
-            [styles.page_wrapper__no_hero]: !hasHero,
+            [styles.page_wrapper__no_hero]: !hasHero && !drawerOpen,
             [styles.page_wrapper__dark]: invertPalette,
           })}
         >
@@ -46,7 +46,7 @@ const CoreLayout = ({
 CoreLayout.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  caseStudy: PropTypes.bool,
+  drawerOpen: PropTypes.bool,
   hasHero: PropTypes.bool,
   invertPalette: PropTypes.bool,
 }

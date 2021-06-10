@@ -41,6 +41,8 @@ const Button = ({
     <a
       onClick={localHandleClick}
       href={url}
+      target={'_blank'}
+      rel="noreferrer noopener"
       className={cx(button.root, className, {
         [button[`button__${variant}`]]: variant,
         [button[`button__${size}`]]: size,
@@ -54,7 +56,6 @@ const Button = ({
 }
 
 Button.propTypes = {
-  text: PropTypes.string,
   variant: PropTypes.oneOf([
     'default',
     'secondary',
