@@ -5,53 +5,48 @@ import cx from 'classnames'
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
-import BlogIndexModule from '@Modules/BlogIndex'
+import ContactBlock from '@Components/ContactBlock'
 
-const PageTemplate = ({ data, pageContext }) => {
-
+const ContactTemplate = ({ data, pageContext }) => {
+  console.log("hello from contact")
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
-      if(__typename === 'ContentfulModuleBlogIndex') {
-        return <BlogIndexModule key={__typename} />
-      }
       return (
         <Module attributes={attributes} type={__typename} key={__typename} />
       )
     })
   }
 
-  const renderLayout = (layout) => {
-    return (
-      <CoreLayout hasHero>
-        {layout &&
-          layout.contentModules &&
-          renderModules(layout.contentModules)}
-      </CoreLayout>
-    )
-  }
-
-  const { title, slug, description, layout } = data?.contentfulPage
+  const { title, slug, description, layout, featuredImage } = data?.contentfulPage
+  const { page_links, addresses } = layout.frontmatter
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
+
+  console.log()
 
   return (
     <>
       <SEO
         title={title}
         titleTemplate={`%s - ${title}`}
-        // image={`https:${socialShareImage?.file?.url}`}
+        // image={featuredImage.gatsbyImageData.images}
         description={seoDescription}
       />
-      {renderLayout(layout)}
+      <CoreLayout>
+        {layout &&
+          layout.contentModules &&
+          renderModules(layout.contentModules)}
+        <ContactBlock links={page_links} featuredImage={featuredImage} addresses={addresses} />
+      </CoreLayout>
     </>
   )
 }
 
-export default PageTemplate
+export default ContactTemplate
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       title
       slug
@@ -60,7 +55,23 @@ export const query = graphql`
           rawMarkdownBody
         }
       }
+      featuredImage {
+        gatsbyImageData(aspectRatio: 1.65)
+      }
       layout {
+        frontmatter {
+          addresses {
+            title
+            address
+            city
+            state
+            zip
+          }
+          page_links {
+            url
+            title
+          }
+        }
         contentModules {
           __typename
           ...SelectedWorksModule

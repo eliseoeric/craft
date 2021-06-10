@@ -1,0 +1,82 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/keyframes';
+
+.contact_block {
+  width: 100%;
+  border-top: 1px solid $gray;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 144px;
+  position: relative;
+
+  @media #{$laptop} {
+    padding-left: 0;
+  }
+}
+
+.contact_block__list {
+  width: 45%;
+  @media #{$tablet} {
+    width: 100%;
+  }
+}
+
+.contact_block__details {
+  width: 55%;
+  padding: 60px 60px 187px 84px;
+  border-left: 1px solid $gray;
+  @media #{$tablet} {
+    width: 100%;
+  }
+  @media #{$phone} {
+    padding: 54px 24px 50px;
+  }
+}
+
+.contact_block__address {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+
+  @media #{$phone-small} {
+    justify-content: space-between;
+  }
+
+  address {
+    margin-bottom: 3px;
+    margin-right: 80px;
+    width: 170px;
+
+    @media #{$phone} {
+      margin-right: 40px;
+    }
+
+    @media #{$phone-small} {
+      margin-right: 0;
+      width: 45%;
+    }
+  }
+
+  strong {
+    @include fsz(15px);
+    @include font_loader($primary-family, 8, 'normal');
+    display: block;
+    margin-bottom: 4px;
+  }
+}
+
+.contact_block__image {
+  max-width: 564px;
+  img {
+    border-bottom: 1px solid $brand-color;
+  }
+}
+
+.contact_block__orb_container {
+  canvas {
+    transform: rotate(-180deg);
+  }
+}
