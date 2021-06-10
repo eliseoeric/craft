@@ -1,9 +1,11 @@
 import React from 'react'
 import cx from 'classnames'
-import urls from '@Utils/urls'
-import { graphql } from 'gatsby'
-import { H2 } from '@Components/Typography'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { graphql } from 'gatsby'
+
+import urls from '@Utils/urls'
+import { H2 } from '@Components/Typography'
+
 import * as style from './blogExcerpt.module.scss'
 
 const renderCategoryString = (categories) => {
@@ -24,38 +26,39 @@ const BlogExcerpt = ({
   hoveredIndex,
   index,
   postSlug,
-  title
+  title,
 }) => {
-
   const image = getImage(featuredImage)
 
   return (
-    <article 
-      className={cx(className, style.blogExcerpt,
-        { [style.blur]: index !== hoveredIndex && hoveredIndex !== -1 })}
-      onMouseOver={() => handleMouseLeave()}>
-        <div className={cx(style.contentWrapper)}>
-          <div className={cx(style.flexItem)}>
-            <a
-              href={`${urls.news()}/${postSlug}`}
-              onMouseOver={handleMouseHover}
-              className={cx(style.blogLink)}>
-                <H2 text={title} className={cx(style.blogExcerptH2)} />
-            </a>
-            <p>{createdAt}</p>
-            <p>
-              <span>{renderCategoryString(categories)}</span>
-              <span> — 3 min read</span>
-            </p>
-          </div>
-          <div 
-            style={{opacity: index === hoveredIndex ? 1 : 0}} 
-            className={cx(style.flexItem, style.imgWrap)}>
-              {image && (<GatsbyImage
-                            image={image}
-                            alt="" />)}
-          </div>
+    <article
+      className={cx(className, style.blogExcerpt, {
+        [style.blur]: index !== hoveredIndex && hoveredIndex !== -1,
+      })}
+      onMouseOver={() => handleMouseLeave()}
+    >
+      <div className={cx(style.contentWrapper)}>
+        <div className={cx(style.flexItem)}>
+          <a
+            href={`${urls.news()}/${postSlug}`}
+            onMouseOver={handleMouseHover}
+            className={cx(style.blogLink)}
+          >
+            <H2 text={title} className={cx(style.blogExcerptH2)} />
+          </a>
+          <p>{createdAt}</p>
+          <p>
+            <span>{renderCategoryString(categories)}</span>
+            <span> — 3 min read</span>
+          </p>
         </div>
+        <div
+          style={{ opacity: index === hoveredIndex ? 1 : 0 }}
+          className={cx(style.flexItem, style.imgWrap)}
+        >
+          {image && <GatsbyImage image={image} alt="" />}
+        </div>
+      </div>
     </article>
   )
 }
