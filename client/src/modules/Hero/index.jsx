@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import htmr from 'htmr'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
 
@@ -14,6 +15,7 @@ const HeroModule = ({
   mobileHeadline,
   backgroundImage,
   displayOrb,
+  body,
 }) => {
   const renderMobileHeadline = (mobileHeadline, headline) => {
     const _headline = mobileHeadline ?? headline
@@ -49,10 +51,8 @@ const HeroModule = ({
       {renderOrb()}
       <Container className={styles.hero_block__container}>
         {renderMobileHeadline(mobileHeadline, headline)}
-        <h2
-          className={styles.hero_block__title}
-          dangerouslySetInnerHTML={{ __html: headline }}
-        />
+        <h2 className={styles.hero_block__title}>{htmr(headline)}</h2>
+        {body && <p className={styles.hero_block__description}>{htmr(body)}</p>}
       </Container>
     </section>
   )
@@ -62,6 +62,7 @@ HeroModule.propTypes = {
   slug: PropTypes.string,
   headline: PropTypes.string,
   mobileHeadline: PropTypes.string,
+  body: PropTypes.string,
   backgroundImage: PropTypes.shape({
     file: PropTypes.shape({
       url: PropTypes.string,
@@ -82,6 +83,7 @@ export const query = graphql`
     slug
     mobileHeadline
     displayOrb
+    body
     backgroundImage {
       file {
         url

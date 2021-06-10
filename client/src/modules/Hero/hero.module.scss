@@ -197,7 +197,7 @@
   }
 }
 
-.hero_block__careers{
+.hero_block__careers {
   min-height: 600px;
   position: relative;
   overflow: initial;
@@ -221,7 +221,7 @@
     padding-top: 160px;
   }
 
-  .container{
+  .hero_block__container {
     padding-left: 16vw;
     @media #{$tablet} {
       max-width: 540px;
@@ -230,7 +230,7 @@
     }
   }
 
-  .hero-block__title{
+  .hero_block__title{
       padding-left: 0;
       max-width: inherit;
 
@@ -243,30 +243,19 @@
       }
   }
 
-  &:before{
-    content:"";
-    display: block;
-    width: 738px;
-    height: 1050px;
-    position: absolute;
-    left:0;
-    top: 160px;
-    background: url(../../images/gradient-style4.png) no-repeat 0 0;
-    background-size: cover;
-    z-index: 1;
-
-    @media #{$phone-small} {
-      width: 548px;
-      height: 870px;
-      position: absolute;
-      left: -100px;
-      top: -20px;
-      opacity: 0.9;
-      background-size: contain;
+  .hero_block__orb_container {
+    canvas {
+      transform: translateY(160px) rotate(0deg);
     }
   }
 }
 
+.hero_block__description{
+  @include fsz(24px);
+  @include font_loader($primary-family, 9, 'normal');
+  max-width: 660px;
+  line-height: 1.3;
+}
 
 .hero_block__mobile_title{
   display: none;

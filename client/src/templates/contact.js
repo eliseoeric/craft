@@ -6,9 +6,10 @@ import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import ContactBlock from '@Components/ContactBlock'
+import { TEMPLATES } from '../utils/enums'
 
 const ContactTemplate = ({ data, pageContext }) => {
-  console.log("hello from contact")
+  console.log('hello from contact')
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
@@ -18,7 +19,8 @@ const ContactTemplate = ({ data, pageContext }) => {
     })
   }
 
-  const { title, slug, description, layout, featuredImage } = data?.contentfulPage
+  const { title, slug, description, layout, featuredImage } =
+    data?.contentfulPage
   const { page_links, addresses } = layout.frontmatter
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
@@ -33,11 +35,15 @@ const ContactTemplate = ({ data, pageContext }) => {
         // image={featuredImage.gatsbyImageData.images}
         description={seoDescription}
       />
-      <CoreLayout>
+      <CoreLayout templateSlug={TEMPLATES[layout.template]}>
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
-        <ContactBlock links={page_links} featuredImage={featuredImage} addresses={addresses} />
+        <ContactBlock
+          links={page_links}
+          featuredImage={featuredImage}
+          addresses={addresses}
+        />
       </CoreLayout>
     </>
   )
@@ -59,6 +65,7 @@ export const query = graphql`
         gatsbyImageData(aspectRatio: 1.65)
       }
       layout {
+        template
         frontmatter {
           addresses {
             title
@@ -78,6 +85,7 @@ export const query = graphql`
           ...HeroModule
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
+          ...ImageGroupModule
         }
       }
     }
