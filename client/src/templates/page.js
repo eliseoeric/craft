@@ -6,13 +6,13 @@ import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import BlogIndexModule from '@Modules/BlogIndex'
+import { TEMPLATES } from '../utils/enums'
 
 const PageTemplate = ({ data, pageContext }) => {
-
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
-      if(__typename === 'ContentfulModuleBlogIndex') {
+      if (__typename === 'ContentfulModuleBlogIndex') {
         return <BlogIndexModule key={__typename} />
       }
       return (
@@ -23,7 +23,7 @@ const PageTemplate = ({ data, pageContext }) => {
 
   const renderLayout = (layout) => {
     return (
-      <CoreLayout hasHero>
+      <CoreLayout hasHero templateSlug={TEMPLATES[layout.template]} invertPalette={layout.invertPalette}>
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
@@ -51,7 +51,7 @@ const PageTemplate = ({ data, pageContext }) => {
 export default PageTemplate
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       title
       slug
@@ -61,12 +61,15 @@ export const query = graphql`
         }
       }
       layout {
+        template
+        invertPalette
         contentModules {
           __typename
           ...SelectedWorksModule
           ...HeroModule
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
+          ...ImageGroupModule
         }
       }
     }

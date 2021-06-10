@@ -7,6 +7,7 @@ import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import Header from '@Components/CaseStudy/Header'
 import CloseButton from '@Components/CloseButton'
+import { TEMPLATES } from '../utils/enums'
 
 import useToggle from '@Hooks/useToggle'
 import * as styles from './styles.module.scss'
@@ -37,7 +38,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
         // image={`https:${socialShareImage?.file?.url}`}
         description={seoDescription}
       />
-      <CoreLayout caseStudy>
+      <CoreLayout caseStudy templateSlug={TEMPLATES[layout.template]}>
         <div
           className={cx(styles.slide_in_left_full, styles.case_study, {
             [styles.slide_out_right_full]: !open,
@@ -68,6 +69,7 @@ export const query = graphql`
         }
       }
       layout {
+        template
         contentModules {
           __typename
           ...SingleMediaModule

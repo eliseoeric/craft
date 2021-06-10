@@ -9,10 +9,17 @@ import Sidebar from '@Components/Sidebar'
 import '../styles/app.scss'
 import * as styles from './layout.module.scss'
 
-const CoreLayout = ({ children, className, caseStudy, hasHero }) => {
+const CoreLayout = ({
+  children,
+  className,
+  caseStudy,
+  hasHero,
+  templateSlug,
+  invertPalette,
+}) => {
   return (
     <div
-      className={cx('core-layout', className, {
+      className={cx('core-layout', className, `layout__${templateSlug}`, {
         [styles.case_study_wrapper]: caseStudy,
       })}
     >
@@ -25,6 +32,7 @@ const CoreLayout = ({ children, className, caseStudy, hasHero }) => {
         <div
           className={cx(styles.page_wrapper, {
             [styles.page_wrapper__no_hero]: !hasHero,
+            [styles.page_wrapper__dark]: invertPalette,
           })}
         >
           {children}
@@ -40,6 +48,7 @@ CoreLayout.propTypes = {
   className: PropTypes.string,
   caseStudy: PropTypes.bool,
   hasHero: PropTypes.bool,
+  invertPalette: PropTypes.bool,
 }
 
 CoreLayout.defaultProps = {
