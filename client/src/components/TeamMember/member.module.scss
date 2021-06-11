@@ -152,6 +152,11 @@
       &:focus {
         color: $brand-color;
       }
+
+      @media #{$phone-small} {
+        // large fingers
+        margin: 0 8px;
+      }
     }
   }
 
