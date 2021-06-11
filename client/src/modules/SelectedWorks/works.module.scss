@@ -17,7 +17,7 @@ $transition: 0.22s;
   .container {
     padding-left: 16vw;
     margin: 0;
-    max-width: 1380px;
+    max-width: none;
     @media #{$phone} {
       padding: 0 24px;
     }
@@ -51,6 +51,7 @@ $transition: 0.22s;
         }
       }
       a {
+        display: block;
         transition: $transition;
         color: $white;
       }
