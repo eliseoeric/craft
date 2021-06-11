@@ -7,6 +7,7 @@ import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import BlogIndexModule from '@Modules/BlogIndex'
 import { TEMPLATES } from '../utils/enums'
+import Banner from '../components/Banner'
 
 const PageTemplate = ({ data, pageContext }) => {
   const renderModules = (modules) => {
@@ -23,10 +24,17 @@ const PageTemplate = ({ data, pageContext }) => {
 
   const renderLayout = (layout) => {
     return (
-      <CoreLayout hasHero templateSlug={TEMPLATES[layout.template]} invertPalette={layout.invertPalette}>
+      <CoreLayout
+        hasHero={layout.hasHero}
+        templateSlug={TEMPLATES[layout.template]}
+        invertPalette={layout.invertPalette}
+      >
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
+        {layout?.frontmatter?.banner_text && (
+          <Banner text={layout?.frontmatter?.banner_text} />
+        )}
       </CoreLayout>
     )
   }
@@ -62,7 +70,11 @@ export const query = graphql`
       }
       layout {
         template
+        hasHero
         invertPalette
+        frontmatter {
+          banner_text
+        }
         contentModules {
           __typename
           ...SelectedWorksModule
