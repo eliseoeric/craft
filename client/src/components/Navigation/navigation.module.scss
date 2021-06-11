@@ -4,239 +4,102 @@
 @import '../../styles/definitions/fonts';
 @import '../../styles/definitions/keyframes';
 
-.root {
-  padding-top: 6px;
-
-  @media #{$header} {
-    position: absolute;
+.navigation_container {
+  @media #{$phone} {
+    position: fixed;
     width: 100%;
     height: 100%;
-    background-color: $white;
-    top: 75px;
+    background-color: $gray-light;
+    top: 0;
     left: 0;
     margin: 0;
-    z-index: 2;
+    z-index: 1;
     padding-top: 0;
     padding-bottom: 15px;
     align-content: flex-start;
     overflow: auto;
     display: none;
-  } 
-
-  @media #{$phone} {
-    top: 51px;
   }
-}
 
-// todo not sure how this will be handled with redux state, hiding components can be done in js instead of using display:none/opacity:0;
-.state__nav_visible {
-  @media #{$header} {
-    display: block;
-    height: auto;
-    overflow: auto;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-      0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    padding: 0 0 25px;
+  &.navigation_container__mobile {
+    @media #{$phone} {
+      display: block;
+      padding: 24px 24px 50px;
+      box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.14);
+      overflow: hidden;
+    }
+  }
+
+  &__text {
+    display: none;
+
+    .navigation_container__mobile & {
+      @media #{$phone} {
+        display: block;
+        width: 100%;
+        @include fsz(12px);
+        @include font_loader($primary-family, 9, 'normal');
+        letter-spacing: 2.5px;
+        color: $gray-dark;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+      }
+    }
   }
 }
 
 .navigation__primary {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  transition: $transition;
-
-  > li {
-    position: relative;
-
-    &:first-child {
-      @media #{$header} {
-        border-top: 1px solid #ececec;
-      }
-    }
-
-    @media #{$header} {
-      border-bottom: 1px solid #ececec;
-    }
-  }
+  position: relative;
+  z-index: 1;
 
   li {
+    display: inline-block;
     position: relative;
-    margin-left: 23px;
-    @media #{$header} {
+    cursor: pointer;
+    margin: 0 15px;
+
+    @media #{$phone} {
+      display: block;
       width: 100%;
+      padding: 0;
+      margin: 0;
+      @include fsz(60px);
+      line-height: 1.4;
+    }
+
+    &:last-child {
       margin-right: 0;
-      margin-left: 0;
-      padding: 0 32px;
-    }
-    &:hover > a {
-      color: $brand-color;
-    }
-    &.current-menu-item > a {
-      color: $brand-color;
-    }
-
-    > a {
-      display: flex;
-      align-items: center;
-      color: $secondary;
-      @include fsz(24px);
-      padding: 9px 0;
-      font-family: $alt-family;
-      text-decoration: none;
-      font-weight: 400;
-      text-transform: uppercase;
-      line-height: 1;
-      @media #{$header} {
-        display: flex;
-        width: 100%;
-        padding: 15px 0 10px;
-      }
-    }
-
-    &.item-active {
-      > .sub-menu {
-        visibility: visible;
-        opacity: 1;
-        transition: visibility 0s linear 0s, opacity 0.3s;
-      }
-    }
-
-    &:hover {
-      > .sub-menu {
-        visibility: visible;
-        opacity: 1;
-
-        li a {
-          display: block;
-          transition: background-color 0.3s;
-          @media #{$header} {
-          }
-          &:hover,
-          &:focus {
-            background-color: #ececec;
-            &:before {
-              top: 0;
-              transition: 0.5s;
-            }
-          }
-        }
-        .sub-menu {
-          visibility: visible;
-          opacity: 1;
-        }
-      }
-    }
-
-    .sub-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 160px;
-      background-color: $white;
-      visibility: hidden;
-      opacity: 0;
-      z-index: 2;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
-      li {
-        margin-left: 0;
-        border-bottom: 1px solid #ececec;
-        @media #{$header} {
-          border-bottom: none;
-          border-top: 1px solid #ececec;
-          padding: 0;
-        }
-        &.menu-item-has-children {
-          margin-left: 0;
-          padding-right: 0;
-        }
-        a {
-          padding: 15px 22px 9px;
-          text-transform: uppercase;
-          position: relative;
-          overflow: hidden;
-          @media #{$header} {
-            padding: 8px 12px 3px;
-          }
-          &:before {
-            content: '';
-            display: block;
-            position: absolute;
-            top: -100%;
-            left: 0;
-            width: 4px;
-            background-color: $brand-color;
-            height: 100%;
-            transition: none;
-          }
-        }
-      }
-
-      .nav__visible & {
-        @media #{$header} {
-          box-shadow: none;
-          transform: translate(0, 0);
-          padding-top: 0;
-        }
-      }
-
-      @media #{$header} {
-        position: static;
-        visibility: visible;
-        opacity: 1;
-        background: none;
-        display: none;
-        width: 100%;
-      }
-
-      .sub-menu {
-        position: static;
-        padding: 0 0 0 10px;
-        visibility: hidden;
-        opacity: 0;
-        @media #{$header} {
-          display: block !important;
-          visibility: visible;
-          opacity: 1;
-        }
-        &:before {
-          display: none;
-        }
-      }
-
-      > li {
-        > a {
-          position: relative;
-          @media #{$header} {
-            color: $secondary;
-            @include fsz(18px);
-          }
-        }
-      }
     }
   }
 }
 
-.navigation__secondary {
+.logo__container {
   display: none;
-  padding: 7px 32px;
-  line-height: 1.2;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 53px;
 
-  @media #{$header} {
-    display: block;
+  @media #{$phone} {
+    display: flex;
   }
 
-  li {
-    margin-bottom: 3px;
+  .logo__wrap svg {
+    width: 100%;
+  }
+}
 
-    a {
-      @include fsz(12px);
-      color: $secondary;
-      &:hover,
-      &:focus {
-        color: $brand-color;
-      }
+.mobile_orb_container {
+  canvas {
+    display: none;
+
+    @media #{$phone} {
+      display: block;
+      top: 0;
+      left: 0;
+      transform: rotate(-180deg);
     }
   }
 }
