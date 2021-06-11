@@ -62,6 +62,7 @@ export const query = graphql`
           ...HeroModule
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
+          ...AccordionGroupQuery
         }
       }
     }
