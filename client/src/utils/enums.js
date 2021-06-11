@@ -4,4 +4,5 @@ export const TEMPLATES = {
   Careers: 'careers',
   'Case Study': 'caseStudy',
   Post: 'post',
+  Role: 'role',
 }

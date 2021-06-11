@@ -8,6 +8,7 @@ const TEMPLATES = {
   Careers: 'careers',
   'Case Study': 'caseStudy',
   Post: 'post',
+  Role: 'role',
 }
 
 /**
@@ -21,8 +22,6 @@ const TEMPLATES = {
  */
 const getTemplate = (layout, defaultTemplate = TEMPLATES['Page']) => {
   const defaultTemplatePath = path.resolve(`./src/templates/${defaultTemplate}.js`)
-
-  console.log({layout})
 
   if (layout && layout.template) {
     const templateType = TEMPLATES[layout.template]
@@ -65,6 +64,14 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulTypeRole {
+        edges {
+          node {
+            slug
+            title
+          }
+        }
+      }
       allContentfulPage {
         edges {
           node {
@@ -91,6 +98,9 @@ exports.createPages = async ({ graphql, actions }) => {
     const _path = post.node.slug === 'front-page' ? '/' : `/${post.node.slug}/`
     const _layout = post.node.layout;
 
+    /**
+     * Create the standard pages
+     */
     createPage({
       path: _path,
       component: getTemplate(_layout),
@@ -100,6 +110,9 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  /**
+   * Create the Case Studies
+   */
   results.data.allContentfulTypeCaseStudy.edges.forEach((post, index) => {
     // front-page slug should be /
     const path = `/case-studies/${post.node.slug}/`
@@ -108,6 +121,23 @@ exports.createPages = async ({ graphql, actions }) => {
     createPage({
       path: path,
       component: getTemplate(_layout, TEMPLATES['Case Study']),
+      context: {
+        slug: post.node.slug,
+      },
+    })
+  })
+  
+  /**
+   * Create the careers/roles
+   */
+  results.data.allContentfulTypeRole.edges.forEach((post, index) => {
+    // front-page slug should be /
+    const path = `/careers/${post.node.slug}/`
+    const _layout = post.node.layout;
+
+    createPage({
+      path: path,
+      component: getTemplate(_layout, TEMPLATES['Role']),
       context: {
         slug: post.node.slug,
       },

@@ -26,6 +26,29 @@ export default function navigation(state = InitialState.ui.navigation, action) {
       }
     }
 
+    case types.NAVIGATION_SUCCESS_OPEN_DRAWER: {
+      const { template, slug } = payload
+      return {
+        ...state,
+        drawer: {
+          isOpen: true,
+          template,
+          slug,
+        },
+      }
+    }
+
+    case types.NAVIGATION_SUCCESS_CLOSE_DRAWER: {
+      return {
+        ...state,
+        drawer: {
+          isOpen: false,
+          template: null,
+          slug: null,
+        },
+      }
+    }
+
     case types.NAVIGATION_SET_FIXED_STATE: {
       const { stateFixed } = payload
 
@@ -34,6 +57,7 @@ export default function navigation(state = InitialState.ui.navigation, action) {
         stateFixed: stateFixed,
       }
     }
+
     default:
       return state
   }
