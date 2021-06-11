@@ -17,7 +17,7 @@ $transition: 0.22s;
   .container {
     padding-left: 16vw;
     margin: 0;
-    max-width: 1380px;
+    max-width: none;
     @media #{$phone} {
       padding: 0 24px;
     }
@@ -45,7 +45,6 @@ $transition: 0.22s;
       &.fade a {
         color: transparent;
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        transition: 0.22s;
         @media #{$phone} {
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
