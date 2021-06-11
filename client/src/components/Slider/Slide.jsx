@@ -7,11 +7,11 @@ import * as styles from './styles.module.scss'
 
 const Slide = ({ title, description, media, contained }) => {
   return (
-    <Container className={cx(styles.root, { [styles.contained]: !contained })}>
+    <Container className={cx({ [styles.contained]: !contained })}>
       <figure className={styles.media}>
         {media && <img alt={media.file.fileName} src={media.file.url} />}
       </figure>
-      <div className={styles.caption}>
+      <div>
         {title && <h4 className={styles.title}>{title}</h4>}
         {description && (
           <div className={styles.description}>

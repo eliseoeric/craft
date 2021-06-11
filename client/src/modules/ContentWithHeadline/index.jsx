@@ -1,6 +1,7 @@
 import React from 'react'
 import htmr from 'htmr'
 import cx from 'classnames'
+import { graphql } from 'gatsby'
 import * as styles from './styles.module.scss'
 
 import { H2 } from '@Components/Typography'
@@ -12,11 +13,11 @@ import Column from '@Components/Grid/Column'
 const ContentWithHeadline = ({className, content, title}) => {
   return (
     <section className={cx(styles.content_with_headline, 'remark_content')}>
-      <Container className={cx()}>
+      <Container className={cx(styles.container)}>
         <Divider />
         <Row>
           <Column lg={4}><H2 text={htmr(title)} className={cx(styles.h2)} /></Column>
-          <Column lg={6}>{htmr(content.childMarkdownRemark.html)}</Column>
+          <Column lg={8}>{htmr(content.childMarkdownRemark.html)}</Column>
         </Row>
       </Container>
     </section>

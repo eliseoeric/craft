@@ -5,11 +5,17 @@ import cx from 'classnames'
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
+import BlogIndexModule from '@Modules/BlogIndex'
+import { TEMPLATES } from '../utils/enums'
+import Banner from '../components/Banner'
 
 const PageTemplate = ({ data, pageContext }) => {
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
+      if (__typename === 'ContentfulModuleBlogIndex') {
+        return <BlogIndexModule key={__typename} />
+      }
       return (
         <Module attributes={attributes} type={__typename} key={__typename} />
       )
@@ -18,10 +24,17 @@ const PageTemplate = ({ data, pageContext }) => {
 
   const renderLayout = (layout) => {
     return (
-      <CoreLayout>
+      <CoreLayout
+        hasHero={layout.hasHero}
+        templateSlug={TEMPLATES[layout.template]}
+        invertPalette={layout.invertPalette}
+      >
         {layout &&
           layout.contentModules &&
           renderModules(layout.contentModules)}
+        {layout?.frontmatter?.banner_text && (
+          <Banner text={layout?.frontmatter?.banner_text} />
+        )}
       </CoreLayout>
     )
   }
@@ -46,7 +59,7 @@ const PageTemplate = ({ data, pageContext }) => {
 export default PageTemplate
 
 export const query = graphql`
-  query($slug: String!) {
+  query ($slug: String!) {
     contentfulPage(slug: { eq: $slug }) {
       title
       slug
@@ -56,6 +69,12 @@ export const query = graphql`
         }
       }
       layout {
+        template
+        hasHero
+        invertPalette
+        frontmatter {
+          banner_text
+        }
         contentModules {
           __typename
           ...SelectedWorksModule
@@ -63,6 +82,8 @@ export const query = graphql`
           ...TeamMembersModule
           ...ContentWithHeadlineModuleQuery
           ...AccordionGroupQuery
+          ...ImageGroupModule
+          ...OpenRoles
         }
       }
     }

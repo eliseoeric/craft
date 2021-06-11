@@ -13,7 +13,7 @@ const Header = ({ title, byline }) => {
     <section className={styles.root}>
       <OrbContainer />
       <Container>
-        <SectionTitle text={title} className={styles.block_title} />
+        <SectionTitle text={title} />
         <H3 text={byline} className={styles.block_subtitle} />
       </Container>
     </section>

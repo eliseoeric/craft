@@ -15,3 +15,7 @@
   @include font_loader($primary-family, 8, 'normal');
   margin-bottom: 0;
 }
+
+.bold {
+  font-weight: bold;
+}

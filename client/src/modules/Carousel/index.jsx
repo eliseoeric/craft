@@ -12,7 +12,7 @@ const CarouselModule = ({ title, slug, slides }) => {
     return null;
   }
   return (
-    <section id={slug} className={styles.root}>
+    <section id={slug}>
       <div className={styles.container}>
         <Slider className={'carousel'}>
           {slides &&

@@ -26,14 +26,12 @@ const SelectedWorks = ({ caseStudies, title }) => {
           {caseStudies.map((study, index) => (
             <li
               key={study.slug}
+              onMouseOver={(event) => handleMouseHover(event, index)}
               className={cx(styles.work_block__list_item, {
                 [styles.fade]: hoveredIndex !== null && index !== hoveredIndex,
               })}
             >
-              <a
-                href={`/case-studies/${study.slug}`}
-                onMouseOver={(event) => handleMouseHover(event, index)}
-              >
+              <a href={`/case-studies/${study.slug}`}>
                 {study.title}
               </a>
             </li>

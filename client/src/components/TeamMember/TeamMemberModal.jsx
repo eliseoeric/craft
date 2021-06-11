@@ -32,8 +32,7 @@ const TeamMemberModal = React.forwardRef(
         classes={{
           root: styles.root,
           wrapper: styles.member_popup__wrapper,
-          container: cx(styles.member_popup, styles.fancybox_content),
-          close_button: styles.modal_close_button,
+          container: cx(styles.member_popup)
         }}
       >
         <div className={styles.popup_header}>
@@ -68,7 +67,6 @@ const TeamMemberModal = React.forwardRef(
             dangerouslySetInnerHTML={{ __html: bio }}
             className={cx(
               styles.popup_content__member_bio,
-              styles.entry_content,
               styles.remark_content
             )}
           />

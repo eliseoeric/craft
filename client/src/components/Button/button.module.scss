@@ -2,106 +2,62 @@
 @import "../../styles/definitions/mixins";
 @import "../../styles/definitions/colors";
 @import "../../styles/definitions/fonts";
+@import "../../styles/definitions/keyframes";
 
 .root {
-  background: $brand-color;
-  color: $white;
-  display: inline-block;
-  text-align: center;
-  font-size: 24px;
-  padding: 18px 24px 14px;
-  line-height: 1;
-  border: none;
-  cursor: pointer;
-  font-family: $alt-family;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  box-shadow: 0 12px 14px rgba(#7b7b7b, 0.35);
-  -webkit-transition: color 0.4s cubic-bezier(0.16, 0.08, 0.355, 1),
-    background 0.4s cubic-bezier(0.16, 0.08, 0.355, 1);
-  transition: color 0.4s cubic-bezier(0.16, 0.08, 0.355, 1),
-    background 0.4s cubic-bezier(0.16, 0.08, 0.355, 1);
-  &:hover,
-  &:active,
-  &:focus {
-    background: $secondary;
-    color: $white;
-  }
-  &:after {
-    content: '';
-    display: inline-block;
-    width: 16px;
-    height: 2px;
-    background-color: currentColor;
-    vertical-align: middle;
-    margin-left: 10px;
-    margin-top: -4px;
-  }
-}
-
-.button {
-  &__inverse {
-    background: $white;
-    color: $brand-color;
-    &:hover,
-    &:active,
-    &:focus {
-      background: $brand-color;
-      color: $white;
-    }
-  }
-
-  &__secondary {
-    background: $gray;
-    color: $white;
-    &:hover,
-    &:active,
-    &:focus {
-      background: $secondary;
-      color: $white;
-    }
-  }
-
-  &__primary {
-    padding: 13px 24px 7px;
     background: $primary;
-    color: $secondary;
-    &:after {
-      display: none;
-    }
+    color: $white;
+    display: inline-block;
+    font-size: 12px;
+    padding: 14px 28px 12px;
+    line-height: 1.2;
+    border:none;
+    cursor: pointer;
+    @include font_loader($primary-family, 9, 'normal');
+    transition: $transition;
+    border-radius: 0;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+
     &:hover,
     &:active,
     &:focus {
-      background: $brand-color;
-      color: $white;
+        color:$white;
     }
-  }
 
-  &__secondary_light {
-    background: $gray-light;
-    color: $gray-darker;
-    &:hover,
-    &:active,
-    &:focus {
-      background: $brand-color;
-      color: $white;
+    &:before{
+        content:"";
+        display: block;
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        bottom:0;
+        left: -100%;
+        background-color: $brand-color;
+        transition: $transition;
     }
-  }
 
-  // size modifiers
-  &__extra_large {
-    padding: 18px 59px 14px;
-  }
+    &:hover:before{
+        left: 0;
+    }
 
-  &__large {
-    padding: 18px 32px 14px;
-  }
-
-  &__small {
-    padding: 13px 24px 7px;
-  }
+    &__extra_large {
+      padding: 18px 59px 14px;
+    }
   
-  &__full_width {
-    width: 100%;
-  }
+    &__large {
+      padding: 18px 32px 14px;
+    }
+  
+    &__small {
+      padding: 13px 24px 7px;
+    }
+    
+    &__full_width {
+      width: 100%;
+    }
 }

@@ -6,6 +6,7 @@
 .content_with_headline {
   padding-bottom: 57px;
   padding-left: 16vw;
+  width: 100%;
 
   @media #{$desktop} {
     margin: 0 auto 20px;
@@ -19,4 +20,9 @@
   ul {
       column-count: 2;
   }
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0;
 }
