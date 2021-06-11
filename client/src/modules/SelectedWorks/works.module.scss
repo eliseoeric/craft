@@ -17,7 +17,7 @@ $transition: 0.22s;
   .container {
     padding-left: 16vw;
     margin: 0;
-    max-width: none;
+    max-width: 1380px;
     @media #{$phone} {
       padding: 0 24px;
     }
