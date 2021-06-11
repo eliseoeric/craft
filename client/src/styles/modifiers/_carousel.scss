@@ -51,6 +51,10 @@
     opacity: 0;
     transition: opacity 300ms ease;
     color: $black;
+
+    @media #{$phone} {
+      opacity: 1;
+    }
   }
   .slick-next {
     right: 30px;

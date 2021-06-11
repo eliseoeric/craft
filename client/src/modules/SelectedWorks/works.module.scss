@@ -3,12 +3,13 @@
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
 
-$transition: all 0.25s ease-in;
+$transition: 0.22s;
 
 .work_block {
   background-color: $primary;
   color: $white;
   padding: 118px 0;
+  width: 100%;
   position: relative;
   @media #{$phone} {
     padding: 110px 0 105px;
@@ -44,7 +45,7 @@ $transition: all 0.25s ease-in;
       &.fade a {
         color: transparent;
         text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        transition: $transition;
+        transition: 0.22s;
         @media #{$phone} {
           text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
         }
