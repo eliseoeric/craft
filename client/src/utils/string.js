@@ -13,3 +13,16 @@ export const isValidUrl = (url) => {
   }
   return true;
 };
+
+export const stripSlug = (slug) => slug.replace(/-asset-management|-insurance|-holdings/gi, '');
+
+export const stringToSlug = (string) => {
+  if (!string) {
+    return string;
+  }
+
+  return string.toString().toLowerCase()
+  .replace(/\s+/g, '-')
+  .replace(/^-+/, '')
+  .replace(/-+$/, '');
+}

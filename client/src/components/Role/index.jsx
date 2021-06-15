@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
-import { Link, useStaticQuery, graphql } from 'gatsby'
+import React from 'react'
 import cx from 'classnames'
 import { DateTime } from 'luxon'
-import { useSelector, useDispatch } from 'react-redux'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Button from '@Components/Button'
@@ -11,8 +9,6 @@ import * as styles from './role.module.scss'
 const Role = ({ roleData }) => {
   const { title, slug, location, jobDescription, updatedAt, applicationLink } =
     roleData
-
-  console.log({ jobDescription })
 
   const updatedAtObject = DateTime.fromISO(updatedAt, {zone: 'utc'})
 
