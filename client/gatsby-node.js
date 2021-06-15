@@ -72,6 +72,24 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      allContentfulTypeBlogPost {
+        edges {
+          next {
+            slug
+            title
+            featuredImage {
+              gatsbyImageData(aspectRatio: 1.5)
+            }
+          }
+          node {
+            slug
+            title
+            featuredImage {
+              gatsbyImageData(aspectRatio: 1.5)
+            }
+          }
+        }
+      }
       allContentfulPage {
         edges {
           node {
@@ -140,6 +158,24 @@ exports.createPages = async ({ graphql, actions }) => {
       component: getTemplate(_layout, TEMPLATES['Role']),
       context: {
         slug: post.node.slug,
+      },
+    })
+  })
+
+  /**
+   * Create the blog posts
+   */
+   results.data.allContentfulTypeBlogPost.edges.forEach((post, index) => {
+    
+    const path = `/news/${post.node.slug}/`
+    const _layout = post.node.layout;
+    console.log({path})
+    createPage({
+      path: path,
+      component: getTemplate(_layout, TEMPLATES['Post']),
+      context: {
+        slug: post.node.slug,
+        next: post.next,
       },
     })
   })
