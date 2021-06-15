@@ -12,6 +12,7 @@ import Statistics from '@Modules/Statistics'
 import SelectedWorks from '@Modules/SelectedWorks'
 import HeroModule from '@Modules/Hero'
 import TeamMembers from '@Modules/TeamMembers'
+import AccordionGroup from '@Modules/AccordionGroup'
 import BlogIndex from '@Modules/BlogIndex'
 import ImageGroup from '@Modules/ImageGroup'
 import OpenRoles from '@Modules/OpenRoles'
@@ -32,6 +33,7 @@ export default class Module extends React.Component {
       ContentfulModuleSelectedWorks: (attributes) => <SelectedWorks {...attributes} />,
       ContentfulModuleHero: (attributes) => <HeroModule {...attributes} />,
       ContentfulModuleTeamMembers: (attributes) => <TeamMembers {...attributes} />,
+      ContentfulModuleAccordionGroup: (attributes) => <AccordionGroup {...attributes} />,
       ContentfulModuleBlogIndex: (attributes) => <BlogIndex {...attributes} />,
       ContentfulModuleImageGroup: (attributes) => <ImageGroup {...attributes} />,
       ContentfulModuleOpenRoles: (attributes) => <OpenRoles {...attributes} />,

@@ -1,0 +1,80 @@
+@import '../../styles/modifiers/text';
+@import '../../styles/definitions/mixins';
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
+
+.accordion {
+  font-size: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.accordionHeading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.accordionButton {
+  background-color: white;
+  padding: 23px 46px 22px 85px;
+  position: relative;
+  text-align: left;
+  width: 100%;
+
+  @media #{$tablet} {
+    padding-left: 14vw;
+  }
+
+  @media #{$phone} {
+    padding-left: 24px;
+  }
+}
+
+.accordion:first-of-type {
+  .accordionButton {
+    border-top: none;
+  }
+}
+
+.accordion:last-of-type {
+  .accordionContent.open {
+    border-bottom: 1px solid $gray;
+  }
+}
+
+.accordionContent {
+  background-color: white;
+  // border-bottom: 1px solid #ccc;
+  max-height: 1000px;
+  padding: 23px 46px 22px 85px;
+  // padding: 0 46px 0 85px;
+  // transition: padding-bottom 1s linear, padding-top 1s linear, max-height 1s linear;
+  position: absolute;
+
+  @media #{$tablet} {
+    padding-left: 14vw;
+  }
+
+  @media #{$phone} {
+    padding-left: 24px;
+  }
+}
+
+.gradient {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(to right, $gray, $green);
+  position: relative;
+
+  &.close {
+    background: $gray;
+  }
+}
+
+.border-top {
+  height: 1px;
+  background: $gray;
+  position: relative;
+}
