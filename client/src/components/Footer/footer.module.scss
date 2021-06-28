@@ -9,6 +9,8 @@
   display: flex;
   flex: 0 0 100%;
   background-color: $gray-light;
+  z-index: 9;
+  position: relative;
 }
 
 .footer__logo_wrap {
