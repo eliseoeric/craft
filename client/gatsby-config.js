@@ -116,5 +116,36 @@ module.exports = {
         extensions: [],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Socratic`,
+        short_name: `Socratic`,
+        start_url: `/`,
+        icon: `src/images/favicons/android-chrome-512x512.png`,
+        icons: [
+          {
+            src: `src/images/favicons/android-chrome-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/apple-touch-icon.png`,
+            sizes: `180x180`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/favicon-16x16.png`,
+            sizes: `16x16`,
+            type: `image/png`,
+          },
+          {
+            src: `src/images/favicons/favicon-32x32.png`,
+            sizes: `32x32`,
+            type: `image/png`,
+          },
+        ]
+      },
+    },
   ],
 }
