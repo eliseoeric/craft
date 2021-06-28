@@ -4,7 +4,7 @@ import cx from 'classnames'
 import * as styles from './icons.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const SocialIcons = ({}) => {
+const SocialIcons = ({className}) => {
   const links = [
     {  url: 'https://instgram.com', type: 'instagram' },
     {  url: 'https://twitter.com', type: 'twitter' },
@@ -13,9 +13,9 @@ const SocialIcons = ({}) => {
   ]
 
   return (
-    <div className={styles.root}>
+    <div className={cx(className, styles.root)}>
       {links.map(({url, icon, type}, index) => (
-        <a key={index} href={url} className={cx('icon', styles.icon)}>
+        <a key={index} href={url} className={cx('icon', styles.icon)} target="_blank" rel="noopener">
           <FontAwesomeIcon icon={!icon ? ['fab', type] : icon} />
         </a>
       ))}

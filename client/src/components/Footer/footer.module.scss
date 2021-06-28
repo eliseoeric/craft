@@ -11,6 +11,10 @@
   background-color: $gray-light;
   z-index: 9;
   position: relative;
+
+  .contact a {
+    color: $black;
+  }
 }
 
 .footer__logo_wrap {
