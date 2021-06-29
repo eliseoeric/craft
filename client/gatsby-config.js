@@ -123,6 +123,7 @@ module.exports = {
         short_name: `Socratic`,
         start_url: `/`,
         icon: `src/images/favicons/android-chrome-512x512.png`,
+        display: `standalone`,
         icons: [
           {
             src: `src/images/favicons/android-chrome-192x192.png`,
