@@ -16,10 +16,12 @@ const TeamMemberCard = ({
 }) => {
   return (
     <div className={styles.team_grid__item}>
-      <figure className={styles.team_grid__item_image} onClick={onClick}>
-        <img src={headshot.file.url} alt="bio image" />
-        <figcaption>Bio</figcaption>
-      </figure>
+      {headshot?.file && (
+        <figure className={styles.team_grid__item_image} onClick={onClick}>
+          <img src={headshot?.file?.url} alt="bio image" />
+          <figcaption>Bio</figcaption>
+        </figure>
+      )}
       <div className={styles.team_grid__details}>
         <div className={styles.team_grid__meta}>
           <h3 className={styles.team_grid__title}>
