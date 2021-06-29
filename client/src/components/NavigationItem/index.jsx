@@ -4,10 +4,18 @@ import cx from 'classnames'
 
 import * as styles from './navigationItem.module.scss'
 
-const NavigationItem = ({ title, url, className }) => {
+const NavigationItem = ({ title, url, className, invertPalette }) => {
   return (
     <li className={cx(className, styles.root)}>
-      <Link className={styles.navigation__anchor} to={url} activeClassName={styles.active}>{title}</Link>
+      <Link
+        className={cx(styles.navigation__anchor, {
+          [styles.navigation__anchor__inverse]: invertPalette,
+        })}
+        to={url}
+        activeClassName={styles.active}
+      >
+        {title}
+      </Link>
     </li>
   )
 }

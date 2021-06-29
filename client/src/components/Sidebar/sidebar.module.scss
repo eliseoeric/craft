@@ -5,15 +5,17 @@
 
 .root {
   grid-area: sidebar;
-  background-color: $primary;
+  background-color: transparent;
   padding: 32px 36px 32px 60px;
   position: relative;
   z-index: 2;
+  border-right: 1px solid $gray;
 
-  @media #{$phone} {
-    position: absolute;
-    background-color: transparent;
-    padding: 24px;
-  }
+  display: none;
+  // @media #{$phone} {
+  //   position: absolute;
+  //   background-color: transparent;
+  //   padding: 24px;
+  // }
 
 }

@@ -11,7 +11,7 @@ import NavigationItem from '@Components/NavigationItem'
 import OrbContainer from '@Components/OrbContainer'
 import * as styles from './navigation.module.scss'
 
-const Navigation = ({ className }) => {
+const Navigation = ({ className, invertPalette }) => {
   const isMobileMenuOpen = useSelector(navigationSelectors.isMobileMenuOpen)
   // todo onClick handler for navigation toggle
   const data = useStaticQuery(graphql`
@@ -40,6 +40,7 @@ const Navigation = ({ className }) => {
     <nav
       className={cx(className, styles.navigation_container, {
         [styles.navigation_container__mobile]: isMobileMenuOpen,
+        
       })}
     >
       <div className={styles.logo__container}>
@@ -52,6 +53,7 @@ const Navigation = ({ className }) => {
           primaryNavigation.navigationItems.map((item, index) => {
             return (
               <NavigationItem
+                invertPalette={invertPalette}
                 title={item.title}
                 url={`/${item.slug}`}
                 key={index}
