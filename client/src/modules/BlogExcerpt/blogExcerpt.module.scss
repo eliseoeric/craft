@@ -3,7 +3,7 @@
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
 
-$transition: all 0.25s ease-in;
+$transition: all 0.12s ease-in-out;
 
 .blogExcerpt {
   border-top: 1px solid $gray;
@@ -11,7 +11,6 @@ $transition: all 0.25s ease-in;
   padding-top: 2rem;
   padding-left: calc(144px + #{$gutter_desktop});
   padding-right: calc(144px + #{$gutter_desktop});
-  transition: $transition;
 
   @media #{$laptop} {
     padding-left: 80px; 
@@ -29,7 +28,17 @@ $transition: all 0.25s ease-in;
   }
 }
 
+h2 {
+  transition: none !important;
+}
+
+.transition {
+  transition: $transition;
+}
+
 .blogExcerptH2 {
+  border-bottom: 1px solid transparent;
+  display: inline-block;
   font-weight: normal;
   margin-bottom: 0.35rem;
 }
@@ -40,17 +49,17 @@ $transition: all 0.25s ease-in;
   display: inline-block;
   margin-bottom: 0.5rem;
   padding: 0;
-  transition: $transition;
 
   &:hover {
-    border-bottom: 1px solid $green;
+    .blogExcerptH2 {
+      border-bottom: 1px solid $green;
+    }
   }
 }
 
 .blur, .blur > * {
   color: transparent;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  transition: $transition;
   @media #{$phone} {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
@@ -66,6 +75,7 @@ $transition: all 0.25s ease-in;
 }
 
 .imgWrap {
+  margin-left: 1rem;
   transition: $transition;
 }
 
