@@ -19,7 +19,7 @@ const HeroModule = ({
 }) => {
   const renderMobileHeadline = (mobileHeadline, headline) => {
     const _headline = mobileHeadline ?? headline
-    return <h1 className={styles.hero_block__mobile_title}>{_headline}</h1>
+    return <h1 className={styles.hero_block__mobile_title}>{htmr(_headline)}</h1>
   }
 
   const renderOrb = () => {
