@@ -2,9 +2,11 @@ import React from 'react'
 import cx from 'classnames'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
+import { useDispatch } from 'react-redux'
 
 import urls from '@Utils/urls'
 import { H2 } from '@Components/Typography'
+import { navigationActions } from '@State/ducks/ui/navigation'
 
 import * as style from './blogExcerpt.module.scss'
 
@@ -29,6 +31,12 @@ const BlogExcerpt = ({
   title,
 }) => {
   const image = getImage(featuredImage)
+  const dispatch = useDispatch();
+
+  const loadBlogArticle = (event, post) => {
+    event.preventDefault();
+    dispatch(navigationActions.requestOpenDrawer({ template: 'post', slug: postSlug, invertPalette: false }))
+   }
 
   return (
     <article
@@ -41,6 +49,7 @@ const BlogExcerpt = ({
         <div className={cx(style.flexItem)}>
           <a
             href={`${urls.news()}/${postSlug}`}
+            onClick={(event) => loadBlogArticle(event, postSlug)}
             onMouseOver={handleMouseHover}
             className={cx(style.blogLink)}
           >

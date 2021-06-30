@@ -4,13 +4,13 @@
 @import '../styles/definitions/breakpoints';
 
 .drawer_wrapper {
-  background-color: $gray-lighter;
-  position: relative;
-  display: grid;
-  grid-template-columns: 144px auto;
-  grid-template-areas:
-    'sidebar content content'
-    'footer  footer  footer';
+  .content_wrapper {
+    z-index: 10;
+  }
+
+  .page_wrapper {
+    left: unset
+  }
 }
 
 .core_layout {

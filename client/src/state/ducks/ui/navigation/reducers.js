@@ -45,6 +45,7 @@ export default function navigation(state = InitialState.ui.navigation, action) {
           isOpen: false,
           template: null,
           slug: null,
+          invertPalette: null,
         },
       }
     }

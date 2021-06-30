@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react'
 import { graphql } from 'gatsby'
 import cx from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
+import uuid from 'uuid'
 
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
@@ -24,7 +25,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
       return (
-        <Module attributes={attributes} type={__typename} key={__typename} />
+        <Module attributes={attributes} type={__typename} key={uuid.v4()} />
       )
     })
   }
@@ -35,7 +36,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
   useEffect(() => {
     dispatch(
       navigationActions.requestOpenDrawer({
-        template: 'case-study',
+        template: 'caseStudy',
         slug: slug,
       })
     )

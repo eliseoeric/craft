@@ -5,6 +5,8 @@ import cx from 'classnames'
 import Footer from '@Components/Footer'
 import Header from '@Components/Header'
 import Sidebar from '@Components/Sidebar'
+import Drawer from '@Components/Drawer'
+import DrawerTemplate from '@Components/DrawerTemplate'
 
 import '../styles/app.scss'
 import * as styles from './layout.module.scss'
@@ -24,9 +26,8 @@ const CoreLayout = ({
         [styles.core_layout__dark]: invertPalette,
       })}
     >
-      {/* {drawerOpen ? <Sidebar /> : <Header />} */}
       <Header invertPalette={invertPalette} />
-      <Sidebar /> 
+      <Sidebar />
       <main
         className={cx(styles.content_wrapper, {
           [styles.content_wrapper__flair]: !drawerOpen,
@@ -37,7 +38,8 @@ const CoreLayout = ({
             [styles.page_wrapper__no_hero]: !hasHero && !drawerOpen,
           })}
         >
-          {children}
+          {drawerOpen && <Drawer><DrawerTemplate /></Drawer>}
+          {!drawerOpen && children}
         </div>
       </main>
       <Footer />

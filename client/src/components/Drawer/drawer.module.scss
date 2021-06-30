@@ -7,6 +7,7 @@
 .drawer {
   padding: 165px 84px 223px;
   width: 100%;
+  max-width: calc(100% - 144px);
   background-color: $white;
   @media #{$phone} {
     padding: 155px 24px 105px;

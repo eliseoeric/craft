@@ -1,5 +1,13 @@
+import { ASYNC_STATUS } from '@Utils/enums'
 const initialState = {
+  content: {
+    posts: {
+      byId: {},
+      allIds: [],
+    },
+  },
   ui: {
+    
     navigation: {
       mobileActive: false,
       loginModalActive: false,
@@ -8,7 +16,8 @@ const initialState = {
         isOpen: false,
         template: null,
         slug: null,
-      }
+        invertPalette: null,
+      },
     },
     toasts: {
       allIds: [],
