@@ -40,12 +40,12 @@ const Footer = ({ className }) => {
             timeZone="America/Chicago" />
         </div>
         <div className={cx(footer.footer__info)}>
-          <div className={cx(footer.footer__text)}>
-            <p className={cx(footer.footer__upper)}>Find<br/>Us</p>
-            <p>hello@madebycraft.co</p>
-            <p>215.888.8888</p>
+          <div className={cx(footer.footer__text, footer.contact)}>
+            <p className={cx(footer.footer__upper)}>Find Us</p>
+            <p><a href="mailto:hello@madebycraft.co">hello@madebycraft.co</a></p>
+            <p><a href="tel:2158888888">215.888.8888</a></p>
           </div>
-          <SocialIcons />
+          <SocialIcons className="socialIcons" /> 
         </div>
       </div>
     </footer>
