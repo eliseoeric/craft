@@ -24,9 +24,8 @@ function* openDrawer(action) {
 }
 
 function* closeDrawer(action) {
-  const { template, slug } = action.payload
   try {
-    yield put(actions.successCloseDrawer({ template, slug }))
+    yield put(actions.successCloseDrawer())
   } catch (error) {
     console.error(error)
     yield put(actions.errorCloseDrawer(error))

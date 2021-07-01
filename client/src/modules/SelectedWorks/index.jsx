@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import { useDispatch } from 'react-redux'
 import cx from 'classnames'
 
+import { navigationActions } from '@State/ducks/ui/navigation'
 import Container from '@Components/Grid/Container'
 
 import * as styles from './works.module.scss'
 
+
 const SelectedWorks = ({ caseStudies, title }) => {
+  const dispatch = useDispatch();
   const [hoveredIndex, setHoveredIndex] = useState(null)
 
   const handleMouseHover = (event, index) => {
@@ -16,6 +20,11 @@ const SelectedWorks = ({ caseStudies, title }) => {
 
   const handleMouseLeave = () => {
     setHoveredIndex(null)
+  }
+
+  const loadCaseStudy = (event, slug) => {
+    event.preventDefault();
+    dispatch(navigationActions.requestOpenDrawer({ template: 'caseStudy', slug: slug, invertPalette: false }))
   }
 
   return (
@@ -31,7 +40,7 @@ const SelectedWorks = ({ caseStudies, title }) => {
                 [styles.fade]: hoveredIndex !== null && index !== hoveredIndex,
               })}
             >
-              <a href={`/case-studies/${study.slug}`}>
+              <a href={`/case-studies/${study.slug}`} onClick={(event) => loadCaseStudy(event, study.slug)}>
                 {study.title}
               </a>
             </li>

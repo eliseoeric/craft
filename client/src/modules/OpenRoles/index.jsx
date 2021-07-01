@@ -2,7 +2,9 @@ import React from 'react'
 import htmr from 'htmr'
 import { graphql, Link } from 'gatsby'
 import cx from 'classnames'
+import { useDispatch, useSelector } from 'react-redux'
 
+import { navigationActions } from '@State/ducks/ui/navigation'
 import { H2 } from '@Components/Typography'
 import Divider from '@Components/Divider'
 import Container from '@Components/Grid/Container'
@@ -12,9 +14,23 @@ import Column from '@Components/Grid/Column'
 import * as styles from './roles.module.scss'
 
 const OpenRoles = ({ title, slug, openRoles }) => {
+  const dispatch = useDispatch()
+
   const renderLocations = (locations) => {
     return locations.join(' / ')
   }
+
+  const loadRole = (event, role) => {
+    event.preventDefault()
+    dispatch(
+      navigationActions.requestOpenDrawer({
+        template: 'role',
+        slug: role.slug,
+        invertPalette: false,
+      })
+    )
+  }
+
   return (
     <section className={cx(styles.content, 'remark_content')}>
       <Container className={cx(styles.container)}>
@@ -30,7 +46,10 @@ const OpenRoles = ({ title, slug, openRoles }) => {
                   return (
                     <div class="careers_list__item">
                       {/* todo this needs to dispatch the open drawer */}
-                      <Link to={`/careers/${role.slug}`} >
+                      <Link
+                        to={`/careers/${role.slug}`}
+                        onClick={(event) => loadRole(event, role)}
+                      >
                         <span className={styles.careers_list__item__title}>
                           {role.title}
                         </span>

@@ -6,3 +6,10 @@ export const TEMPLATES = {
   Post: 'post',
   Role: 'role',
 }
+
+export const ASYNC_STATUS = {
+  NOT_STARTED: 'NOT_STARTED',
+  REQUESTING: 'REQUESTING',
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR'
+}

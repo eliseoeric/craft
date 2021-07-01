@@ -1,25 +1,25 @@
 import cx from 'classnames'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+
+
 import BlogExcerpt from '@Modules/BlogExcerpt'
 import * as style from './blogIndex.module.scss'
 
-const BlogIndex = ({className}) => {
-
-  const query = useStaticQuery(graphql`{
-    posts: allContentfulTypeBlogPost(
-      sort: {
-        fields: [content___references___createdAt],
-        order: ASC
-      }
-    ) {
-      edges {
-        node {
-          ...BlogExcerptQuery
+const BlogIndex = ({ className }) => {
+  const query = useStaticQuery(graphql`
+    {
+      posts: allContentfulTypeBlogPost(
+        sort: { fields: [content___references___createdAt], order: ASC }
+      ) {
+        edges {
+          node {
+            ...BlogExcerptQuery
+          }
         }
       }
     }
-  }`)
+  `)
 
   const [hoveredIndex, setHoveredIndex] = useState(-1)
 
@@ -34,7 +34,7 @@ const BlogIndex = ({className}) => {
 
   return (
     <div className={cx(className, style.blogIndex)}>
-      {query.posts.edges.map(({node}, idx) => (
+      {query.posts.edges.map(({ node }, idx) => (
         <BlogExcerpt
           handleMouseHover={(event) => handleMouseHover(event, idx)}
           handleMouseLeave={handleMouseLeave}
@@ -45,7 +45,8 @@ const BlogIndex = ({className}) => {
           featuredImage={node.featuredImage}
           key={node.title}
           postSlug={node.slug}
-          title={node.title} />
+          title={node.title}
+        />
       ))}
     </div>
   )

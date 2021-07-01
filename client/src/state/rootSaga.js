@@ -1,8 +1,12 @@
 import { all, fork, call, takeLatest, cancel, spawn } from 'redux-saga/effects'
 import { navigationOperations } from '@State/ducks/ui/navigation'
+import { contentOperations } from '@State/ducks/content'
 
 function* mainSaga() {
-  const sagas = [fork(navigationOperations.rootFlow)].map(forkWrapper)
+  const sagas = [
+    fork(navigationOperations.rootFlow),
+    fork(contentOperations.rootFlow),
+  ].map(forkWrapper)
 
   yield all(sagas)
 }

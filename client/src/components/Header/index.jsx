@@ -9,18 +9,18 @@ import { navigationSelectors } from '@State/ducks/ui/navigation'
 
 import * as styles from './header.module.scss'
 
-function Header() {
+function Header({ invertPalette }) {
   const isMobileMenuOpen = useSelector(navigationSelectors.isMobileMenuOpen)
   return (
     <header
       className={cx(styles.header, {
         [styles.mobile_navigation__active]: isMobileMenuOpen,
-        'mobile_navigation__active': isMobileMenuOpen,
+        mobile_navigation__active: isMobileMenuOpen,
       })}
     >
       <Logo variant="white" />
       <MenuToggle isOpen={isMobileMenuOpen} />
-      <Navigation />
+      <Navigation invertPalette={invertPalette} />
     </header>
   )
 }
