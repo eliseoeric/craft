@@ -34,6 +34,7 @@ const Role = ({ roleData }) => {
 
         <div
           className={cx(
+            'remark_content',
             styles.remark_content,
             styles.careers_single__description
           )}

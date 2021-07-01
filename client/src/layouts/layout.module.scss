@@ -36,25 +36,9 @@
   grid-area: content;
   z-index: 2;
 
-  // &__flair {
-  //   &:before {
-  //     content: '';
-  //     display: block;
-  //     width: 144px;
-  //     height: 100%;
-  //     position: fixed;
-  //     top: 0;
-  //     left: 0;
-  //     border-right: 1px solid #ccc;
-  //     z-index: 2;
-  //     @media #{$laptop} {
-  //       display: none;
-  //     }
-  //     @media #{$phone} {
-  //       width: 144px;
-  //     }
-  //   }
-  // }
+  &__flair {
+    border-left: 1px solid $gray-darker;
+  }
 }
 
 .main {

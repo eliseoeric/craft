@@ -30,7 +30,7 @@ const CoreLayout = ({
       <Sidebar />
       <main
         className={cx(styles.content_wrapper, {
-          [styles.content_wrapper__flair]: !drawerOpen,
+          [styles.content_wrapper__flair]: invertPalette,
         })}
       >
         <div

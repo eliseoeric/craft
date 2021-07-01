@@ -12,7 +12,7 @@ import Column from '@Components/Grid/Column'
 
 const ContentWithHeadline = ({className, content, title}) => {
   return (
-    <section className={cx(styles.content_with_headline, 'remark_content')}>
+    <section className={cx(styles.content_with_headline)}>
       <Container className={cx(styles.container)}>
         <Divider />
         <Row>

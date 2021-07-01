@@ -1,16 +1,25 @@
 import React from 'react'
 import cx from 'classnames'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Navigation from '@Components/Navigation'
 import Logo from '@Components/Logo'
 import MenuToggle from '@Components/MenuToggle'
-import { navigationSelectors } from '@State/ducks/ui/navigation'
+import { navigationSelectors, navigationActions } from '@State/ducks/ui/navigation'
 
 import * as styles from './header.module.scss'
 
 function Header({ invertPalette }) {
+  const dispatch = useDispatch()
   const isMobileMenuOpen = useSelector(navigationSelectors.isMobileMenuOpen)
+  const isDrawerOpen = useSelector(navigationSelectors.isDrawerOpen)
+
+  const handleOnClick = () => {
+    if (isMobileMenuOpen) {
+      dispatch(navigationActions.toggleMobileMenu())
+    }
+  }
+
   return (
     <header
       className={cx(styles.header, {
@@ -18,9 +27,9 @@ function Header({ invertPalette }) {
         mobile_navigation__active: isMobileMenuOpen,
       })}
     >
-      <Logo variant="white" />
-      <MenuToggle isOpen={isMobileMenuOpen} />
-      <Navigation invertPalette={invertPalette} />
+      <Logo variant={invertPalette ? "caseStudy" : "white"} />
+      <MenuToggle isOpen={isMobileMenuOpen || isDrawerOpen} />
+      <Navigation invertPalette={invertPalette} onClickEvent={handleOnClick} isMenuToggleOpen={isMobileMenuOpen} />
     </header>
   )
 }
