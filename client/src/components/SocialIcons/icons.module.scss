@@ -22,8 +22,27 @@
 .icon {
   margin: 0 0.5rem;
   font-size: 1.5rem;
+  transition: 0.2s ease-in-out;
 
   &:first-of-type {
     margin-left: 0;
+  }
+}
+
+.facebook:hover, .facebook:focus {
+  color: $facebook;
+}
+
+.instagram:hover, .instagram:focus {
+  color: $instagram;
+}
+
+.twitter:hover, .twitter:focus {
+  color: $twitter;
+}
+
+.dribbble:hover, .dribbble:focus {
+  svg path {
+    fill: $dribbble;
   }
 }

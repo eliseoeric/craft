@@ -16,9 +16,9 @@ const TeamMemberCard = ({
 }) => {
   return (
     <div className={styles.team_grid__item}>
-      {headshot?.file && (
+      {headshot?.file?.url && (
         <figure className={styles.team_grid__item_image} onClick={onClick}>
-          <img src={headshot?.file?.url} alt="bio image" />
+          <img src={headshot.file.url} alt="bio image" />
           <figcaption>Bio</figcaption>
         </figure>
       )}
