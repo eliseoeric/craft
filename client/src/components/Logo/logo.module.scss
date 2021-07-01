@@ -41,13 +41,6 @@
   }
 }
 
-.logo__gray:hover {
-  path {
-    stroke: $purple !important;
-    animation-name: drawPurple;
-  }
-}
-
 .logo__white {
   svg path:nth-of-type(1) {
     fill: $white;
@@ -55,6 +48,19 @@
   }
   svg path:nth-of-type(2) {
     fill: $black;
+  }
+  &:hover svg path:nth-of-type(1) {
+    fill: $green;
+  }
+}
+
+.logo__gray {
+  svg path:nth-of-type(1) {
+    fill: $gray-light;
+    transition: fill 0.2s ease-in-out;
+  }
+  svg path:nth-of-type(2) {
+    fill: $gray-dark;
   }
   &:hover svg path:nth-of-type(1) {
     fill: $green;
@@ -74,30 +80,3 @@
   }
 }
 
-@keyframes drawGreen {
-  from {
-    fill: transparent;
-    stroke-dashoffset: 280;
-    stroke-width: 1;
-  }
-
-  to {
-    fill: $green;
-    stroke-dashoffset: 100;
-    stroke-width: 0;
-  }
-}
-
-@keyframes drawPurple {
-  from {
-    fill: transparent;
-    stroke-dashoffset: 280;
-    stroke-width: 1;
-  }
-
-  to {
-    fill: $purple;
-    stroke-dashoffset: 100;
-    stroke-width: 0;
-  }
-}

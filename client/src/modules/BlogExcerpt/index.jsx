@@ -45,29 +45,25 @@ const BlogExcerpt = ({
       })}
       onMouseOver={() => handleMouseLeave()}
     >
-      <div className={cx(style.contentWrapper)}>
-        <div className={cx(style.flexItem)}>
-          <a
-            href={`${urls.news()}/${postSlug}`}
-            onClick={(event) => loadBlogArticle(event, postSlug)}
-            onMouseOver={handleMouseHover}
-            className={cx(style.blogLink)}
-          >
+      <a 
+        className={cx(style.contentWrapper, style.blogLink, style.transition)}
+        href={`${urls.news()}/${postSlug}`}
+        onClick={(event) => loadBlogArticle(event, postSlug)}
+        onMouseOver={handleMouseHover}>
+          <div className={cx(style.flexItem)}>
             <H2 text={title} className={cx(style.blogExcerptH2)} />
-          </a>
-          <p>{createdAt}</p>
-          <p>
-            <span>{renderCategoryString(categories)}</span>
-            <span> — 3 min read</span>
-          </p>
-        </div>
-        <div
-          style={{ opacity: index === hoveredIndex ? 1 : 0 }}
-          className={cx(style.flexItem, style.imgWrap)}
-        >
-          {image && <GatsbyImage image={image} alt="" />}
-        </div>
-      </div>
+            <p>{createdAt}</p>
+            <p>
+              <span>{renderCategoryString(categories)}</span>
+              <span> — 3 min read</span>
+            </p>
+          </div>
+          <div
+            style={{ opacity: index === hoveredIndex ? 1 : 0 }}
+            className={cx(style.flexItem, style.imgWrap)}>
+              {image && <GatsbyImage image={image} alt="" />}
+          </div>
+      </a>
     </article>
   )
 }

@@ -127,7 +127,7 @@
 }
 
 .hero_block__front_page{
-  .container{
+  .container {
     position: relative;
 
     &:before{
@@ -153,7 +153,7 @@
       }
     }
   }
-
+  
   &:after{
     content:"Scroll";
     text-transform: uppercase;
@@ -172,8 +172,7 @@
     }
   }
 
-  .hero_block__title{
-
+  .hero_block__title {
     &:after{
       content:"";
       position: absolute;
@@ -194,6 +193,10 @@
         bottom: 30px;
       }
     }
+  }
+
+  .hero_block__mobile_title {
+    display: none;
   }
 }
 
@@ -244,10 +247,19 @@
   }
 
   .hero_block__orb_container {
-    canvas {
+     canvas {
       transform: translateY(160px) rotate(0deg);
     }
   }
+}
+
+.hero_block__orb_container {
+  canvas {
+   @media #{$phone} {
+     left: 0;
+     top: -50%;
+   }
+ }
 }
 
 .hero_block__description{
@@ -271,7 +283,7 @@
   }
   + .hero_block__title{
     @media #{$phone} {
-      @include fsz(24px);
+      @include fsz(55px);
     }
   }
 }
