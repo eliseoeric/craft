@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 
@@ -7,6 +7,7 @@ import Modal from '@Components/Modal'
 import SocialIconsAlt from '@Components/SocialIconsAlt'
 
 import * as styles from './member.module.scss'
+const isBrowser = typeof window !== `undefined`
 
 const TeamMemberModal = React.forwardRef(
   ({ teamMember, ...modalProps }, ref) => {
@@ -32,7 +33,7 @@ const TeamMemberModal = React.forwardRef(
         classes={{
           root: styles.root,
           wrapper: styles.member_popup__wrapper,
-          container: cx(styles.member_popup)
+          container: cx(styles.member_popup),
         }}
       >
         <div className={styles.popup_header}>

@@ -32,15 +32,24 @@ export default class Modal extends React.Component {
     }
 
     this.handleClose = this.handleClose.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize)
+    window.removeEventListener('keydown', this.handleKeyPress)
   }
 
   componentDidMount() {
     this.onResize()
     window.addEventListener('resize', this.onResize)
+    window.addEventListener('keydown', this.handleKeyPress)
+  }
+
+  handleKeyPress(event) {
+    if (event.key === 'Escape') {
+      this.handleClose(event)    
+    }
   }
 
   onResize() {

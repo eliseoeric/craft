@@ -3,6 +3,7 @@
 @import '../../styles/definitions/mixins';
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/keyframes';
 
 .team_grid {
   &__overlay {
@@ -11,8 +12,9 @@
 
   &__title {
     font-family: $primary-family;
+    font-weight: 500;
     @include fsz(15px);
-    margin-bottom: 0;
+    margin-bottom: 2px;
     a {
       color: $primary;
       cursor: pointer;
@@ -41,6 +43,23 @@
     margin-bottom: 12px;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
+    height: 300px;
+
+    @media #{$laptop} {
+      max-height: 272px;
+    }
+
+    .headshot,
+    .headshot_overlay {
+      position: absolute;
+      top: 0;
+    }
+
+    .headshot {
+      z-index: 2;
+    }
+
     figcaption {
       color: $white;
       padding: 10px 26px;
@@ -56,9 +75,15 @@
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
-    &:hover figcaption {
-      opacity: 1;
-      transition: opacity 0.5s ease-in-out;
+    &:hover {
+      figcaption {
+        opacity: 1;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .headshot {
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
     }
   }
 
@@ -146,7 +171,7 @@
       text-align: left;
     }
     a {
-      margin: 0 2px;
+      margin: 0 4px;
       color: $primary;
       &:hover,
       &:focus {
@@ -283,7 +308,10 @@
   border-left: 2px solid $gray;
   @media #{$phone-small} {
     top: 0;
-    height: 80px !important;
+    height: 60px !important;
     border-left: 1px solid $gray;
+  }
+  svg {
+    width: 16px;
   }
 }

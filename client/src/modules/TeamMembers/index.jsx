@@ -73,6 +73,11 @@ export const query = graphql`
           url
         }
       }
+      headshotOnHover {
+        file {
+          url
+        }
+      }
     }
   }
 `
