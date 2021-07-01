@@ -9,6 +9,7 @@
     margin-bottom: 47px;
   }
 }
+
 .careers_single__title {
   @include fsz(60px);
   margin-bottom: 12px;
@@ -17,6 +18,7 @@
     margin-bottom: 16px;
   }
 }
+
 .careers_single__published {
   @include fsz(18px);
   @include font_loader($primary-family, 6, 'normal');
@@ -27,6 +29,7 @@
     margin-bottom: 0;
   }
 }
+
 .careers_single__category {
   a {
     color: $primary;
@@ -36,6 +39,7 @@
     }
   }
 }
+
 .careers_single__content {
   max-width: 730px;
   margin-left: 12vw;
@@ -59,6 +63,7 @@
     }
   }
 }
+
 .careers_single__description {
   margin-bottom: 65px;
   @media #{$phone} {

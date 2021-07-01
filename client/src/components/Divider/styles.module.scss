@@ -1,6 +1,13 @@
 @import '../../styles/definitions/colors';
 
 .divider {
-  border-top: 1px solid $gray;
-  padding-top: 57px;
+  margin-bottom: 57px;
+  width: 100%;
+  height: 2px;
+  &::before {
+    content: '';
+    background-image: linear-gradient(to right, $gray-dark, $green);
+    height: 1px;
+    display: block;
+  }
 }

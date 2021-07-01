@@ -1,15 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { navigationActions } from '@State/ducks/ui/navigation'
+import { navigationActions, navigationSelectors } from '@State/ducks/ui/navigation'
 import * as styles from './toggle.module.scss'
 
 const MenuToggle = ({isOpen}) => {
   const dispatch = useDispatch()
+  const isDrawerOpen = useSelector(navigationSelectors.isDrawerOpen)
   const handleOnClick = () => {
-    dispatch(navigationActions.toggleMobileMenu())
+    if (isDrawerOpen) {
+      dispatch(navigationActions.requestCloseDrawer())
+    } else {
+      dispatch(navigationActions.toggleMobileMenu())
+    }
+    
   }
   return (
     <span className={cx(styles.nav_toggle, {[styles.menu_bar__container__open]: isOpen})} onClick={handleOnClick}>

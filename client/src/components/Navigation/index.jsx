@@ -1,18 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useSelector } from 'react-redux'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 import cx from 'classnames'
 
-import { navigationSelectors } from '@State/ducks/ui/navigation'
 import Logo from '@Components/Logo'
 import MenuToggle from '@Components/MenuToggle'
 import NavigationItem from '@Components/NavigationItem'
 import OrbContainer from '@Components/OrbContainer'
 import * as styles from './navigation.module.scss'
 
-const Navigation = ({ className, invertPalette }) => {
-  const isMobileMenuOpen = useSelector(navigationSelectors.isMobileMenuOpen)
+const Navigation = ({ className, invertPalette, onClickEvent, isMenuToggleOpen }) => {
   // todo onClick handler for navigation toggle
   const data = useStaticQuery(graphql`
     query navigation {
@@ -39,13 +36,13 @@ const Navigation = ({ className, invertPalette }) => {
   return (
     <nav
       className={cx(className, styles.navigation_container, {
-        [styles.navigation_container__mobile]: isMobileMenuOpen,
+        [styles.navigation_container__mobile]: isMenuToggleOpen,
         
       })}
     >
       <div className={styles.logo__container}>
         <Logo variant="white" />
-        <MenuToggle isOpen={isMobileMenuOpen} />
+        <MenuToggle isOpen={isMenuToggleOpen} />
       </div>
       <span className={styles.navigation_container__text}>Menu</span>
       <ul className={styles.navigation__primary}>
@@ -53,6 +50,7 @@ const Navigation = ({ className, invertPalette }) => {
           primaryNavigation.navigationItems.map((item, index) => {
             return (
               <NavigationItem
+                onClickEvent={onClickEvent}
                 invertPalette={invertPalette}
                 title={item.title}
                 url={`/${item.slug}`}

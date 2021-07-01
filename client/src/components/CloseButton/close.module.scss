@@ -19,4 +19,8 @@
   &:focus {
     fill: $brand-color;
   }
+
+  @media #{$tablet} {
+    display: none;
+  }
 }
