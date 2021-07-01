@@ -81,5 +81,10 @@
     @media #{$phone} {
       padding-top: 100px;
     }
+  }    
+  
+  &__dark {
+    background-color: $black;
+    color: $white;
   }
 }
