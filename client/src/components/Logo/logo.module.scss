@@ -1,5 +1,5 @@
-@import "../../styles/definitions/colors";
-@import "../../styles/definitions/breakpoints";
+@import '../../styles/definitions/colors';
+@import '../../styles/definitions/breakpoints';
 
 .logo__large {
   margin-left: -20px;
@@ -43,14 +43,10 @@
 
 .logo__white {
   svg path:nth-of-type(1) {
-    fill: $white;
-    transition: fill 0.2s ease-in-out;
+    fill: $green;
   }
   svg path:nth-of-type(2) {
     fill: $black;
-  }
-  &:hover svg path:nth-of-type(1) {
-    fill: $green;
   }
 }
 
@@ -69,14 +65,9 @@
 
 .logo__case_study {
   svg path:nth-of-type(1) {
-    fill: $black;
-    transition: fill 0.2s ease-in-out;
+    fill: $green;
   }
   svg path:nth-of-type(2) {
     fill: $white;
   }
-  &:hover svg path:nth-of-type(1) {
-    fill: $green;
-  }
 }
-
