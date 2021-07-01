@@ -11,6 +11,7 @@ $transition: all 0.12s ease-in-out;
   padding-top: 2rem;
   padding-left: calc(144px + #{$gutter_desktop});
   padding-right: calc(144px + #{$gutter_desktop});
+  width: 100vw;
 
   @media #{$laptop} {
     padding-left: 80px; 

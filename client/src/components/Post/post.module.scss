@@ -5,13 +5,10 @@
 @import '../../styles/definitions/keyframes';
 
 .news_single {
-  padding: 165px 84px;
-  width: calc(100% - 144px);
-  background-color: $white;
-
+  max-width: 740px;
+  margin-left: 12vw;
   @media #{$phone} {
-    padding: 132px 24px 70px;
-    width: 100%;
+    margin-left: 0;
   }
 }
 
@@ -63,8 +60,6 @@
 }
 
 .news_single__content {
-  max-width: 740px;
-  margin-left: 12vw;
 
   &:after {
     content: '.';
@@ -92,6 +87,10 @@
       @include fsz(15px);
       @include font_loader($primary-family, 8, 'normal');
       margin-top: 40px;
+    }
+
+    a {
+      color: $green;
     }
   }
 }
