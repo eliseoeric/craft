@@ -17,7 +17,7 @@ const Post = ({ postData, nextPost }) => {
   const stats = readingTime(content.raw)
 
   return (
-    <div className={cx(styles[`news_single__${slug}`])}>
+    <div className={cx( styles[`news_single__${slug}`], styles.news_single)}>
       {featuredImage && <figure className={styles.news_single__thumbnail}>
         <GatsbyImage
           image={getImage(featuredImage)}
@@ -41,7 +41,7 @@ const Post = ({ postData, nextPost }) => {
             <span>{stats.text}</span>
           </div>
         </div>
-        <div className={cx(styles.remark_content)}>
+        <div className={cx(styles.remark_content, 'remark_content')}>
           {documentToReactComponents(JSON.parse(content.raw))}
         </div>
       </div>

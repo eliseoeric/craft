@@ -7,6 +7,7 @@ import Container from '@Components/Grid/Container'
 import TeamMemberCard from '@Components/TeamMember/TeamMemberCard'
 import TeamMemberModal from '@Components/TeamMember/TeamMemberModal'
 import { withModal } from '@Components/withModal'
+import Divider from '@Components/Divider'
 
 import {
   navigationOperations,
@@ -30,6 +31,7 @@ const TeamMembers = ({ title, teamMembers }) => {
 
   return (
     <section className={styles.team_block}>
+      <Divider />
       <Container className={styles.container}>
         <h2 className={styles.team_block__title}>{title}</h2>
         <div className={styles.team_grid}>
