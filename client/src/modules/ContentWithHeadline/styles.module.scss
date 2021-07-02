@@ -26,15 +26,28 @@
   }
 
   .content {
+    padding-top: 1rem;
     h3 {
-      margin-top: 1rem;
       font-size: 18px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
 
     ul {
       column-count: 2;
       column-gap: 20px;
+    }
+
+    &__two_columns {
+      columns: 2;
+      p {
+        font-size: 15px;
+        line-height: 20px;
+        margin-bottom: 4.5rem;
+      }
+
+      @media #{$phone} {
+        columns: unset;
+      }
     }
   }
 }

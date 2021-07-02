@@ -53,8 +53,7 @@
   }
 
   @media #{$phone} {
-    @include fsz(60px);
-    padding: 0 24px;
+    display: none;
   }
 
   &:after {
@@ -71,10 +70,6 @@
     @media #{$desktop} {
       left: -340px;
       bottom: 40px;
-    }
-
-    @media #{$phone} {
-      display: none;
     }
   }
 
@@ -173,6 +168,12 @@
   }
 
   .hero_block__title {
+    @media #{$phone} {
+      @include fsz(60px);
+      padding: 0 24px;
+      display: block;
+    }
+
     &:after {
       content: '';
       position: absolute;
@@ -284,12 +285,24 @@
     position: relative;
     z-index: 1;
     @include fsz(60px);
-    padding: 0 24px;
     margin-bottom: 10px;
   }
   + .hero_block__title {
     @media #{$phone} {
       @include fsz(55px);
+    }
+  }
+}
+
+.hero_block__about {
+  .hero_block__mobile_title {
+    padding: 0 24px;
+  }
+  @media #{$phone} {
+    .hero_block__title {
+      @include fsz(24px);
+      padding: 0 24px;
+      display: block;
     }
   }
 }

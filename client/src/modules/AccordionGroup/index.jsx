@@ -53,7 +53,7 @@ const AccordionGroup = ({ accordions, className, title }) => {
       <OrbContainer
         className={style.orb_container}
         originXGetter={() =>
-          containerRef.current.offsetWidth + window.innerWidth / 4
+          containerRef?.current ?? containerRef.current.offsetWidth + window.innerWidth / 4
         }
         originYGetter={() => 100}
         radiusRange={[400, 450]}

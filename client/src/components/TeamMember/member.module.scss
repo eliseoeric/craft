@@ -132,7 +132,7 @@
   border-top: 3px solid $brand-color;
 
   &__wrapper {
-    margin: 6px !important;
+    margin: 0px !important;
   }
 }
 .popup_header {
@@ -143,7 +143,7 @@
   border-bottom: 1px solid $gray;
   @media #{$phone-small} {
     padding: 15px 60px 15px 20px;
-    height: 80px;
+    height: 60px;
   }
 
   &__member_info {
@@ -200,6 +200,12 @@
   &__member_social {
     @media #{$phone-small} {
       display: none;
+    }
+  }
+
+  &__member_info__mobile {
+    @media #{$phone-small} {
+      display: flex;
     }
   }
 }
