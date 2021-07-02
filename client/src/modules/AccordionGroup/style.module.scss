@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: white;
+  position: relative;
 }
 
 .container {
@@ -58,6 +58,7 @@
   position: absolute;
   bottom: 80px;
   left: 15vw;
+  z-index: 2;
 
   @media #{$tablet} {
     position: relative;
@@ -97,5 +98,11 @@
 
   @media #{$phone} {
     padding-left: 0;
+  }
+}
+
+.orb_container {
+  canvas {
+    z-index: 0;
   }
 }
