@@ -11,17 +11,17 @@ import Container from '@Components/Grid/Container'
 import Row from '@Components/Grid/Row'
 import Column from '@Components/Grid/Column'
 
-const ContentWithHeadline = ({ className, content, title, displayOrb, alignOrb }) => {
+const ContentWithHeadline = ({ className, content, title, displayOrb, alignOrb, contentLayout }) => {
   const orbXAlignment = alignOrb ? 5.25 : 1.25
   return (
     <section className={cx(styles.content_with_headline)}>
       <Container className={cx(styles.container)}>
         <Divider />
-        <Row justifyContent={'between'}>
+        <Row >
           <Column lg={4}>
             <H2 text={htmr(title)} className={cx(styles.h2)} />
           </Column>
-          <Column lg={7} className={cx(styles.content, 'remark_content')}>
+          <Column lg={contentLayout ? 7 : 8} className={cx(styles.content, 'remark_content', {[styles.content__two_columns]: !contentLayout})}>
             {htmr(content.childMarkdownRemark.html)}
           </Column>
         </Row>
@@ -43,6 +43,7 @@ export const query = graphql`
     title
     displayOrb
     alignOrb
+    contentLayout
     content {
       childMarkdownRemark {
         html

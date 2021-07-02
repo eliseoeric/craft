@@ -7,7 +7,6 @@ import Modal from '@Components/Modal'
 import SocialIconsAlt from '@Components/SocialIconsAlt'
 
 import * as styles from './member.module.scss'
-const isBrowser = typeof window !== `undefined`
 
 const TeamMemberModal = React.forwardRef(
   ({ teamMember, ...modalProps }, ref) => {
@@ -57,7 +56,7 @@ const TeamMemberModal = React.forwardRef(
             />
           </figure>
           <div className={styles.popup_content__mobile_details}>
-            <div className={styles.popup_header__member_info}>
+            <div className={cx(styles.popup_header__member_info, styles.popup_header__member_info__mobile)}>
               <h3 className={styles.popup_header__member_name}>{fullName}</h3>
               <p className={styles.popup_header__member_designation}>
                 {jobTitle}
