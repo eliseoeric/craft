@@ -8,10 +8,11 @@ import { SectionTitle, H3 } from '@Components/Typography'
 
 import * as styles from './styles.module.scss'
 
-const Header = ({ title, byline }) => {
+const Header = ({ title, byline, orbColor1, orbColor2 }) => {
+  console.log({orbColor1})
   return (
     <section className={styles.root}>
-      <OrbContainer />
+      <OrbContainer orbColor1={orbColor1} orbColor2={orbColor2} />
       <Container>
         <SectionTitle text={title} />
         <H3 text={byline} className={styles.block_subtitle} />

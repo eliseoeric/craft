@@ -7,10 +7,12 @@ import OrbContainer from '@Components/OrbContainer'
 
 import * as styles from './mockup.module.scss'
 
-const CaseStudyMockUp = ({ title, mocks }) => {
+const CaseStudyMockUp = ({ title, mocks, orbColor1, orbColor2 }) => {
   return (
     <section className={styles.showcase_block}>
       <OrbContainer
+        orbColor1={orbColor1}
+        orbColor2={orbColor2}
         originXGetter={() => window.innerWidth / 1.65}
         originYGetter={() => window.innerHeight / 2}
         radiusRange={[150, 175]}

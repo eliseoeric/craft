@@ -3,17 +3,20 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import * as PIXI from 'pixi.js'
 import { KawaseBlurFilter } from '@pixi/filter-kawase-blur'
+import ScrollTrigger from 'react-scroll-trigger'
 
 import { Orb } from '@Utils/animation'
 import useToggle from '@Hooks/useToggle'
+import useScrollProgress from '@Hooks/useScrollProgress'
 
 import * as styles from './styles.module.scss'
 
-const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className }) => {
+const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, orbColor1, orbColor2 }) => {
   const [hasBooted, toggleBootState] = useToggle()
   const orbElement = useRef(null)
   const orbApp = useRef(null)
   const orbs = []
+  const { handleScrollProgress, setVisible, visible, offset } = useScrollProgress()
 
   useEffect(() => {
     // cant run any of this without the window obejct
@@ -29,14 +32,30 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className }) 
         resizeTo: window,
         // transparent background, we will be creating a gradient background later using CSS
         transparent: true,
+        sharedTicker: true,
+        
       })
       orbApp.current.stage.filters = [new KawaseBlurFilter(30, 10, true)]
 
-      const orbSeeds = ['0x7500ff', '0x7500ff', '0x37ecf2', '0x00ffe6']
+      const getOrbSeeds = () => {
+        if (orbColor1 && orbColor2) {
+          return [
+            `0x${orbColor1}`,
+            `0x${orbColor1}`,
+            `0x${orbColor2}`
+          ]
+        } else {
+          return ['0x00FFb5', '0x00FFb5', '0x00FFb5']
+          // return ['0x7500ff', '0x7500ff', '0x37ecf2', '0x00ffe6']
+        }
+      }
+
+      const orbSeeds = getOrbSeeds()
+
       for (let i = 0; i < orbSeeds.length; i++) {
         const orb = new Orb(
           orbSeeds[i],
-          originXGetter,
+          originXGetter, // todo need default values for these
           originYGetter,
           radiusRange
         )
@@ -65,8 +84,20 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className }) 
     }
   }, [orbElement, orbApp, hasBooted, toggleBootState, orbs])
 
+  useEffect(() => {
+    if (visible) {
+      orbApp.current.start()
+    } else {
+      orbApp.current.stop();
+    }
+  }, [visible])
+
   return (
     <div className={cx(styles.root, className)}>
+      <ScrollTrigger
+          onEnter={() => setVisible(true)}
+          onExit={() => setVisible(false)}
+        />
       <canvas className={cx(styles.canvas)} ref={orbElement}></canvas>
     </div>
   )

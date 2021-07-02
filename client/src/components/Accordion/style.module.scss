@@ -17,11 +17,12 @@
 }
 
 .accordionButton {
-  background-color: white;
+  background-color: $gray-light;
   padding: 23px 46px 22px 85px;
   position: relative;
   text-align: left;
   width: 100%;
+  border-bottom: 1px solid $gray;
 
   @media #{$tablet} {
     padding-left: 14vw;
@@ -40,12 +41,13 @@
 
 .accordion:last-of-type {
   .accordionContent.open {
-    border-bottom: 1px solid $gray;
+    border-bottom: none;
   }
+  
 }
 
 .accordionContent {
-  // border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid $gray;
   max-height: 1000px;
   padding: 23px 46px 22px 85px;
   // padding: 0 46px 0 85px;
@@ -72,7 +74,7 @@
   }
 }
 
-.border-top {
+.border_top {
   height: 1px;
   background: $gray;
   position: relative;

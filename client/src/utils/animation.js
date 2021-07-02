@@ -61,18 +61,18 @@ class Orb {
     this.xOff = random(0, 1000)
     this.yOff = random(0, 1000)
     // how quickly the noise/self similar random values step through time
-    this.inc = 0.0005
+    this.inc = 0.0003
 
     // PIXI.Graphics is used to draw 2d primitives (in this case a circle) to the canvas
     this.graphics = new PIXI.Graphics()
     this.graphics.alpha = 0.525
 
-    // 250ms after the last window resize event, recalculate orb positions.
+    // 550ms after the last window resize event, recalculate orb positions.
     window.addEventListener(
       'resize',
       debounce(() => {
         this.bounds = this.setBounds()
-      }, 250)
+      }, 550)
     )
   }
 
