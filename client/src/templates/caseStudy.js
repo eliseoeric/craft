@@ -17,15 +17,20 @@ import * as styles from './styles.module.scss'
 
 const CaseStudyTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const { title, slug, description, layout } = data?.contentfulTypeCaseStudy
+  const { title, slug, description, layout,orbColor1, orbColor2 } = data?.contentfulTypeCaseStudy
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childrenMarkdownRemark[0].rawMarkdownBody
 
   const renderModules = (modules) => {
     return modules.map((module) => {
       const { __typename, ...attributes } = module
+      const _attributes = {
+        ...attributes,
+        orbColor1,
+        orbColor2
+      }
       return (
-        <Module attributes={attributes} type={__typename} key={uuid.v4()} />
+        <Module attributes={_attributes} type={__typename} key={uuid.v4()} />
       )
     })
   }

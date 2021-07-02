@@ -48,6 +48,8 @@ const ReduxWrapper = ({ element }) => (
             node {
               title
               slug
+              orbColor1
+              orbColor2
               description {
                 childrenMarkdownRemark {
                   rawMarkdownBody
