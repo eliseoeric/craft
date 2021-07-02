@@ -38,7 +38,7 @@
   }
 }
 
-.hero_block__title{
+.hero_block__title {
   @include fsz(132px);
   line-height: 1;
   padding-left: 16vw;
@@ -54,11 +54,11 @@
 
   @media #{$phone} {
     @include fsz(60px);
-    padding: 0 24px
+    padding: 0 24px;
   }
 
-  &:after{
-    content:"";
+  &:after {
+    content: '';
     position: absolute;
     bottom: 86px;
     left: 0;
@@ -102,8 +102,8 @@
       width: 100%;
     }
 
-    &:before{
-      content:"";
+    &:before {
+      content: '';
       display: block;
       width: 130px;
       height: 130px;
@@ -126,12 +126,12 @@
   }
 }
 
-.hero_block__front_page{
+.hero_block__front_page {
   .container {
     position: relative;
 
-    &:before{
-      content:"";
+    &:before {
+      content: '';
       display: block;
       width: 840px;
       height: 766px;
@@ -153,9 +153,9 @@
       }
     }
   }
-  
-  &:after{
-    content:"Scroll";
+
+  &:after {
+    content: 'Scroll';
     text-transform: uppercase;
     @include font_loader($primary-family, 8, 'normal');
     @include fsz(12px);
@@ -168,13 +168,13 @@
     color: $gray-dark;
 
     @media #{$phone} {
-     display: none;
+      display: none;
     }
   }
 
   .hero_block__title {
-    &:after{
-      content:"";
+    &:after {
+      content: '';
       position: absolute;
       bottom: 50px;
       left: 0;
@@ -205,17 +205,23 @@
   position: relative;
   overflow: initial;
 
-  &:after{
-    content:"";
+  &:after {
+    content: '';
     display: block;
     width: 1340px;
     height: 100%;
     position: absolute;
-    right:0;
+    right: 0;
     top: 0;
     background: url(../../images/careers-hero-lines.png) no-repeat 0 0;
     background-size: cover;
     z-index: 1;
+  }
+
+  @media #{$laptop} {
+    &:after {
+      content: none;
+    }
   }
 
   @media #{$phone} {
@@ -233,43 +239,43 @@
     }
   }
 
-  .hero_block__title{
-      padding-left: 0;
-      max-width: inherit;
+  .hero_block__title {
+    padding-left: 0;
+    max-width: inherit;
 
-      @media #{$phone} {
-         margin-bottom: 10px;
-      }
+    @media #{$phone} {
+      margin-bottom: 10px;
+    }
 
-      &:after{
-        display: none;
-      }
+    &:after {
+      display: none;
+    }
   }
 
   .hero_block__orb_container {
-     canvas {
-      transform: translateY(160px) rotate(0deg);
+    canvas {
+      transform: translateY(80px) rotate(0deg);
     }
   }
 }
 
 .hero_block__orb_container {
   canvas {
-   @media #{$phone} {
-     left: 0;
-     top: -50%;
-   }
- }
+    @media #{$phone} {
+      left: 0;
+      top: -50%;
+    }
+  }
 }
 
-.hero_block__description{
+.hero_block__description {
   @include fsz(24px);
   @include font_loader($primary-family, 9, 'normal');
   max-width: 660px;
   line-height: 1.3;
 }
 
-.hero_block__mobile_title{
+.hero_block__mobile_title {
   display: none;
 
   @media #{$phone} {
@@ -281,7 +287,7 @@
     padding: 0 24px;
     margin-bottom: 10px;
   }
-  + .hero_block__title{
+  + .hero_block__title {
     @media #{$phone} {
       @include fsz(55px);
     }

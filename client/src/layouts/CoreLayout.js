@@ -29,13 +29,12 @@ const CoreLayout = ({
       <Header invertPalette={invertPalette} />
       <Sidebar />
       <main
-        className={cx(styles.content_wrapper, {
-          [styles.content_wrapper__flair]: invertPalette,
-        })}
+        className={cx(styles.content_wrapper)}
       >
         <div
           className={cx(styles.page_wrapper, {
-            [styles.page_wrapper__no_hero]: !hasHero && !drawerOpen,
+            [styles.page_wrapper__no_hero]: hasHero === false,
+            [styles.page_wrapper__invertPalette]: invertPalette
           })}
         >
           {drawerOpen && <Drawer><DrawerTemplate /></Drawer>}

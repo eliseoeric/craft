@@ -9,7 +9,7 @@
   }
 
   .page_wrapper {
-    left: unset
+    left: unset;
   }
 }
 
@@ -35,10 +35,6 @@
 .content_wrapper {
   grid-area: content;
   z-index: 2;
-
-  &__flair {
-    border-left: 1px solid $gray-darker;
-  }
 }
 
 .main {
@@ -53,12 +49,41 @@
   z-index: 1;
   left: -144px;
 
+  &::before {
+    content: '';
+    display: block;
+    width: 144px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #ccc;
+    z-index: 2;
+    @media #{$laptop} {
+      display: none;
+    }
+    @media #{$phone} {
+      width: 144px;
+    }
+  }
+
+  &__invertPalette {
+    &::before {
+      border-right: 1px solid $gray-darker;
+    }
+  }
+
   @media #{$laptop} {
     left: unset;
   }
-  
-  &__dark {
-    background-color: $black;
-    color: $white;
+
+  &__no_hero {
+    padding-top: 160px;
+    @media #{$desktop} {
+      padding-top: 120px;
+    }
+    @media #{$phone} {
+      padding-top: 100px;
+    }
   }
 }
