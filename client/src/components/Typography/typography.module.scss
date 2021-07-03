@@ -11,6 +11,7 @@
 
 .section_title {
   @include fsz(132px);
+  line-height: 120px;
   letter-spacing: -3px;
   @include font_loader($primary-family, 8, 'normal');
   margin-bottom: 0;

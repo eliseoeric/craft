@@ -27,7 +27,7 @@
     color: $white;
   }
 
-  @media #{$laptop} {
+  @media #{$tablet} {
     grid-template-columns: 0px auto;
   }
 }
@@ -73,7 +73,7 @@
     }
   }
 
-  @media #{$laptop} {
+  @media #{$tablet} {
     left: unset;
   }
 

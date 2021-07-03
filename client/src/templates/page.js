@@ -1,19 +1,15 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import cx from 'classnames'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import uuid from 'uuid'
 
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'
 import Module from '@Components/Module'
 import BlogIndexModule from '@Modules/BlogIndex'
-import { TEMPLATES } from '../utils/enums'
+import { TEMPLATES } from '@Utils/enums'
 import Banner from '@Components/Banner'
-import {
-  navigationActions,
-  navigationSelectors,
-} from '@State/ducks/ui/navigation'
+import { navigationSelectors } from '@State/ducks/ui/navigation'
 
 const PageTemplate = ({ data, pageContext }) => {
   const drawer = useSelector(navigationSelectors.getDrawer)
@@ -47,7 +43,9 @@ const PageTemplate = ({ data, pageContext }) => {
         hasHero={layout.hasHero}
         drawerOpen={drawer.isOpen}
         templateSlug={TEMPLATES[layout.template]}
-        invertPalette={invertPalette !== null ? invertPalette : layout.invertPalette}
+        invertPalette={
+          invertPalette !== null ? invertPalette : layout.invertPalette
+        }
       >
         {layout &&
           layout.contentModules &&
