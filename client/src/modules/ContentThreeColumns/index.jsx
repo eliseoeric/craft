@@ -20,7 +20,7 @@ const ContentThreeColumns = ({
   
   return (
     <section className={styles.root}>
-      <Container className={cx(styles.container, 'remark-content')}>
+      <Container className={cx(styles.container, 'remark_content', styles.remark_content)}>
         <Divider />
         <Row>
           <Column lg={4}>{documentToReactComponents(JSON.parse(columnLeft.raw))}</Column>

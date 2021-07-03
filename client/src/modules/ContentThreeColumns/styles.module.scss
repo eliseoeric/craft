@@ -2,6 +2,7 @@
 @import '../../styles/definitions/mixins';
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/breakpoints';
+@import '../../styles/definitions/mixins';
 
 .root {
   padding: 111px 0;
@@ -26,4 +27,10 @@
   border-top: 1px solid $gray;
 
   padding-top: 57px;
+}
+
+.remark_content {
+  h1 {
+    @include fsz(40px);
+  }
 }

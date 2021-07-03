@@ -1,50 +1,49 @@
 import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
-import cx from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
-import _ from "lodash"
 
 import {
   navigationActions,
   navigationSelectors,
 } from '@State/ducks/ui/navigation'
 import CoreLayout from '@Layouts/CoreLayout'
+import BlogIndexModule from '@Modules/BlogIndex'
 import SEO from '@Components/Seo'
-import Drawer from '@Components/Drawer'
-import Post from '@Components/Post'
-import NextPost from '@Components/NextPost'
-import { TEMPLATES } from '../utils/enums'
+import { TEMPLATES } from '@Utils/enums'
 
-// todo, create a graphql service to query contentful. The service can request roles and case study data on demand, and then pass it to the drawer to render
+/**
+ * Render the Blog index via a manual query. Then loads the requested news article
+ * by slug into the app drawer
+ * @param {*} param0 
+ * @returns 
+ */
 const PostTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
   const drawer = useSelector(navigationSelectors.getDrawer)
-  const { title, slug, description, layout } = data?.contentfulTypeBlogPost
+  const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
-  const { next } = pageContext
-
-  const renderLayout = (layout) => {
-    return (
-      <CoreLayout drawerOpen={drawer.isOpen} templateSlug={TEMPLATES.Post}>
-        <Drawer>
-          <Post postData={data?.contentfulTypeBlogPost} />
-        </Drawer>
-        {!_.isEmpty(next) && <NextPost nextPost={next} />}
-      </CoreLayout>
-    )
+  const renderModules = (modules) => {
+    return modules.map((module) => {
+      const { __typename } = module
+      return <BlogIndexModule key={__typename} />
+    })
   }
 
   /**
-   * On boot, open the drawer
+   * On boot, open the drawer with the requested post
    */
   useEffect(() => {
     dispatch(
-      navigationActions.requestOpenDrawer({ template: 'post', slug: slug })
+      navigationActions.requestOpenDrawer({
+        template: 'post',
+        slug: pageContext.slug,
+      })
     )
   }, [])
 
+  const { title, slug, description, layout } = data?.contentfulPage
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
-  // const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
+  const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
 
   return (
     <>
@@ -52,9 +51,20 @@ const PostTemplate = ({ data, pageContext }) => {
         title={title}
         titleTemplate={`%s - ${title}`}
         // image={`https:${socialShareImage?.file?.url}`}
-        // description={seoDescription}
+        description={seoDescription}
       />
-      {renderLayout(layout)}
+      <CoreLayout
+        hasHero={layout.hasHero}
+        drawerOpen={drawer.isOpen}
+        templateSlug={TEMPLATES[layout.template]}
+        invertPalette={
+          invertPalette !== null ? invertPalette : layout.invertPalette
+        }
+      >
+        {layout &&
+          layout.contentModules &&
+          renderModules(layout.contentModules)}
+      </CoreLayout>
     </>
   )
 }
@@ -62,23 +72,33 @@ const PostTemplate = ({ data, pageContext }) => {
 export default PostTemplate
 
 export const query = graphql`
-  query ($slug: String!) {
-    contentfulTypeBlogPost(slug: { eq: $slug }) {
+  query {
+    contentfulPage(slug: { eq: "news" }) {
       title
       slug
-      category
-      content {
-        raw
-        references {
-          gatsbyImageData(aspectRatio: 1.5)
-          title
+      description {
+        childrenMarkdownRemark {
+          rawMarkdownBody
         }
       }
-      featuredImage {
-        gatsbyImageData(aspectRatio: 1.5)
-        title
+      layout {
+        template
+        hasHero
+        invertPalette
+        frontmatter {
+          banner_text
+        }
+        contentModules {
+          __typename
+          ...SelectedWorksModule
+          ...HeroModule
+          ...TeamMembersModule
+          ...ContentWithHeadlineModuleQuery
+          ...AccordionGroupQuery
+          ...ImageGroupModule
+          ...OpenRoles
+        }
       }
-      updatedAt
     }
   }
 `

@@ -69,20 +69,4 @@
   @media #{$phone} {
     margin-bottom: 48px;
   }
-  ul {
-    padding: 0;
-    li {
-      list-style: none;
-      padding-left: 26px;
-      position: relative;
-      margin-bottom: 10px;
-      &:before {
-        content: '-';
-        color: $gray-dark;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
 }

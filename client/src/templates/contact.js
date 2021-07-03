@@ -1,6 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import cx from 'classnames'
 
 import CoreLayout from '@Layouts/CoreLayout'
 import SEO from '@Components/Seo'

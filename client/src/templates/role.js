@@ -1,47 +1,52 @@
 import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
-import cx from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
+import uuid from 'uuid'
 
 import {
   navigationActions,
   navigationSelectors,
 } from '@State/ducks/ui/navigation'
 import CoreLayout from '@Layouts/CoreLayout'
+import Module from '@Components/Module'
 import SEO from '@Components/Seo'
-import Drawer from '@Components/Drawer'
-import Role from '@Components/Role'
-import { TEMPLATES } from '../utils/enums'
+import { TEMPLATES } from '@Utils/enums'
 
-// todo, create a graphql service to query contentful. The service can request roles and case study data on demand, and then pass it to the drawer to render
+/**
+ * Render the Careers page via a manual query, then loads the requested role by
+ * slug into the app drawer
+ * @param {*} param0 
+ * @returns 
+ */
 const RoleTemplate = ({ data, pageContext }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const drawer = useSelector(navigationSelectors.getDrawer)
-  const { title, slug, description, layout } = data?.contentfulTypeRole
+  const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
-  const renderLayout = (layout) => {
-    return (
-      <CoreLayout
-        drawerOpen={drawer.isOpen}
-        templateSlug={TEMPLATES.Role}
-      >
-        <Drawer>
-          <Role roleData={data?.contentfulTypeRole} />
-        </Drawer>
-      </CoreLayout>
-    )
+  const renderModules = (modules) => {
+    return modules.map((module) => {
+      const { __typename, ...attributes } = module
+      return (
+        <Module attributes={attributes} type={__typename} key={uuid.v4()} />
+      )
+    })
   }
-  
+
   /**
    * On boot, open the drawer
    */
   useEffect(() => {
-    dispatch(navigationActions.requestOpenDrawer({template: 'role', slug: slug}))
+    dispatch(
+      navigationActions.requestOpenDrawer({
+        template: 'role',
+        slug: pageContext.slug,
+      })
+    )
   }, [])
 
-  
+  const { title, slug, description, layout } = data?.contentfulPage
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
-  // const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
+  const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
 
   return (
     <>
@@ -49,9 +54,20 @@ const RoleTemplate = ({ data, pageContext }) => {
         title={title}
         titleTemplate={`%s - ${title}`}
         // image={`https:${socialShareImage?.file?.url}`}
-        // description={seoDescription}
+        description={seoDescription}
       />
-      {renderLayout(layout)}
+      <CoreLayout
+        hasHero={layout.hasHero}
+        drawerOpen={drawer.isOpen}
+        templateSlug={TEMPLATES[layout.template]}
+        invertPalette={
+          invertPalette !== null ? invertPalette : layout.invertPalette
+        }
+      >
+        {layout &&
+          layout.contentModules &&
+          renderModules(layout.contentModules)}
+      </CoreLayout>
     </>
   )
 }
@@ -59,16 +75,33 @@ const RoleTemplate = ({ data, pageContext }) => {
 export default RoleTemplate
 
 export const query = graphql`
-  query ($slug: String!) {
-    contentfulTypeRole(slug: { eq: $slug }) {
+  query {
+    contentfulPage(slug: { eq: "careers" }) {
       title
       slug
-      location
-      jobDescription {
-        raw
+      description {
+        childrenMarkdownRemark {
+          rawMarkdownBody
+        }
       }
-      updatedAt
-      applicationLink
+      layout {
+        template
+        hasHero
+        invertPalette
+        frontmatter {
+          banner_text
+        }
+        contentModules {
+          __typename
+          ...SelectedWorksModule
+          ...HeroModule
+          ...TeamMembersModule
+          ...ContentWithHeadlineModuleQuery
+          ...AccordionGroupQuery
+          ...ImageGroupModule
+          ...OpenRoles
+        }
+      }
     }
   }
 `
