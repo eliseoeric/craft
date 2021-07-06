@@ -33,22 +33,22 @@ const NextArrow = ({ className, style, onClick }) => {
   )
 }
 
-const SliderComponent = ({ children, className }) => {
-  return (
-    <Slider
-      lazyLoad={true}
-      infinite={true}
-      variableWidth={true}
-      speed={500}
-      slidesToShow={1}
-      dots={false}
-      className={className}
-      nextArrow={<NextArrow />}
-      prevArrow={<PrevArrow />}
-    >
-      {children}
-    </Slider>
-  )
-}
+const SliderComponent = React.forwardRef(({ children, className, onReInit}, ref) => (
+  <Slider
+    lazyLoad={true}
+    infinite={true}
+    variableWidth={true}
+    speed={500}
+    slidesToShow={1}
+    dots={false}
+    className={className}
+    ref={ref}
+    onReInit={onReInit}
+    nextArrow={<NextArrow />}
+    prevArrow={<PrevArrow />}
+  >
+    {children}
+  </Slider>
+))
 
 export default SliderComponent
