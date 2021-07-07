@@ -18,6 +18,7 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
   const orbs = []
   const { setVisible, visible } = useScrollProgress()
 
+
   useEffect(() => {
     // cant run any of this without the window obejct
     if (window == null) {

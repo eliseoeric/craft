@@ -75,6 +75,7 @@ export default class Modal extends React.Component {
         <div
           className={classnames(modal.modal__wrapper, classes.wrapper, {
             [modal.modal__active]: isActive,
+            [modal.fade_in_fwd]: isActive,
           })}
         >
           {!disableCloseButton && (
@@ -92,13 +93,6 @@ export default class Modal extends React.Component {
               backgroundImage: background ? `url(${background})` : null,
             }}
           >
-            {/* <div
-              className={classnames(
-                modal.modal__close_button,
-                classes.close_button
-              )}
-              onClick={this.handleClose}
-            ></div> */}
             {children}
           </Container>
         </div>
