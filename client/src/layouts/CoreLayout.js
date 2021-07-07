@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import { useSelector } from 'react-redux'
 
+import { TEMPLATES } from '@Utils/enums'
 import Footer from '@Components/Footer'
 import Header from '@Components/Header'
 import Sidebar from '@Components/Sidebar'
 import Drawer from '@Components/Drawer'
 import DrawerTemplate from '@Components/DrawerTemplate'
+import {
+  navigationSelectors,
+} from '@State/ducks/ui/navigation'
 
 import '../styles/app.scss'
 import * as styles from './layout.module.scss'
@@ -19,7 +24,10 @@ const CoreLayout = ({
   templateSlug,
   invertPalette,
 }) => {
-  
+  const drawerTemplate = useSelector(navigationSelectors.getDrawerTemplate)
+
+  console.log({ drawerTemplate })
+
   return (
     <div
       className={cx(styles.core_layout, className, `layout__${templateSlug}`, {
@@ -28,7 +36,11 @@ const CoreLayout = ({
       })}
     >
       <Header invertPalette={invertPalette} />
-      <Sidebar />
+      <Sidebar
+        className={cx({
+          [styles.sidebar__case_study]: drawerTemplate === TEMPLATES['Case Study'],
+        })}
+      />
       <main className={cx(styles.content_wrapper)}>
         <div
           className={cx(styles.page_wrapper, {

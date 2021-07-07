@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import { KawaseBlurFilter } from '@pixi/filter-kawase-blur'
 import SimplexNoise from 'simplex-noise'
 import hsl from 'hex-to-hsl'
-import debounce from 'debounce'
+import { throttle } from 'lodash'
 
 // return a random number within a range
 function random(min, max) {
@@ -76,7 +76,7 @@ class Orb {
   }
 
   onResize() {
-    debounce(() => { // todo this just delays the call, and then calls it several times
+    throttle(() => { // todo this just delays the call, and then calls it several times
       this.bounds = this.setBounds()
     }, 550)
   }
@@ -87,10 +87,8 @@ class Orb {
       window.innerWidth < 1000 ? window.innerWidth / 6 : window.innerWidth / 10
 
     // the { x, y } origin for each orb (from the bottom right of the screen)
-    debugger;
     const originX = this.originXGetter()
     const originY = this.originYGetter()
-    debugger;
 
     // allow each orb to move x distance away from it's x / y origin
     return {

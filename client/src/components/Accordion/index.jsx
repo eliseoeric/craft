@@ -3,14 +3,14 @@ import cx from 'classnames'
 import { graphql } from 'gatsby'
 import { H3 } from '@Components/Typography'
 import * as style from './style.module.scss'
-import debounce from 'lodash/debounce'
+import {throttle} from 'lodash'
 
 const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
   const accordionRef = useRef(null)
 
   useEffect(() => {
     const toggleStylesOnResize = () => {
-      debounce(() => {
+      throttle(() => {
         toggleStyles(accordionRef, isOpen)
       }, 250)()
     }
