@@ -3,4 +3,9 @@
 
 .blogIndex {
   padding-top: 144px;
+  width: calc(100% + 144px);
+
+  @media #{$tablet} {
+    width: 100%;
+  }
 }

@@ -27,11 +27,11 @@
     transform: rotate(0deg);
     transition: 0.25s ease-in-out;
 
-    .mobileNav__toggle--light & {
+    .menu_bar__invert_palette & {
       background: $white;
     }
 
-    &.menu_bar__container__open .mobileNav__toggle--light {
+    &.menu_bar__container__open .menu_bar__invert_palette {
       background: $primary;
     }
   }

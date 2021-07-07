@@ -84,6 +84,12 @@ module.exports = {
     //   },
     // },
     {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [`/about/`, `/case-studies/*`, `careers`, `/`, `contact`, `news`],
+      },
+    },
+    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: googleAnalytics.code,

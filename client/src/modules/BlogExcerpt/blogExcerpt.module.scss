@@ -11,7 +11,7 @@ $transition: all 0.12s ease-in-out;
   padding-top: 2rem;
   padding-left: calc(144px + #{$gutter_desktop});
   padding-right: calc(144px + #{$gutter_desktop});
-  width: 100vw;
+  width: 100%;
 
   @media #{$laptop} {
     padding-left: 80px; 
@@ -40,8 +40,12 @@ h2 {
 .blogExcerptH2 {
   border-bottom: 1px solid transparent;
   display: inline-block;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 0.35rem;
+}
+
+.blogExcerpt__date {
+  font-weight: bold;
 }
 
 .blogLink {
@@ -78,8 +82,18 @@ h2 {
 .imgWrap {
   margin-left: 1rem;
   transition: $transition;
+  
+  
+  @media #{$phone} {
+    display: none;
+  }
+
 }
 
 .flexItem {
   flex: 0 0 50%;
+
+  @media #{$phone} {
+    flex: 0 0 100%;
+  }
 }

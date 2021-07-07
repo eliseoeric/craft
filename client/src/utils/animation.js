@@ -2,7 +2,7 @@ import * as PIXI from 'pixi.js'
 import { KawaseBlurFilter } from '@pixi/filter-kawase-blur'
 import SimplexNoise from 'simplex-noise'
 import hsl from 'hex-to-hsl'
-import debounce from 'debounce'
+import { throttle } from 'lodash'
 
 // return a random number within a range
 function random(min, max) {
@@ -68,12 +68,17 @@ class Orb {
     this.graphics.alpha = 0.525
 
     // 550ms after the last window resize event, recalculate orb positions.
+    // todo need to remove this event listener during cleanup
     window.addEventListener(
       'resize',
-      debounce(() => {
-        this.bounds = this.setBounds()
-      }, 550)
+      this.onResize,
     )
+  }
+
+  onResize() {
+    throttle(() => { // todo this just delays the call, and then calls it several times
+      this.bounds = this.setBounds()
+    }, 550)
   }
 
   setBounds() {
@@ -130,6 +135,13 @@ class Orb {
     this.graphics.drawCircle(150, 300, this.radius)
     // let graphics know we won't be filling in any more shapes
     this.graphics.endFill()
+  }
+
+  cleanup() {
+    window.removeEventListener(
+      'resize',
+      this.onResize
+    )
   }
 }
 

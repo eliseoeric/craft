@@ -16,7 +16,8 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
   const orbElement = useRef(null)
   const orbApp = useRef(null)
   const orbs = []
-  const { handleScrollProgress, setVisible, visible, offset } = useScrollProgress()
+  const { setVisible, visible } = useScrollProgress()
+
 
   useEffect(() => {
     // cant run any of this without the window obejct
@@ -55,7 +56,7 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
       for (let i = 0; i < orbSeeds.length; i++) {
         const orb = new Orb(
           orbSeeds[i],
-          originXGetter, // todo need default values for these
+          originXGetter,
           originYGetter,
           radiusRange
         )
@@ -81,6 +82,12 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
       }
 
       toggleBootState()
+
+      // Cleanup, deletes all event listeners
+      return () => {
+        orbs.forEach(orb => orb.cleanup())
+        
+      }
     }
   }, [orbElement, orbApp, hasBooted, toggleBootState, orbs])
 
@@ -91,6 +98,15 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
       orbApp.current.stop();
     }
   }, [visible])
+
+  // Stop the orb when navigating between pages
+  useEffect(() => {
+   return () => {
+     if (orbApp.current) {
+       orbApp.current.stop()
+     }
+   } 
+  }, [])
 
   return (
     <div className={cx(styles.root, className)}>
