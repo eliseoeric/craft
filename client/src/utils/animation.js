@@ -68,12 +68,17 @@ class Orb {
     this.graphics.alpha = 0.525
 
     // 550ms after the last window resize event, recalculate orb positions.
+    // todo need to remove this event listener during cleanup
     window.addEventListener(
       'resize',
-      debounce(() => {
-        this.bounds = this.setBounds()
-      }, 550)
+      this.onResize,
     )
+  }
+
+  onResize() {
+    debounce(() => { // todo this just delays the call, and then calls it several times
+      this.bounds = this.setBounds()
+    }, 550)
   }
 
   setBounds() {
@@ -82,8 +87,10 @@ class Orb {
       window.innerWidth < 1000 ? window.innerWidth / 6 : window.innerWidth / 10
 
     // the { x, y } origin for each orb (from the bottom right of the screen)
+    debugger;
     const originX = this.originXGetter()
     const originY = this.originYGetter()
+    debugger;
 
     // allow each orb to move x distance away from it's x / y origin
     return {
@@ -130,6 +137,13 @@ class Orb {
     this.graphics.drawCircle(150, 300, this.radius)
     // let graphics know we won't be filling in any more shapes
     this.graphics.endFill()
+  }
+
+  cleanup() {
+    window.removeEventListener(
+      'resize',
+      this.onResize
+    )
   }
 }
 
