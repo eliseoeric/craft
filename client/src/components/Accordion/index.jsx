@@ -31,13 +31,11 @@ const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
       // accordionRef.current.style.marginBottom = `0`
     } else {
       accordionRef.current.style.paddingBottom = `0`
-      accordionRef.current.style.marginBottom = `-1px`
     }
   }
 
   return (
     <div className={cx(className, style.accordion)} ref={accordionRef}>
-      <div className={cx(style.border_top)} />
       <button
         className={cx(style.accordionButton)}
         onClick={() => setIsOpen(accordion)}
@@ -51,14 +49,17 @@ const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
           { [style.close]: !isOpen }
         )}
       />
-      <div
-        className={cx(
-          style.accordionContent,
-          { [style.open]: isOpen },
-          { [style.close]: !isOpen }
-        )}
-      >
-        <p>{accordion.content.content}</p>
+      <div className={cx(style.accordionContentWrap)}>
+        <div
+          className={cx(
+            style.accordionContent,
+            { [style.open]: isOpen },
+            { [style.close]: !isOpen }
+          )}
+        >
+          <p>{accordion.content.content}</p>
+        </div>
+        <div className={cx(style.bottomBorderLine)} />
       </div>
     </div>
   )
