@@ -8,7 +8,7 @@ const IconBlock = ({ icon, iconName }) => {
   return (
     <div className={styles.floating_cards__card}>
       <figure className={styles.floating_cards__icon}>
-        <img src={url} />
+        <img src={url} alt={iconName} />
       </figure>
 
       <p className={styles.floating_cards__heading_name}>{iconName}</p>
