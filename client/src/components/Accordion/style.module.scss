@@ -86,6 +86,7 @@
   height: 1px;
   background: linear-gradient(to right, $gray, $green);
   position: relative;
+  transition: background-color 0.2s ease-in-out;
 
   &.close {
     background: $gray;
