@@ -17,6 +17,7 @@ const contentStateFromGraphql = (data, dataObjectKey) => {
     .map((edge) => {
       return {
         ...edge.node,
+        next: edge.next ?? {}
       }
     })
     .forEach((post) => {
@@ -105,6 +106,10 @@ const ReduxWrapper = ({ element }) => (
                 title
               }
               updatedAt
+            }
+            next {
+              slug
+              title
             }
           }
         }
