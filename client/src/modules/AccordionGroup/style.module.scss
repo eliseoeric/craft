@@ -39,6 +39,10 @@
   justify-content: space-between;
   position: relative;
 
+  @media #{$tablet} {
+    padding-bottom: 0;
+  }
+
   @media #{$phone} {
     padding-bottom: 0;
     padding-left: 24px;
@@ -47,12 +51,12 @@
 }
 
 .colRight {
-  @media #{$phone} {
+  @media #{$tablet} {
     padding-top: 40px;
   }
 }
 
-.circles {
+.accordionImage {
   font-size: 0;
   padding-left: 2vw;
   position: absolute;
@@ -69,28 +73,6 @@
     padding-left: 0;
     left: 0;
   }
-}
-
-.circle {
-  border: 1px solid $black;
-  border-radius: 50%;
-  display: inline-block;
-  height: 100px;
-  width: 100px;
-  transform-origin: top left;
-}
-
-.circleGroup {
-  transform-origin: top left;
-}
-
-.circleGroup:not(:first-of-type) {
-  position: relative;
-  transform: translateY(-30%);
-}
-
-.circle:nth-of-type(even) {
-  transform: translateX(-30%);
 }
 
 .title {

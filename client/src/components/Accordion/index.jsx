@@ -1,9 +1,9 @@
-import React, { useEffect, useRef } from 'react'
 import cx from 'classnames'
 import { graphql } from 'gatsby'
+import debounce from 'lodash/debounce'
 import { H3 } from '@Components/Typography'
 import * as style from './style.module.scss'
-import debounce from 'lodash/debounce'
+import React, { useEffect, useRef } from 'react'
 
 const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
   const accordionRef = useRef(null)
@@ -40,7 +40,7 @@ const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
       <div className={cx(style.border_top)} />
       <button
         className={cx(style.accordionButton)}
-        onClick={() => setIsOpen(accordion.title)}
+        onClick={() => setIsOpen(accordion)}
       >
         <H3 className={cx(style.accordionHeading)} text={accordion.title} />
       </button>
@@ -70,6 +70,9 @@ export const query = graphql`
   fragment AccordionQuery on ContentfulComponentAccordion {
     content {
       content
+    }
+    image {
+      gatsbyImageData
     }
     title
   }
