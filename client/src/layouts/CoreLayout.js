@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
+import _ from 'lodash'
 import { useSelector } from 'react-redux'
 
 import { TEMPLATES } from '@Utils/enums'
@@ -9,9 +10,9 @@ import Header from '@Components/Header'
 import Sidebar from '@Components/Sidebar'
 import Drawer from '@Components/Drawer'
 import DrawerTemplate from '@Components/DrawerTemplate'
-import {
-  navigationSelectors,
-} from '@State/ducks/ui/navigation'
+import NextPost from '@Components/NextPost'
+import { navigationSelectors } from '@State/ducks/ui/navigation'
+import { contentSelectors } from '@State/ducks/content'
 
 import '../styles/app.scss'
 import * as styles from './layout.module.scss'
@@ -25,8 +26,16 @@ const CoreLayout = ({
   invertPalette,
 }) => {
   const drawerTemplate = useSelector(navigationSelectors.getDrawerTemplate)
+  const drawer = useSelector(navigationSelectors.getDrawer)
+  const nextPost = useSelector(contentSelectors.getNextPost)
 
-  console.log({ drawerTemplate })
+  const maybeRenderNextPost = ({ isOpen, template, slug }) => {
+    if (isOpen && template === TEMPLATES.Post) {
+
+      return !_.isEmpty(nextPost) && <NextPost nextPost={nextPost} />
+    }
+    return null
+  }
 
   return (
     <div
@@ -38,7 +47,8 @@ const CoreLayout = ({
       <Header invertPalette={invertPalette} />
       <Sidebar
         className={cx({
-          [styles.sidebar__case_study]: drawerTemplate === TEMPLATES['Case Study'],
+          [styles.sidebar__case_study]:
+            drawerTemplate === TEMPLATES['Case Study'],
         })}
       />
       <main className={cx(styles.content_wrapper)}>
@@ -53,6 +63,7 @@ const CoreLayout = ({
               <DrawerTemplate />
             </Drawer>
           )}
+          {maybeRenderNextPost(drawer)}
           {!drawerOpen && children}
         </div>
       </main>
