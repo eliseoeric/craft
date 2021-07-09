@@ -1,14 +1,25 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cx from 'classnames'
 import { graphql } from 'gatsby'
 import { H2 } from '@Components/Typography'
 import * as style from './style.module.scss'
 import Accordion from '@Components/Accordion'
 import OrbContainer from '@Components/OrbContainer'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const AccordionGroup = ({ accordions, className, title }) => {
-  const [accordionsTouched, setAccordionsTouched] = useState(false)
-  const [openAccordion, setOpenAccordion] = useState('')
+
+  const [openAccordion, setOpenAccordion] = useState(accordions?.length > 0 ? accordions[0] : null)
+  const [accordionImage, setAccordionImage] = useState(accordions?.length > 0 ? accordions[0].image : null)
+
+  useEffect(() => {
+    if(openAccordion?.image?.gatsbyImageData) {
+      setAccordionImage(getImage(openAccordion.image.gatsbyImageData))
+    }
+    else {
+      setAccordionImage(null)
+    }
+  }, [openAccordion])
 
   const containerRef = useRef()
 
@@ -18,11 +29,8 @@ const AccordionGroup = ({ accordions, className, title }) => {
         <Accordion
           accordion={a}
           key={a.title}
-          isOpen={
-            (!accordionsTouched && idx === 0) || openAccordion === a.title
-          }
+          isOpen={openAccordion.title === a.title}
           setIsOpen={(accordionTitle) => {
-            setAccordionsTouched(true)
             setOpenAccordion(accordionTitle)
           }}
         />
@@ -34,17 +42,13 @@ const AccordionGroup = ({ accordions, className, title }) => {
     <section className={cx(className, style.root)}>
       <div className={style.container}>
         <div className={cx(style.col, style.colLeft)} ref={containerRef}>
+
           <H2 text={title} className={style.title} />
-          <div className={cx(style.circles)}>
-            <div className={cx(style.circleGroup)}>
-              <div className={cx(style.circle)} />
-              <div className={cx(style.circle)} />
-            </div>
-            <div className={cx(style.circleGroup)}>
-              <div className={cx(style.circle)} />
-              <div className={cx(style.circle)} />
-            </div>
+
+          <div className={cx(style.accordionImage)}>
+            {accordionImage && <GatsbyImage image={accordionImage} alt="icon" />}
           </div>
+
         </div>
         <div className={cx(style.col, style.colRight)}>
           {renderAccordions(accordions)}

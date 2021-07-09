@@ -7,6 +7,12 @@
   font-size: 18px;
   overflow: hidden;
   position: relative;
+
+  &:hover {
+    .gradient {
+      background-color: $green;
+    }
+  }
 }
 
 .accordionHeading {
@@ -22,7 +28,22 @@
   position: relative;
   text-align: left;
   width: 100%;
-  border-bottom: 1px solid $gray;
+
+  h3 {
+    transition: all 0.15s ease-in-out !important;
+  }
+
+  &:hover, &:focus {
+    h3 {
+      color: $purple;
+    }
+  }
+
+  &:active, &:visited {
+    h3 {
+      color: $black;
+    }
+  }
 
   @media #{$tablet} {
     padding-left: 14vw;
@@ -46,13 +67,16 @@
   
 }
 
-.accordionContent {
-  border-bottom: 1px solid $gray;
+.accordionContentWrap {
   max-height: 1000px;
+  position: absolute;
+}
+
+.accordionContent {
+  // border-bottom: 1px solid $gray;
   padding: 23px 46px 22px 85px;
   // padding: 0 46px 0 85px;
   // transition: padding-bottom 1s linear, padding-top 1s linear, max-height 1s linear;
-  position: absolute;
 
   @media #{$tablet} {
     padding-left: 14vw;
@@ -68,14 +92,16 @@
   height: 1px;
   background: linear-gradient(to right, $gray, $green);
   position: relative;
+  transition: background-color 0.2s ease-in-out;
 
   &.close {
     background: $gray;
   }
 }
 
-.border_top {
+.bottomBorderLine {
   height: 1px;
   background: $gray;
   position: relative;
+  bottom: 1px;
 }
