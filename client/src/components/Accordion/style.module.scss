@@ -7,6 +7,12 @@
   font-size: 18px;
   overflow: hidden;
   position: relative;
+
+  &:hover {
+    .gradient {
+      background-color: $green;
+    }
+  }
 }
 
 .accordionHeading {
