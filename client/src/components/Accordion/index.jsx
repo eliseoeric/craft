@@ -4,13 +4,14 @@ import debounce from 'lodash/debounce'
 import { H3 } from '@Components/Typography'
 import * as style from './style.module.scss'
 import React, { useEffect, useRef } from 'react'
+import {throttle} from 'lodash'
 
 const Accordion = ({ accordion, className, isOpen, setIsOpen }) => {
   const accordionRef = useRef(null)
 
   useEffect(() => {
     const toggleStylesOnResize = () => {
-      debounce(() => {
+      throttle(() => {
         toggleStyles(accordionRef, isOpen)
       }, 250)()
     }

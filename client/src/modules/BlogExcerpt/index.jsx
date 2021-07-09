@@ -52,7 +52,7 @@ const BlogExcerpt = ({
         onMouseOver={handleMouseHover}>
           <div className={cx(style.flexItem)}>
             <H2 text={title} className={cx(style.blogExcerptH2)} />
-            <p>{createdAt}</p>
+            <p className={style.blogExcerpt__date}>{createdAt}</p>
             <p>
               <span>{renderCategoryString(categories)}</span>
               <span> — 3 min read</span>

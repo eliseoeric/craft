@@ -20,7 +20,7 @@
     fill: $brand-color;
   }
 
-  @media #{$tablet} {
+  @media #{$phone} {
     display: none;
   }
 }
