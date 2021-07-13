@@ -74,7 +74,7 @@ export const query = graphql`
       content
     }
     image {
-      gatsbyImageData
+      gatsbyImageData(aspectRatio: 1.5)
     }
     title
   }

@@ -10,7 +10,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 const AccordionGroup = ({ accordions, className, title }) => {
 
   const [openAccordion, setOpenAccordion] = useState(accordions?.length > 0 ? accordions[0] : null)
-  const [accordionImage, setAccordionImage] = useState(accordions?.length > 0 ? accordions[0].image : null)
+  const [accordionImage, setAccordionImage] = useState(accordions?.length > 0 ? accordions[0].image : undefined)
 
   useEffect(() => {
     if(openAccordion?.image?.gatsbyImageData) {
@@ -46,7 +46,7 @@ const AccordionGroup = ({ accordions, className, title }) => {
           <H2 text={title} className={style.title} />
 
           <div className={cx(style.accordionImage)}>
-            {accordionImage && <GatsbyImage image={accordionImage} alt="icon" />}
+            {accordionImage && <GatsbyImage image={accordionImage.gatsbyImageData} alt="icon" />}
           </div>
 
         </div>
