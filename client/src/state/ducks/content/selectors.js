@@ -14,7 +14,7 @@ const getNextPost = (state) => {
   const slug = state.ui.navigation.drawer.slug;
   if (slug) {
     const post = state.content.posts.byId[slug];
-    return state.content.posts.byId[post.next.slug];
+    return post ? state.content.posts.byId[post.next.slug] : null;
   }
   
   return null;
