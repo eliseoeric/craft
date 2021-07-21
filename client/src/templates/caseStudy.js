@@ -54,7 +54,6 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
     <>
       <SEO
         title={title}
-        titleTemplate={`%s - ${title}`}
         // image={`https:${socialShareImage?.file?.url}`}
         description={seoDescription}
       />

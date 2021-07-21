@@ -34,7 +34,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Craft - Made By Craft',
-    titleTemplate: `%s - Craft`,
+    titleTemplate: `Craft | %s`,
     description: ``,
     url: 'https://www.madebycraft.co',
     siteUrl: `https://www.madebycraft.co`,
