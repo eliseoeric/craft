@@ -13,6 +13,7 @@ import {
   navigationActions,
   navigationSelectors,
 } from '@State/ducks/ui/navigation'
+import { contentActions } from '@State/ducks/content'
 
 /**
  * Render the Front Page via a manual query. Then loads the requested case
@@ -38,6 +39,9 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
 
+  // get the posts, roles and case studies and put them in state
+  const { allPosts, allRoles, allCaseStudies } = pageContext
+
   /**
    * On boot, open the drawer using the Case study slug
    */
@@ -48,8 +52,14 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
         slug: pageContext.slug,
       })
     )
+    dispatch(
+      contentActions.successGetAllPosts({
+        posts: allPosts,
+        roles: allRoles,
+        caseStudies: allCaseStudies,
+      })
+    )
   }, [])
-
   return (
     <>
       <SEO

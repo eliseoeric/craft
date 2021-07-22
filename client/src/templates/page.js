@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { graphql } from 'gatsby'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import uuid from 'uuid'
 
 import CoreLayout from '@Layouts/CoreLayout'
@@ -10,8 +10,10 @@ import BlogIndexModule from '@Modules/BlogIndex'
 import { TEMPLATES } from '@Utils/enums'
 import Banner from '@Components/Banner'
 import { navigationSelectors } from '@State/ducks/ui/navigation'
+import { contentActions } from '@State/ducks/content'
 
 const PageTemplate = ({ data, pageContext }) => {
+  const dispatch = useDispatch()
   const drawer = useSelector(navigationSelectors.getDrawer)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
@@ -30,6 +32,18 @@ const PageTemplate = ({ data, pageContext }) => {
   const { title, slug, description, layout } = data?.contentfulPage
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
+  // get the posts, roles and case studies and put them in state
+  const { allPosts, allRoles, allCaseStudies } = pageContext
+
+  useEffect(() => {
+    dispatch(
+      contentActions.successGetAllPosts({
+        posts: allPosts,
+        roles: allRoles,
+        caseStudies: allCaseStudies,
+      })
+    )
+  }, [])
 
   return (
     <>

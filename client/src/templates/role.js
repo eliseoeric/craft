@@ -11,6 +11,7 @@ import CoreLayout from '@Layouts/CoreLayout'
 import Module from '@Components/Module'
 import SEO from '@Components/Seo'
 import { TEMPLATES } from '@Utils/enums'
+import { contentActions } from '@State/ducks/content'
 
 /**
  * Render the Careers page via a manual query, then loads the requested role by
@@ -22,6 +23,8 @@ const RoleTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
   const drawer = useSelector(navigationSelectors.getDrawer)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
+  // get the posts, roles and case studies and put them in state
+  const { allPosts, allRoles, allCaseStudies } = pageContext
 
   const renderModules = (modules) => {
     return modules.map((module) => {
@@ -40,6 +43,13 @@ const RoleTemplate = ({ data, pageContext }) => {
       navigationActions.requestOpenDrawer({
         template: 'role',
         slug: pageContext.slug,
+      })
+    )
+    dispatch(
+      contentActions.successGetAllPosts({
+        posts: allPosts,
+        roles: allRoles,
+        caseStudies: allCaseStudies,
       })
     )
   }, [])

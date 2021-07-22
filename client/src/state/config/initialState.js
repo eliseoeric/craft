@@ -5,6 +5,14 @@ const initialState = {
       byId: {},
       allIds: [],
     },
+    roles: {
+      byId: {},
+      allIds: [],
+    },
+    caseStudies: {
+      byId: {},
+      allIds: [],
+    }
   },
   ui: {
     

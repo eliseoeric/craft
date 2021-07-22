@@ -1,4 +1,3 @@
-const Promise = require('bluebird')
 const path = require('path')
 const fs = require('fs')
 
@@ -48,7 +47,6 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const pageTemplatePath = path.resolve('./src/templates/page.js')
   const results = await graphql(`
     {
       allContentfulTypeCaseStudy {
@@ -124,6 +122,9 @@ exports.createPages = async ({ graphql, actions }) => {
       component: getTemplate(_layout),
       context: {
         slug: post.node.slug,
+        allPosts: results.data.allContentfulTypeBlogPost,
+        allRoles: results.data.allContentfulTypeRole,
+        allCaseStudies: results.data.allContentfulTypeCaseStudy,
       },
     })
   })
@@ -141,6 +142,9 @@ exports.createPages = async ({ graphql, actions }) => {
       component: getTemplate(_layout, TEMPLATES['Case Study']),
       context: {
         slug: post.node.slug,
+        allPosts: results.data.allContentfulTypeBlogPost,
+        allRoles: results.data.allContentfulTypeRole,
+        allCaseStudies: results.data.allContentfulTypeCaseStudy,
       },
     })
   })
@@ -158,6 +162,9 @@ exports.createPages = async ({ graphql, actions }) => {
       component: getTemplate(_layout, TEMPLATES['Role']),
       context: {
         slug: post.node.slug,
+        allPosts: results.data.allContentfulTypeBlogPost,
+        allRoles: results.data.allContentfulTypeRole,
+        allCaseStudies: results.data.allContentfulTypeCaseStudy,
       },
     })
   })
@@ -169,13 +176,16 @@ exports.createPages = async ({ graphql, actions }) => {
     
     const path = `/news/${post.node.slug}/`
     const _layout = post.node.layout;
-    console.log({path})
+    
     createPage({
       path: path,
       component: getTemplate(_layout, TEMPLATES['Post']),
       context: {
         slug: post.node.slug,
         next: post.next,
+        allPosts: results.data.allContentfulTypeBlogPost,
+        allRoles: results.data.allContentfulTypeRole,
+        allCaseStudies: results.data.allContentfulTypeCaseStudy,
       },
     })
   })
