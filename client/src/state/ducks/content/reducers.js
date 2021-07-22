@@ -5,7 +5,6 @@ import types from '@State/ducks/content/types'
 const contentStateFromGraphql = (data) => {
   let byId = {}
   let allIds = []
-  debugger;
   const entities = data.edges
     .map((edge) => {
       return {
