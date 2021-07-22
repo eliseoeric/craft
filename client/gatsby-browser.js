@@ -16,8 +16,8 @@ import {
   faTwitter,
   faYoutube,
   faInstagram,
-  faMedium,
   faMediumM,
+  faSpotify,
   faDribbble,
 } from '@fortawesome/free-brands-svg-icons'
 
@@ -30,6 +30,7 @@ library.add(
   faYoutube,
   faInstagram,
   faDribbble,
+  faSpotify,
   faMediumM,
   faLinkedin,
   faTwitter,

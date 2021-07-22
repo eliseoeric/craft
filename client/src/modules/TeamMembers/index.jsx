@@ -65,6 +65,7 @@ export const query = graphql`
       dribbleUrl
       instagramUrl
       mediumUrl
+      spotifyUrl
       biography {
         childMarkdownRemark {
           rawMarkdownBody
