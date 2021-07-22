@@ -56,6 +56,7 @@ const CoreLayout = ({
           className={cx(styles.page_wrapper, {
             [styles.page_wrapper__no_hero]: hasHero === false,
             [styles.page_wrapper__invertPalette]: invertPalette,
+            [styles.page_wrapper__border]: !drawerOpen,
           })}
         >
           {drawerOpen && (

@@ -11,6 +11,7 @@ import BlogIndexModule from '@Modules/BlogIndex'
 import SEO from '@Components/Seo'
 import { contentActions } from '@State/ducks/content'
 import { TEMPLATES } from '@Utils/enums'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 /**
  * Render the Blog index via a manual query. Then loads the requested news article
@@ -20,7 +21,7 @@ import { TEMPLATES } from '@Utils/enums'
  */
 const PostTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
   const renderModules = (modules) => {
@@ -66,7 +67,7 @@ const PostTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

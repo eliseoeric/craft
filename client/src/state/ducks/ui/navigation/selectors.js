@@ -8,7 +8,7 @@ const isLoginModalOpen = (state) => state.ui.navigation.loginModalActive
 const isHeaderFixed = (state) => state.ui.navigation.stateFixed
 
 const getDrawer = (state) => state.ui.navigation.drawer
-const isDrawerOpen = (state) => state.ui.navigation.drawer.isOpen
+const getDrawerStatus = (state) => state.ui.navigation.drawer.status
 
 const getDrawerTemplate = (state) => state.ui.navigation.drawer.template
 const getDrawerSlug = (state) => state.ui.navigation.drawer.slug
@@ -16,12 +16,12 @@ const isPaletteInverted = (state) => state.ui.navigation.drawer.invertPalette
 
 export default {
   isMobileMenuOpen,
-  isDrawerOpen,
+  getDrawerStatus,
   getActiveTeamMemberIndex,
   isLoginModalOpen,
   isHeaderFixed,
   getDrawer,
   getDrawerTemplate,
   getDrawerSlug,
-  isPaletteInverted
+  isPaletteInverted,
 }

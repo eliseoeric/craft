@@ -11,10 +11,11 @@ import { TEMPLATES } from '@Utils/enums'
 import Banner from '@Components/Banner'
 import { navigationSelectors } from '@State/ducks/ui/navigation'
 import { contentActions } from '@State/ducks/content'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 const PageTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
   const renderModules = (modules) => {
@@ -55,7 +56,7 @@ const PageTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

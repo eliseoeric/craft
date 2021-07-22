@@ -12,6 +12,7 @@ import Module from '@Components/Module'
 import SEO from '@Components/Seo'
 import { TEMPLATES } from '@Utils/enums'
 import { contentActions } from '@State/ducks/content'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 /**
  * Render the Careers page via a manual query, then loads the requested role by
@@ -21,7 +22,7 @@ import { contentActions } from '@State/ducks/content'
  */
 const RoleTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
   // get the posts, roles and case studies and put them in state
   const { allPosts, allRoles, allCaseStudies } = pageContext
@@ -68,7 +69,7 @@ const RoleTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

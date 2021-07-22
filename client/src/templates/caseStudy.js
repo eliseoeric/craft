@@ -14,6 +14,7 @@ import {
   navigationSelectors,
 } from '@State/ducks/ui/navigation'
 import { contentActions } from '@State/ducks/content'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 /**
  * Render the Front Page via a manual query. Then loads the requested case
@@ -23,7 +24,7 @@ import { contentActions } from '@State/ducks/content'
  */
 const CaseStudyTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
   const renderModules = (modules) => {
@@ -70,7 +71,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

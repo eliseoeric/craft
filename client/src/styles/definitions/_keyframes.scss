@@ -127,8 +127,8 @@ $transition: all 0.25s ease-in;
  */
  @-webkit-keyframes slide_in_left_full {
   0% {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(20%);
+            transform: translateX(20%);
     opacity: 0;
   }
   100% {
@@ -139,8 +139,8 @@ $transition: all 0.25s ease-in;
 }
 @keyframes slide_in_left_full {
   0% {
-    -webkit-transform: translateX(100%);
-            transform: translateX(100%);
+    -webkit-transform: translateX(20%);
+            transform: translateX(20%);
     opacity: 0;
   }
   100% {

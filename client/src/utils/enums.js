@@ -13,3 +13,10 @@ export const ASYNC_STATUS = {
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR'
 }
+
+export const DRAWER_STATUS = {
+  OPEN: 'OPEN',
+  CLOSING: 'CLOSING',
+  OPENING: 'OPENING',
+  CLOSED: 'CLOSED'
+}
