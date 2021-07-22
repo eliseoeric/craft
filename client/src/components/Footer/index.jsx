@@ -1,52 +1,65 @@
 import React from 'react'
 import cx from 'classnames'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import Logo from '@Components/Logo'
-import Clock from '@Components/Clock'
-import SocialIcons from '@Components/SocialIcons'
 import * as footer from './footer.module.scss'
 
 const Footer = ({ className }) => {
-  
+  const data = useStaticQuery(graphql`
+    query footerNavigation {
+      allContentfulNavigationMenu(
+        filter: { slug: { in: ["footer-1", "footer-2", "footer-3"] } }
+      ) {
+        edges {
+          node {
+            slug
+            id
+            title
+            navigationItems {
+              ... on ContentfulNavigationMenuLink {
+                id
+                title
+                url
+                slug
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
 
+  const columns = data.allContentfulNavigationMenu.edges.map((item) => {
+    // flatten the data a bit
+    return {
+      ...item.node,
+    }
+  }).reverse()
+
+  
   return (
     <footer className={cx(className, footer.site__footer)}>
-
       <div className={cx(footer.footer__logo_wrap)}>
         <Logo variant={'gray'} title={'Craft'} />
       </div>
-
       <div className={cx(footer.footer__content_wrap)}>
-        <div className={cx(footer.footer__clock_wrap)}>
-          <Clock 
-            className={cx(footer.footer__clock, footer.footer__upper)}
-            locationLabel="Philly"
-            timeZone="America/New_York" />
-          <Clock
-            className={cx(footer.footer__clock, footer.footer__upper)}
-            locationLabel="Boston"
-            timeZone="America/New_York" />
-          <Clock 
-            className={cx(footer.footer__clock, footer.footer__upper)}
-            locationLabel="Portland"
-            timeZone="America/Los_Angeles" />
-          <Clock
-            className={cx(footer.footer__clock, footer.footer__upper)}
-            locationLabel="Toronto"
-            timeZone="America/Toronto" />
-          <Clock
-            className={cx(footer.footer__clock, footer.footer__upper)}
-            locationLabel="Madison"
-            timeZone="America/Chicago" />
+        <div className={footer.footer__city}>
+          <p>Crafted in Boston & Philly</p>
         </div>
-        <div className={cx(footer.footer__info)}>
-          <div className={cx(footer.footer__text, footer.contact)}>
-            <p className={cx(footer.footer__upper)}>Find Us</p>
-            <p><a href="mailto:hello@madebycraft.co">hello@madebycraft.co</a></p>
-            <p><a href="tel:2158888888">215.888.8888</a></p>
-          </div>
-          <SocialIcons className="socialIcons" /> 
-        </div>
+        {columns &&
+          columns.map((column) => {
+            return (
+              <div className={footer.footer__text} key={column.id}>
+                <h3 className={footer.footer__title}>{column.title}</h3>
+                <ul className={footer.footer__links}>
+                    {column.navigationItems && column.navigationItems.map((item) => (
+                      <li key={item.id}><a href={item.url}>{item.title}</a></li>
+                    ))}
+                </ul>
+              </div>
+            )
+          })}
       </div>
     </footer>
   )
