@@ -32,7 +32,7 @@ const ContactBlock = ({ links, addresses, featuredImage }) => {
                   <strong>{location.title}</strong>
                   {location.address}
                   <br />
-                  {location.city}, {location.state}
+                  {location.city && <span>{location.city}, {location.state}</span>}
                   <br />
                   {location.zip}
                 </address>

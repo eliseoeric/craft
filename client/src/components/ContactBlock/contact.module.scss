@@ -39,6 +39,7 @@
 .contact_block__address {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   margin-top: 20px;
 
   @media #{$phone-small} {
@@ -47,12 +48,8 @@
 
   address {
     margin-bottom: 3px;
-    margin-right: 80px;
     width: 170px;
-
-    @media #{$phone} {
-      margin-right: 40px;
-    }
+    margin-right: 1.5rem;
 
     @media #{$phone-small} {
       margin-right: 0;
@@ -69,10 +66,14 @@
 }
 
 .contact_block__image {
-  max-width: 564px;
+  max-width: 100%;
   img {
     border-bottom: 1px solid $brand-color;
   }
+  @media #{$tablet} {
+    max-width: 100%;
+  }
+
 }
 
 .contact_block__orb_container {

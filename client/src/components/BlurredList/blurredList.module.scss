@@ -20,10 +20,10 @@
     line-height: 1;
     color: $primary;
     transition: $transition;
-  }
 
-  &:hover a {
-    border-bottom: 1px solid $brand-color;
+    &:hover {
+      border-bottom: 1px solid $brand-color;
+    }
   }
 
   &.fade a {

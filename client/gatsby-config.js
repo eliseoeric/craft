@@ -125,8 +125,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Socratic`,
-        short_name: `Socratic`,
+        name: 'Craft - Made By Craft',
+        short_name: 'Craft - Made By Craft',
         start_url: `/`,
         icon: `src/images/favicons/android-chrome-512x512.png`,
         display: `standalone`,
