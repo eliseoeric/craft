@@ -18,6 +18,7 @@ const TeamMemberModal = React.forwardRef(
       dribbleUrl,
       instagramUrl,
       linkedInUrl,
+      spotifyUrl,
       mediumUrl,
     } = teamMember
 
@@ -44,7 +45,13 @@ const TeamMemberModal = React.forwardRef(
           </div>
           <SocialIconsAlt
             className={styles.popup_header__member_social}
-            {...{ dribbleUrl, instagramUrl, linkedInUrl, mediumUrl }}
+            {...{
+              dribbleUrl,
+              instagramUrl,
+              linkedInUrl,
+              mediumUrl,
+              spotifyUrl,
+            }}
           />
         </div>
         <div className={styles.popup_content}>
@@ -52,11 +59,22 @@ const TeamMemberModal = React.forwardRef(
             <img src={photo} alt="bio" />
             <SocialIconsAlt
               className={styles.popup_header__member_social}
-              {...{ dribbleUrl, instagramUrl, linkedInUrl, mediumUrl }}
+              {...{
+                dribbleUrl,
+                instagramUrl,
+                linkedInUrl,
+                mediumUrl,
+                spotifyUrl,
+              }}
             />
           </figure>
           <div className={styles.popup_content__mobile_details}>
-            <div className={cx(styles.popup_header__member_info, styles.popup_header__member_info__mobile)}>
+            <div
+              className={cx(
+                styles.popup_header__member_info,
+                styles.popup_header__member_info__mobile
+              )}
+            >
               <h3 className={styles.popup_header__member_name}>{fullName}</h3>
               <p className={styles.popup_header__member_designation}>
                 {jobTitle}
