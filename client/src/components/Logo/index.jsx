@@ -6,6 +6,7 @@ import cx from 'classnames'
 import LogoWhite from '@SVGs/logo-white.svg'
 import LogoDark from '@SVGs/logo-dark.svg'
 import LogoGray from '@SVGs/logo-gray.svg'
+import LogoGreen from '@SVGs/logo-green.svg'
 
 import * as logo from './logo.module.scss'
 
@@ -28,9 +29,9 @@ const Logo = ({ variant, className }) => {
       class: 'logo__white',
       src: LogoWhite,
     },
-    caseStudy: {
-      class: 'logo__case_study',
-      src: LogoWhite,
+    green: {
+      class: 'logo__green',
+      src: LogoGreen,
     },
     gray: {
       class: 'logo__gray',
@@ -40,6 +41,10 @@ const Logo = ({ variant, className }) => {
       class: 'logo__dark',
       src: LogoDark,
     },
+    greenWhite: {
+      class: 'logo__green_white',
+      src: LogoGreen,
+    }
   }
 
   const LogoComponent = variantMap[variant].src

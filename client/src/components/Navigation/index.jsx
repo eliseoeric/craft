@@ -53,7 +53,7 @@ const Navigation = ({
       })}
     >
       <div className={styles.logo__container}>
-        <Logo variant="white" />
+        <Logo variant="green" />
         <MenuToggle isOpen={isMenuToggleOpen} />
       </div>
       <span className={styles.navigation_container__text}>Menu</span>
