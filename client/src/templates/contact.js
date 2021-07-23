@@ -30,7 +30,6 @@ const ContactTemplate = ({ data, pageContext }) => {
     <>
       <SEO
         title={title}
-        titleTemplate={`%s - ${title}`}
         // image={featuredImage.gatsbyImageData.images}
         description={seoDescription}
       />
