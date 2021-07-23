@@ -26,11 +26,23 @@ function Header({ invertPalette }) {
   }
 
   const getLogoVariant = () => {
-    if (drawerTemplate === TEMPLATES['Case Study'] || invertPalette) {
-      return TEMPLATES['Case Study']
+    if (drawerTemplate === TEMPLATES['Case Study']) {
+      return 'white'
     }
 
-    return 'white'
+    if (drawerStatus === DRAWER_STATUS.CLOSED && invertPalette) {
+      return 'greenWhite'
+    }
+
+    if (drawerStatus === DRAWER_STATUS.OPEN && invertPalette) {
+      return 'white'
+    }
+
+    if (drawerStatus === DRAWER_STATUS.OPEN && !invertPalette) {
+      return 'dark'
+    }
+
+    return 'green'
   }
 
   return (
@@ -42,7 +54,7 @@ function Header({ invertPalette }) {
     >
       <Logo variant={getLogoVariant()} />
       <MenuToggle
-        isOpen={isMobileMenuOpen || drawerStatus !== DRAWER_STATUS.CLOSED }
+        isOpen={isMobileMenuOpen || drawerStatus !== DRAWER_STATUS.CLOSED}
         invertPalette={invertPalette}
       />
       <Navigation
