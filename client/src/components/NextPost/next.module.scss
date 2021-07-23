@@ -5,11 +5,9 @@
 @import '../../styles/definitions/keyframes';
 
 .next_post {
-  margin-left: 143px;
-  border-left: 1px solid $gray-light;
-  border-top: 1px solid $gray-light;
-  padding: 83px 30px 100px 85px;
-  width: calc(100% - 144px);
+  border-top: 1px solid $gray;
+  padding: 83px 30px 100px 226px;
+  width: 100%;
   position: relative;
 
   @media #{$tablet} {
