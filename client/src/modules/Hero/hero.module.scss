@@ -124,29 +124,6 @@
 .hero_block__front_page {
   .container {
     position: relative;
-
-    &:before {
-      content: '';
-      display: block;
-      width: 840px;
-      height: 766px;
-      position: absolute;
-      right: -510px;
-      top: -110px;
-      background: url(../../images/hero-graident.png) no-repeat 0 0;
-      background-size: cover;
-      z-index: 1;
-
-      @media #{$desktop} {
-        right: -380px;
-        top: -260px;
-      }
-
-      @media #{$phone-small} {
-        right: -470px;
-        top: -260px;
-      }
-    }
   }
 
   &:after {
@@ -209,19 +186,21 @@
   &:after {
     content: '';
     display: block;
-    width: 1340px;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
+    max-height: 75vh;
     position: absolute;
     right: 0;
     top: 0;
-    background: url(../../images/careers-hero-lines.png) no-repeat 0 0;
+    background: url(../../images/careers-hero-lines.png) no-repeat;
+    background-position: center center;
     background-size: cover;
     z-index: 1;
   }
 
-  @media #{$laptop} {
+  @media #{$phone} {
     &:after {
-      content: none;
+      max-height: 350px;
     }
   }
 
@@ -235,7 +214,7 @@
     padding-left: 16vw;
     @media #{$tablet} {
       max-width: 540px;
-      padding-left: 24px;
+      padding: 0 24px;
       margin: 0 auto;
     }
   }
@@ -284,7 +263,7 @@
     line-height: 1;
     position: relative;
     z-index: 1;
-    @include fsz(60px);
+    @include fsz(55px);
     margin-bottom: 10px;
   }
   + .hero_block__title {
