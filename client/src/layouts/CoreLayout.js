@@ -51,7 +51,7 @@ const CoreLayout = ({
             drawerTemplate === TEMPLATES['Case Study'],
         })}
       />
-      <main className={cx(styles.content_wrapper)}>
+      <main className={cx(styles.content_wrapper, {[styles.content_wrapper__border]: drawerOpen})}>
         <div
           className={cx(styles.page_wrapper, {
             [styles.page_wrapper__no_hero]: hasHero === false,

@@ -18,7 +18,7 @@
   background-color: $gray-lighter;
   position: relative;
   display: grid;
-  grid-template-columns: 144px auto;
+  grid-template-columns: 143px auto;
   grid-template-areas:
     'sidebar content content'
     'footer  footer  footer';
@@ -36,6 +36,10 @@
 .content_wrapper {
   grid-area: content;
   z-index: 2;
+
+  &__border {
+    border-left: 1px solid $gray;
+  }
 }
 
 .main {
@@ -86,7 +90,7 @@
       position: fixed;
       top: 0;
       left: 0;
-      border-right: 1px solid #ccc;
+      border-right: 1px solid $gray;
       z-index: 2;
       @media #{$laptop} {
         display: none;
