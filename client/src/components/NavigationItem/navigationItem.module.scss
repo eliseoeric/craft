@@ -36,6 +36,9 @@
 
   &__inverse {
     color: $gray;
+    @media #{$phone} {
+      color: $black;
+    }
   }
 }
 
