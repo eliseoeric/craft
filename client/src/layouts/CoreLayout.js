@@ -4,7 +4,7 @@ import cx from 'classnames'
 import _ from 'lodash'
 import { useSelector } from 'react-redux'
 
-import { TEMPLATES } from '@Utils/enums'
+import { TEMPLATES, DRAWER_STATUS } from '@Utils/enums'
 import Footer from '@Components/Footer'
 import Header from '@Components/Header'
 import Sidebar from '@Components/Sidebar'
@@ -29,8 +29,8 @@ const CoreLayout = ({
   const drawer = useSelector(navigationSelectors.getDrawer)
   const nextPost = useSelector(contentSelectors.getNextPost)
 
-  const maybeRenderNextPost = ({ isOpen, template, slug }) => {
-    if (isOpen && template === TEMPLATES.Post) {
+  const maybeRenderNextPost = ({ status, template, slug }) => {
+    if (status === DRAWER_STATUS.OPEN  && template === TEMPLATES.Post) {
 
       return !_.isEmpty(nextPost) && <NextPost nextPost={nextPost} />
     }
