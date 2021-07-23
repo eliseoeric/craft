@@ -46,7 +46,7 @@
 .sidebar__case_study {
   display: unset;
   background-color: $gray-darkest;
-} 
+}
 
 .page_wrapper {
   display: flex;
@@ -55,24 +55,6 @@
   z-index: 1;
   left: -144px;
   width: calc(100% + 144px);
-
-  &::before {
-    content: '';
-    display: block;
-    width: 144px;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    border-right: 1px solid #ccc;
-    z-index: 2;
-    @media #{$laptop} {
-      display: none;
-    }
-    @media #{$phone} {
-      width: 144px;
-    }
-  }
 
   &__invertPalette {
     &::before {
@@ -92,6 +74,26 @@
     }
     @media #{$phone} {
       padding-top: 100px;
+    }
+  }
+
+  &__border {
+    &::before {
+      content: '';
+      display: block;
+      width: 144px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      border-right: 1px solid #ccc;
+      z-index: 2;
+      @media #{$laptop} {
+        display: none;
+      }
+      @media #{$phone} {
+        width: 144px;
+      }
     }
   }
 }

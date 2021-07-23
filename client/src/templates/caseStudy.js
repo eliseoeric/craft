@@ -13,6 +13,8 @@ import {
   navigationActions,
   navigationSelectors,
 } from '@State/ducks/ui/navigation'
+import { contentActions } from '@State/ducks/content'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 /**
  * Render the Front Page via a manual query. Then loads the requested case
@@ -22,7 +24,7 @@ import {
  */
 const CaseStudyTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
   const renderModules = (modules) => {
@@ -38,6 +40,9 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
 
+  // get the posts, roles and case studies and put them in state
+  const { allPosts, allRoles, allCaseStudies } = pageContext
+
   /**
    * On boot, open the drawer using the Case study slug
    */
@@ -48,8 +53,14 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
         slug: pageContext.slug,
       })
     )
+    dispatch(
+      contentActions.successGetAllPosts({
+        posts: allPosts,
+        roles: allRoles,
+        caseStudies: allCaseStudies,
+      })
+    )
   }, [])
-
   return (
     <>
       <SEO
@@ -59,7 +70,7 @@ const CaseStudyTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

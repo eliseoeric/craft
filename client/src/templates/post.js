@@ -9,17 +9,19 @@ import {
 import CoreLayout from '@Layouts/CoreLayout'
 import BlogIndexModule from '@Modules/BlogIndex'
 import SEO from '@Components/Seo'
+import { contentActions } from '@State/ducks/content'
 import { TEMPLATES } from '@Utils/enums'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 /**
  * Render the Blog index via a manual query. Then loads the requested news article
  * by slug into the app drawer
- * @param {*} param0 
- * @returns 
+ * @param {*} param0
+ * @returns
  */
 const PostTemplate = ({ data, pageContext }) => {
   const dispatch = useDispatch()
-  const drawer = useSelector(navigationSelectors.getDrawer)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   const invertPalette = useSelector(navigationSelectors.isPaletteInverted)
 
   const renderModules = (modules) => {
@@ -29,6 +31,9 @@ const PostTemplate = ({ data, pageContext }) => {
     })
   }
 
+  // get the posts, roles and case studies and put them in state
+  const { allPosts, allRoles, allCaseStudies } = pageContext
+
   /**
    * On boot, open the drawer with the requested post
    */
@@ -37,6 +42,13 @@ const PostTemplate = ({ data, pageContext }) => {
       navigationActions.requestOpenDrawer({
         template: 'post',
         slug: pageContext.slug,
+      })
+    )
+    dispatch(
+      contentActions.successGetAllPosts({
+        posts: allPosts,
+        roles: allRoles,
+        caseStudies: allCaseStudies,
       })
     )
   }, [])
@@ -54,7 +66,7 @@ const PostTemplate = ({ data, pageContext }) => {
       />
       <CoreLayout
         hasHero={layout.hasHero}
-        drawerOpen={drawer.isOpen}
+        drawerOpen={drawerStatus !== DRAWER_STATUS.CLOSED}
         templateSlug={TEMPLATES[layout.template]}
         invertPalette={
           invertPalette !== null ? invertPalette : layout.invertPalette

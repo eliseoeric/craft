@@ -1,5 +1,6 @@
 import InitialState from '@State/config/initialState'
 import types from '@State/ducks/ui/navigation/types'
+import { DRAWER_STATUS } from '@Utils/enums'
 
 export default function navigation(state = InitialState.ui.navigation, action) {
   const { type, payload } = action
@@ -31,7 +32,7 @@ export default function navigation(state = InitialState.ui.navigation, action) {
       return {
         ...state,
         drawer: {
-          isOpen: true,
+          status: DRAWER_STATUS.OPEN,
           template,
           slug,
         },
@@ -42,10 +43,30 @@ export default function navigation(state = InitialState.ui.navigation, action) {
       return {
         ...state,
         drawer: {
-          isOpen: false,
+          status: DRAWER_STATUS.CLOSED,
           template: null,
           slug: null,
           invertPalette: null,
+        },
+      }
+    }
+
+    case types.NAVIGATION_REQUEST_CLOSE_DRAWER: {
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          status: DRAWER_STATUS.CLOSING,
+        },
+      }
+    }
+
+    case types.NAVIGATION_REQUEST_OPEN_DRAWER: {
+      return {
+        ...state,
+        drawer: {
+          ...state.drawer,
+          status: DRAWER_STATUS.OPENING,
         },
       }
     }
