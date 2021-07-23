@@ -1,6 +1,6 @@
 import actions from '@State/ducks/ui/navigation/actions'
 import types from '@State/ducks/ui/navigation/types'
-import { all, put, call, delay, takeLatest, select } from 'redux-saga/effects'
+import { all, put, delay, takeLatest } from 'redux-saga/effects'
 
 const {
   toggleMobileMenu,
