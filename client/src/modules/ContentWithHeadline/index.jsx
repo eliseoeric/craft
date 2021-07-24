@@ -18,10 +18,10 @@ const ContentWithHeadline = ({ className, content, title, displayOrb, alignOrb, 
       <Container className={cx(styles.container)}>
         <Divider />
         <Row >
-          <Column lg={4}>
+          <Column lg={contentLayout ? 5 : 4}>
             <H2 text={htmr(title)} className={cx(styles.h2)} />
           </Column>
-          <Column lg={contentLayout ? 7 : 8} className={cx(styles.content, 'remark_content', {[styles.content__two_columns]: !contentLayout})}>
+          <Column lg={contentLayout ? 6 : 7} className={cx(styles.content, 'remark_content', {[styles.content__two_columns]: !contentLayout})}>
             {htmr(content.childMarkdownRemark.html)}
           </Column>
         </Row>

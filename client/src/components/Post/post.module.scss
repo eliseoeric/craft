@@ -7,8 +7,9 @@
 .news_single {
   max-width: 740px;
   margin-left: 12vw;
-  @media #{$phone} {
-    margin-left: 0;
+
+  @media #{$laptop} {
+    margin-left: unset;
   }
 }
 
