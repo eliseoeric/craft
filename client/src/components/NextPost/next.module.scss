@@ -6,7 +6,7 @@
 
 .next_post {
   border-top: 1px solid $gray;
-  padding: 83px 30px 100px 226px;
+  padding: 83px 30px 100px 100px;
   width: 100%;
   position: relative;
 
@@ -43,15 +43,21 @@
 }
 
 .next_post__inner {
-  max-width: 1000px;
+  max-width: 740px;
+  margin-left: 12vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 240px;
   align-items: center;
 
+  @media #{$laptop} {
+    margin-left: unset;
+  }
+
   @media #{$phone} {
     min-height: inherit;
+    
   }
 }
 

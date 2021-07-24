@@ -76,11 +76,11 @@
 
   ol,
   ul {
-    margin-bottom: 16px;
-    padding-left: 24px;
+    margin-bottom: 1rem;
 
     li {
-      margin-bottom: 8px;
+      margin-bottom: .75rem;
+      padding-left: 2rem;
 
       &:last-child {
         margin-bottom: 0;
@@ -97,7 +97,7 @@
         content: "\2013\a0";
         position: absolute;
         color: $gray-dark;
-        left: -24px;
+        left: 0;
       }
     }
   }
