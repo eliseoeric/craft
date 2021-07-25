@@ -89,11 +89,22 @@
     margin-bottom: 1rem;
 
     li {
-      margin-bottom: .75rem;
+      margin-bottom: .31rem;
       padding-left: 2rem;
+
+      @media #{$phone} {
+        padding-left: 0.9375rem;
+      }
 
       &:last-child {
         margin-bottom: 0;
+      }
+
+      p {
+        @media #{$phone} {
+          font-size: 0.9375rem;
+          line-height: 1.333;
+        }
       }
     }
   }
@@ -102,7 +113,10 @@
     list-style-type: none;
 
     li {
+      align-items: center;
+      display: flex;
       position: relative;
+
       &:before {
         content: "\2013\a0";
         position: absolute;
