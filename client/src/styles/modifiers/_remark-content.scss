@@ -35,16 +35,26 @@
     @media #{$tablet} {
       @include fsz(28px);
     }
+    @media #{$phone} {
+      font-size: 2.375rem;
+      margin-bottom: 22px;
+    }
   }
   
   h2, .h2 {
     @include font_loader($primary-family, 8, 'normal');
-    @include fsz(24px)
+    @include fsz(24px);
   }
   
   h3, .h3 {
     @include font_loader($primary-family, 8, 'normal');
     @include fsz(20px);
+    @media #{$phone} {
+      margin-bottom: 0;
+      font-size: calc(1.25rem - 2px);
+      font-weight: 700;
+      line-height: 1.5;
+    }
   }
   
   h4, .h4 {
