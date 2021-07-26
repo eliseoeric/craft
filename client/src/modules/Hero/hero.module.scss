@@ -159,7 +159,7 @@
       display: block;
       height: 1px;
       width: 100vw;
-      background-color: $gray-light;
+      background-color: hsl(160, 10.3%, 88.6%);
       z-index: -1;
 
       @media #{$desktop} {
