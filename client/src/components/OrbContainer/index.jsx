@@ -15,7 +15,7 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
   const [hasBooted, toggleBootState] = useToggle()
   const orbElement = useRef(null)
   const orbApp = useRef(null)
-  const orbs = []
+  const orbs = useRef([])
   const { setVisible, visible } = useScrollProgress()
 
 
@@ -36,6 +36,11 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
         sharedTicker: true,
         
       })
+
+      // for debugging
+      orbApp.current.ticker.minFPS = 1
+      orbApp.current.ticker.maxFPS = 1
+
       orbApp.current.stage.filters = [new KawaseBlurFilter(30, 10, true)]
 
       const getOrbSeeds = () => {
@@ -62,19 +67,19 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
         )
         orbApp.current.stage.addChild(orb.graphics)
 
-        orbs.push(orb)
+        orbs.current.push(orb)
 
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           orbApp.current.ticker.add(() => {
             // update and render each orb, each frame. app.ticker attempts to run at 60fps
-            orbs.forEach((orb) => {
+            orbs.current.forEach((orb) => {
               orb.update()
               orb.render()
             })
           })
         } else {
           // perform one update and render per orb, do not animate
-          orbs.forEach((orb) => {
+          orbs.current.forEach((orb) => {
             orb.update()
             orb.render()
           })
@@ -85,7 +90,7 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
 
       // Cleanup, deletes all event listeners
       return () => {
-        orbs.forEach(orb => orb.cleanup())
+        orbs.current.forEach(orb => orb.cleanup())
         
       }
     }
@@ -103,7 +108,8 @@ const OrbContainer = ({ originXGetter, originYGetter, radiusRange, className, or
   useEffect(() => {
    return () => {
      if (orbApp.current) {
-       orbApp.current.stop()
+       orbApp.current.destroy()
+       orbs.current = []
      }
    } 
   }, [])
