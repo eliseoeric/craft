@@ -13,8 +13,10 @@ const TeamMemberCard = ({
   instagramUrl,
   linkedInUrl,
   mediumUrl,
+  spotifyUrl,
   onClick,
 }) => {
+  console.log({spotifyUrl})
   return (
     <div className={styles.team_grid__item}>
       {headshot?.file?.url && (
@@ -43,7 +45,7 @@ const TeamMemberCard = ({
           <p className={styles.team_grid__designation}>{jobTitle}</p>
         </div>
         <SocialIconsAlt
-          {...{ dribbleUrl, instagramUrl, linkedInUrl, mediumUrl }}
+          {...{ dribbleUrl, instagramUrl, linkedInUrl, mediumUrl, spotifyUrl }}
         />
       </div>
     </div>

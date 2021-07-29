@@ -2,7 +2,7 @@ import React from 'react'
 import htmr from 'htmr'
 import { graphql, Link } from 'gatsby'
 import cx from 'classnames'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { navigationActions } from '@State/ducks/ui/navigation'
 import { H2 } from '@Components/Typography'

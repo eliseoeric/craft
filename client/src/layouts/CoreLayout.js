@@ -4,7 +4,7 @@ import cx from 'classnames'
 import _ from 'lodash'
 import { useSelector } from 'react-redux'
 
-import { TEMPLATES } from '@Utils/enums'
+import { TEMPLATES, DRAWER_STATUS } from '@Utils/enums'
 import Footer from '@Components/Footer'
 import Header from '@Components/Header'
 import Sidebar from '@Components/Sidebar'
@@ -29,8 +29,8 @@ const CoreLayout = ({
   const drawer = useSelector(navigationSelectors.getDrawer)
   const nextPost = useSelector(contentSelectors.getNextPost)
 
-  const maybeRenderNextPost = ({ isOpen, template, slug }) => {
-    if (isOpen && template === TEMPLATES.Post) {
+  const maybeRenderNextPost = ({ status, template, slug }) => {
+    if (status === DRAWER_STATUS.OPEN  && template === TEMPLATES.Post) {
 
       return !_.isEmpty(nextPost) && <NextPost nextPost={nextPost} />
     }
@@ -51,11 +51,12 @@ const CoreLayout = ({
             drawerTemplate === TEMPLATES['Case Study'],
         })}
       />
-      <main className={cx(styles.content_wrapper)}>
+      <main className={cx(styles.content_wrapper, {[styles.content_wrapper__border]: drawerOpen})}>
         <div
           className={cx(styles.page_wrapper, {
             [styles.page_wrapper__no_hero]: hasHero === false,
             [styles.page_wrapper__invertPalette]: invertPalette,
+            [styles.page_wrapper__border]: !drawerOpen,
           })}
         >
           {drawerOpen && (

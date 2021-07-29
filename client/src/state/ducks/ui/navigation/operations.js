@@ -1,6 +1,6 @@
 import actions from '@State/ducks/ui/navigation/actions'
 import types from '@State/ducks/ui/navigation/types'
-import { all, put, call, fork, takeLatest, select } from 'redux-saga/effects'
+import { all, put, delay, takeLatest } from 'redux-saga/effects'
 
 const {
   toggleMobileMenu,
@@ -25,6 +25,7 @@ function* openDrawer(action) {
 
 function* closeDrawer(action) {
   try {
+    yield delay(200)
     yield put(actions.successCloseDrawer())
   } catch (error) {
     console.error(error)

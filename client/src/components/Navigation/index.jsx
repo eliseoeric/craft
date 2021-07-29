@@ -9,7 +9,12 @@ import NavigationItem from '@Components/NavigationItem'
 import OrbContainer from '@Components/OrbContainer'
 import * as styles from './navigation.module.scss'
 
-const Navigation = ({ className, invertPalette, onClickEvent, isMenuToggleOpen }) => {
+const Navigation = ({
+  className,
+  invertPalette,
+  onClickEvent,
+  isMenuToggleOpen,
+}) => {
   // todo onClick handler for navigation toggle
   const data = useStaticQuery(graphql`
     query navigation {
@@ -21,9 +26,17 @@ const Navigation = ({ className, invertPalette, onClickEvent, isMenuToggleOpen }
             slug
             id
             navigationItems {
-              canonicalUrl
-              slug
-              title
+              ... on ContentfulPage {
+                id
+                title
+                slug
+              }
+              ... on ContentfulNavigationMenuLink {
+                id
+                slug
+                url
+                title
+              }
             }
           }
         }
@@ -37,11 +50,10 @@ const Navigation = ({ className, invertPalette, onClickEvent, isMenuToggleOpen }
     <nav
       className={cx(className, styles.navigation_container, {
         [styles.navigation_container__mobile]: isMenuToggleOpen,
-        
       })}
     >
       <div className={styles.logo__container}>
-        <Logo variant="white" />
+        <Logo variant="green" />
         <MenuToggle isOpen={isMenuToggleOpen} />
       </div>
       <span className={styles.navigation_container__text}>Menu</span>

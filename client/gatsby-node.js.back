@@ -1,0 +1,222 @@
+const path = require('path')
+const fs = require('fs')
+
+const TEMPLATES = {
+  Page: 'page',
+  Contact: 'contact',
+  Careers: 'careers',
+  'Case Study': 'caseStudy',
+  Post: 'post',
+  Role: 'role',
+}
+
+/**
+ * Returns a page layout component based on the node's layout.template property.
+ *
+ * If the layout is null, will default to a default page type which is either `page.js`
+ * or whatever is passed as the second parameter.
+ * @param {*} layout
+ * @param {*} defaultTemplate
+ * @returns
+ */
+const getTemplate = (layout, defaultTemplate = TEMPLATES['Page']) => {
+  const defaultTemplatePath = path.resolve(
+    `./src/templates/${defaultTemplate}.js`
+  )
+
+  if (layout && layout.template) {
+    const templateType = TEMPLATES[layout.template]
+    const templatePath = path.resolve(`./src/templates/${templateType}.js`)
+    return fs.existsSync(templatePath) ? templatePath : defaultTemplatePath
+  }
+  return defaultTemplatePath
+}
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === 'build-html' || stage === 'develop-html') {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /pixi.js|filter-kawase-blur/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    })
+  }
+}
+
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+
+  return new Promise((resolve, reject) => {
+    resolve(
+      graphql(
+        `
+          {
+            allContentfulTypeCaseStudy {
+              edges {
+                node {
+                  title
+                  slug
+                  orbColor1
+                  orbColor2
+                  description {
+                    childrenMarkdownRemark {
+                      rawMarkdownBody
+                    }
+                  }
+                  
+                }
+              }
+            }
+            allContentfulTypeRole {
+              edges {
+                node {
+                  title
+                  slug
+                  location
+                  jobDescription {
+                    raw
+                  }
+                  updatedAt
+                  applicationLink
+                }
+              }
+            }
+            allContentfulTypeBlogPost {
+              edges {
+                node {
+                  title
+                  slug
+                  category
+                  content {
+                    raw
+                    references {
+                      gatsbyImageData(aspectRatio: 1.5)
+                      title
+                    }
+                  }
+                  featuredImage {
+                    gatsbyImageData(aspectRatio: 1.5)
+                    title
+                  }
+                  updatedAt
+                }
+                next {
+                  slug
+                  title
+                }
+              }
+            }
+            allContentfulPage {
+              edges {
+                node {
+                  canonicalUrl
+                  id
+                  slug
+                  title
+                  layout {
+                    template
+                  }
+                  description {
+                    childMarkdownRemark {
+                      rawMarkdownBody
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `
+      )
+    ).then((result) => {
+      if (result.errors) {
+        console.log(result.errors)
+        reject(result.errors)
+      }
+
+      result.data.allContentfulPage.edges.forEach((post, index) => {
+        // front-page slug should be /
+        const _path =
+          post.node.slug === 'front-page' ? '/' : `/${post.node.slug}/`
+        const _layout = post.node.layout
+
+        /**
+         * Create the standard pages
+         */
+        createPage({
+          path: _path,
+          component: getTemplate(_layout),
+          context: {
+            slug: post.node.slug,
+            allPosts: result.data.allContentfulTypeBlogPost,
+            allRoles: result.data.allContentfulTypeRole,
+            allCaseStudies: result.data.allContentfulTypeCaseStudy,
+          },
+        })
+      })
+
+      /**
+       * Create the Case Studies
+       */
+      result.data.allContentfulTypeCaseStudy.edges.forEach((post, index) => {
+        // front-page slug should be /
+        const path = `/case-studies/${post.node.slug}/`
+        const _layout = post.node.layout
+
+        createPage({
+          path: path,
+          component: getTemplate(_layout, TEMPLATES['Case Study']),
+          context: {
+            slug: post.node.slug,
+            allPosts: result.data.allContentfulTypeBlogPost,
+            allRoles: result.data.allContentfulTypeRole,
+            allCaseStudies: result.data.allContentfulTypeCaseStudy,
+          },
+        })
+      })
+
+      /**
+       * Create the careers/roles
+       */
+      result.data.allContentfulTypeRole.edges.forEach((post, index) => {
+        // front-page slug should be /
+        const path = `/careers/${post.node.slug}/`
+        const _layout = post.node.layout
+
+        createPage({
+          path: path,
+          component: getTemplate(_layout, TEMPLATES['Role']),
+          context: {
+            slug: post.node.slug,
+            allPosts: result.data.allContentfulTypeBlogPost,
+            allRoles: result.data.allContentfulTypeRole,
+            allCaseStudies: result.data.allContentfulTypeCaseStudy,
+          },
+        })
+      })
+
+      /**
+       * Create the blog posts
+       */
+      result.data.allContentfulTypeBlogPost.edges.forEach((post, index) => {
+        const path = `/news/${post.node.slug}/`
+        const _layout = post.node.layout
+
+        createPage({
+          path: path,
+          component: getTemplate(_layout, TEMPLATES['Post']),
+          context: {
+            slug: post.node.slug,
+            next: post.next,
+            allPosts: result.data.allContentfulTypeBlogPost,
+            allRoles: result.data.allContentfulTypeRole,
+            allCaseStudies: result.data.allContentfulTypeCaseStudy,
+          },
+        })
+      })
+    })
+  })
+}

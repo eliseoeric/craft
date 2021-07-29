@@ -7,6 +7,7 @@ import Module from '@Components/Module'
 import ContactBlock from '@Components/ContactBlock'
 import { TEMPLATES } from '../utils/enums'
 
+
 const ContactTemplate = ({ data, pageContext }) => {
   console.log('hello from contact')
   const renderModules = (modules) => {
@@ -24,13 +25,11 @@ const ContactTemplate = ({ data, pageContext }) => {
   // const logo = data.contentfulSiteConfig?.logo?.file?.url
   const seoDescription = description?.childMarkdownRemark?.rawMarkdownBody
 
-  console.log()
 
   return (
     <>
       <SEO
         title={title}
-        titleTemplate={`%s - ${title}`}
         // image={featuredImage.gatsbyImageData.images}
         description={seoDescription}
       />

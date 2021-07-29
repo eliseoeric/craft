@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import cx from 'classnames'
 import { useDispatch, useSelector } from 'react-redux'
 
+import { DRAWER_STATUS } from '@Utils/enums'
 import {
   navigationActions,
   navigationSelectors,
@@ -11,12 +12,14 @@ import * as styles from './toggle.module.scss'
 
 const MenuToggle = ({ isOpen, invertPalette }) => {
   const dispatch = useDispatch()
-  const isDrawerOpen = useSelector(navigationSelectors.isDrawerOpen)
+  const drawerStatus = useSelector(navigationSelectors.getDrawerStatus)
   
   const handleOnClick = () => {
-    if (isDrawerOpen) {
+    if (drawerStatus === DRAWER_STATUS.OPEN) {
       dispatch(navigationActions.requestCloseDrawer())
-    } else {
+    } 
+
+    if (drawerStatus === DRAWER_STATUS.CLOSED) {
       dispatch(navigationActions.toggleMobileMenu())
     }
   }

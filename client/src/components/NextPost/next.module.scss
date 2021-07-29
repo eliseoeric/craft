@@ -4,13 +4,10 @@
 @import '../../styles/definitions/colors';
 @import '../../styles/definitions/keyframes';
 
-
 .next_post {
-  margin-left: 143px;
-  border-left: 1px solid $gray-light;
-  border-top: 1px solid $gray-light;
-  padding: 83px 30px 100px 85px;
-  width: calc(100% - 144px);
+  border-top: 1px solid $gray;
+  padding: 83px 30px 100px 100px;
+  width: 100%;
   position: relative;
 
   @media #{$tablet} {
@@ -46,15 +43,21 @@
 }
 
 .next_post__inner {
-  max-width: 1000px;
+  max-width: 740px;
+  margin-left: 12vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   min-height: 240px;
   align-items: center;
 
+  @media #{$laptop} {
+    margin-left: unset;
+  }
+
   @media #{$phone} {
     min-height: inherit;
+    
   }
 }
 
@@ -68,17 +71,6 @@
 
 .next_post__image {
   width: 39.5%;
-  opacity: 0;
-  transition: $transition;
-
-  @media #{$phone} {
-    display: none;
-  }
-
-  .next_post:hover & {
-    opacity: 1;
-    transition: $transition;
-  }
 }
 
 .next_post__title {
