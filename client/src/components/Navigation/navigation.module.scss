@@ -7,6 +7,8 @@
 .navigation_container {
   @media #{$phone} {
     position: fixed;
+    visibility: hidden;
+    opacity: 0;
     width: 100%;
     height: 100%;
     background-color: $gray-light;
@@ -18,12 +20,12 @@
     padding-bottom: 15px;
     align-content: flex-start;
     overflow: auto;
-    display: none;
   }
 
   &.navigation_container__mobile {
     @media #{$phone} {
-      display: block;
+      visibility: visible;
+      opacity: 1;
       padding: 24px 24px 50px;
       box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.14);
       overflow: hidden;
