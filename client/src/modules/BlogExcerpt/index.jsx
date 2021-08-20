@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import { useDispatch } from 'react-redux'
+import { DateTime } from 'luxon'
 
 import urls from '@Utils/urls'
 import { H2 } from '@Components/Typography'
@@ -21,7 +22,7 @@ const renderCategoryString = (categories) => {
 const BlogExcerpt = ({
   className,
   categories,
-  createdAt,
+  updatedAt,
   featuredImage,
   handleMouseHover,
   handleMouseLeave,
@@ -37,6 +38,8 @@ const BlogExcerpt = ({
     event.preventDefault();
     dispatch(navigationActions.requestOpenDrawer({ template: 'post', slug: postSlug, invertPalette: false }))
    }
+  
+  const updatedAtObject = DateTime.fromISO(updatedAt, { zone: 'utc' })
 
   return (
     <article
@@ -52,7 +55,7 @@ const BlogExcerpt = ({
         onMouseOver={handleMouseHover}>
           <div className={cx(style.flexItem)}>
             <H2 text={title} className={cx(style.blogExcerptH2)} />
-            <p className={style.blogExcerpt__date}>{createdAt}</p>
+            <p className={style.blogExcerpt__date}>{updatedAtObject.toFormat('MM.dd.yy')}</p>
             <p>
               <span>{renderCategoryString(categories)}</span>
               <span> — 3 min read</span>
@@ -73,7 +76,7 @@ export default BlogExcerpt
 export const query = graphql`
   fragment BlogExcerptQuery on ContentfulTypeBlogPost {
     category
-    createdAt(formatString: "M.D.YY")
+    updatedAt
     featuredImage {
       gatsbyImageData(width: 300)
     }

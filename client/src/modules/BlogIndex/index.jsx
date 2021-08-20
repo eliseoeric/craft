@@ -10,7 +10,7 @@ const BlogIndex = ({ className }) => {
   const query = useStaticQuery(graphql`
     {
       posts: allContentfulTypeBlogPost(
-        sort: { fields: [content___references___createdAt], order: ASC }
+        sort: { fields: updatedAt, order: DESC }
       ) {
         edges {
           node {
@@ -41,7 +41,7 @@ const BlogIndex = ({ className }) => {
           hoveredIndex={hoveredIndex}
           index={idx}
           categories={node.category}
-          createdAt={node.createdAt}
+          updatedAt={node.updatedAt}
           featuredImage={node.featuredImage}
           key={node.title}
           postSlug={node.slug}
