@@ -3,6 +3,7 @@ import cx from 'classnames'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from 'gatsby'
 import { useDispatch } from 'react-redux'
+import readingTime from 'reading-time'
 
 import urls from '@Utils/urls'
 import { H2 } from '@Components/Typography'
@@ -29,6 +30,7 @@ const BlogExcerpt = ({
   index,
   postSlug,
   title,
+  content,
 }) => {
   const image = getImage(featuredImage)
   const dispatch = useDispatch();
@@ -37,6 +39,8 @@ const BlogExcerpt = ({
     event.preventDefault();
     dispatch(navigationActions.requestOpenDrawer({ template: 'post', slug: postSlug, invertPalette: false }))
    }
+
+  const stats = readingTime(content.raw)
 
   return (
     <article
@@ -55,7 +59,7 @@ const BlogExcerpt = ({
             <p className={style.blogExcerpt__date}>{createdAt}</p>
             <p>
               <span>{renderCategoryString(categories)}</span>
-              <span> — 3 min read</span>
+              <span> — {stats.text}</span>
             </p>
           </div>
           <div
@@ -79,5 +83,8 @@ export const query = graphql`
     }
     slug
     title
+    content {
+      raw
+    }
   }
 `

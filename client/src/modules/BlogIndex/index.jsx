@@ -46,6 +46,7 @@ const BlogIndex = ({ className }) => {
           key={node.title}
           postSlug={node.slug}
           title={node.title}
+          content={node.content}
         />
       ))}
     </div>
