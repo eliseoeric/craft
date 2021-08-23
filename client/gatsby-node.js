@@ -58,6 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
         file {
           fileName
           url
+          contentType
         }
       }
     }

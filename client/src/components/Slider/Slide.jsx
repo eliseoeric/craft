@@ -9,7 +9,13 @@ const Slide = ({ title, description, media, contained }) => {
   return (
     <Container className={cx({ [styles.contained]: !contained })}>
       <figure className={styles.media}>
-        {media && <img alt={media.file.fileName} src={media.file.url} />}
+        {media && media.file.contentType.includes('video') ? (
+          <video controls>
+            <source src={media.file.url} type={media.file.contentType} />
+          </video>
+        ) : (
+          <img alt={media.file.fileName} src={media.file.url} />
+        )}
       </figure>
       <div>
         {title && <h4 className={styles.title}>{title}</h4>}
@@ -27,7 +33,7 @@ Slide.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
   media: PropTypes.object,
-  contained: PropTypes.bool
+  contained: PropTypes.bool,
 }
 
 Slide.defaultProps = {
